@@ -4,14 +4,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
-import { PrincipalComponent } from './principal/principal.component';
-import { RegistroComponent } from './registro/registro.component';
+
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+
     LoginComponent,
     PrincipalComponent,
     RegistroComponent
@@ -28,3 +28,9 @@ import { RegistroComponent } from './registro/registro.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { PrincipalComponent } from './principal/principal.component';
+import { RegistroComponent } from './registro/registro.component';
