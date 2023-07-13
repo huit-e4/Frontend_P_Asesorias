@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/login" routerLinkActive="active">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/registro">
+            <i class="fas fa-user-plus"></i> Registrarse
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="registro-container">
+            <h1>Crear tu cuenta</h1>
+            <form [formGroup]="registroForm" (ngSubmit)="submitForm()">
+              <div class="form-group" [class.invalid]="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || registroForm.get('nombre')?.touched)">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese su nombre">
+                <div *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || registroForm.get('nombre')?.errors)">
+                  <div class="error-message">El nombre es requerido.</div>
+                </div>
+              </div>
+              <div class="form-group" [class.invalid]="registroForm.get('apellidos')?.invalid && (registroForm.get('apellidos')?.dirty || registroForm.get('apellidos')?.touched)">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" formControlName="apellidos" placeholder="Ingrese sus apellidos">
+                <div *ngIf="registroForm.get('apellidos')?.invalid && (registroForm.get('apellidos')?.dirty || registroForm.get('apellidos')?.errors)">
+                  <div class="error-message">Los apellidos son requeridos.</div>
+                </div>
+              </div>
+              <div class="form-group" [class.invalid]="registroForm.get('sexo')?.invalid && (registroForm.get('sexo')?.dirty || registroForm.get('sexo')?.touched)">
+                <label for="sexo">Sexo</label>
+                <input type="text" id="sexo" formControlName="sexo" placeholder="Ingrese su sexo">
+                <div *ngIf="registroForm.get('sexo')?.invalid && (registroForm.get('sexo')?.dirty || registroForm.get('sexo')?.errors)">
+                  <div class="error-message">El sexo es requerido.</div>
+                </div>
+              </div>
+              <div class="form-group" [class.invalid]="registroForm.get('edad')?.invalid && (registroForm.get('edad')?.dirty || registroForm.get('edad')?.touched)">
+                <label for="edad">Edad</label>
+                <input type="text" id="edad" formControlName="edad" placeholder="Ingrese su edad">
+                <div *ngIf="registroForm.get('edad')?.invalid && (registroForm.get('edad')?.dirty || registroForm.get('edad')?.errors)">
+                  <div class="error-message">La edad es requerida.</div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="registro-container">
+            <div class="form-group" [class.invalid]="registroForm.get('matricula')?.invalid && (registroForm.get('matricula')?.dirty || registroForm.get('matricula')?.touched)">
+              <label for="matricula">Matricula</label>
+              <input type="text" id="matricula" formControlName="matricula" placeholder="Ingrese su matricula">
+              <div *ngIf="registroForm.get('matricula')?.invalid && (registroForm.get('matricula')?.dirty || registroForm.get('matricula')?.errors)">
+                <div class="error-message">La matricula es requerida.</div>
+              </div>
+            </div>
+            <div class="form-group" [class.invalid]="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty || registroForm.get('email')?.touched)">
+              <label for="email">Email</label>
+              <input type="text" id="email" formControlName="email" placeholder="Ingrese su email">
+              <div *ngIf="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty || registroForm.get('email')?.errors)">
+                <div class="error-message">El email es requerido.</div>
+              </div>
+            </div>
+            <div class="form-group" [class.invalid]="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || registroForm.get('password')?.touched)">
+              <label for="password">Password</label>
+              <input type="text" id="password" formControlName="password" placeholder="Ingrese su password">
+              <div *ngIf="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || registroForm.get('password')?.errors)">
+                <div class="error-message">La contraseña es requerida.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="rol">Rol</label>
+              <select id="rol" name="rol" required>
+                <option value="" disabled selected>Seleccione un rol</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="experto">Experto</option>
+              </select>
+            </div>
+
+            <button type="submit" [disabled]="registroForm.invalid">Registrarse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
