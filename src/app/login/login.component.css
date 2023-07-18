@@ -1,3 +1,9 @@
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 .login-container {
     max-width: 400px;
     margin: 0 auto;
@@ -24,7 +30,7 @@
   input[type="password"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #007bff;
     border-radius: 4px;
   }
   
