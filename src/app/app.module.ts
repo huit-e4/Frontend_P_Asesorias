@@ -13,7 +13,8 @@ import { AppComponent } from './app.component';
 
     LoginComponent,
     PrincipalComponent,
-    RegistroComponent
+    RegistroComponent,
+    CAdministradorComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,3 +34,4 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { RegistroComponent } from './registro/registro.component';
+import { CAdministradorComponent } from './c-administrador/c-administrador.component';
