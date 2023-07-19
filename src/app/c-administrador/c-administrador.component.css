@@ -1,0 +1,10 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+.offcanvas {
+    background-color: #333333;
+}
+.offcanvas-title {
+    color: white;
+}

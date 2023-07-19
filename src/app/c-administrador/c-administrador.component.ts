@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./c-administrador.component.css']
 })
 export class CAdministradorComponent {
+  
+  isNavbarOpen = false;
 
+  toggleNavbar() {
+    this.isNavbarOpen = !this.isNavbarOpen;
+  }
+  isProfileOpen = false;
+
+
+
+toggleProfileOptions() {
+  this.isProfileOpen = !this.isProfileOpen;
+}
 }
