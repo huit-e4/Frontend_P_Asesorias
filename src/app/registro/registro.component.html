@@ -64,11 +64,20 @@
                   </div>
 
                   <div class="mb-3">
+                    <label class="form-label">Edad:</label>
+                    <input type="edad" class="form-control" formControlName="edad" [ngClass]="{ 'error-field': registroForm.get('edad')?.invalid && registroForm.get('edad')?.touched }">
+                    <div *ngIf="registroForm.get('edad')?.invalid && registroForm.get('edad')?.touched" class="error-message">Tu edad es requerido</div>
+                  </div>
+
+                  
+
+                  <div class="mb-3">
                     <label class="form-label">Rol:</label>
                     <select class="form-control" formControlName="Rol" [ngClass]="{ 'error-field': registroForm.get('Rol')?.invalid && registroForm.get('Rol')?.touched }">
                       <option value="" disabled selected>Seleccione</option>
                       <option value="admin">Administrador</option>
-                      <option value="user">Usuario</option>
+                      <option value="user">Experto</option>
+                      <option value="user">Estudiante</option>
                     </select>
                     <div *ngIf="registroForm.get('Rol')?.invalid && registroForm.get('Rol')?.touched" class="error-message">El Rol es requerido</div>
                   </div>
