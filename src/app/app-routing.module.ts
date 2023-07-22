@@ -8,6 +8,8 @@ import { HomeExpertComponent } from './components/home-expert/home-expert.compon
 import { ExpertgGuard } from './guards/expertg.guard';
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { StudentgGuard } from './guards/studentg.guard';
+import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,23 @@ const routes: Routes = [
 
   {
     path: 'homeadmin',
-    component: HomeAdminComponent,
+    component: HomeAdminComponent, children: [
+      {
+        path: '', // child route path
+        component: HomeadminComponent,
+        canActivate: [AdmingGuard] // child route component that the router renders
+      },
+      {
+        path: 'instructores', 
+        component: InstructoresComponent,
+        canActivate: [AdmingGuard] 
+      },
+      // {
+      //   path:'**',
+      //   redirectTo:'404NotFound',
+      // }
+      
+    ],
     canActivate: [AdmingGuard]
 
   },
