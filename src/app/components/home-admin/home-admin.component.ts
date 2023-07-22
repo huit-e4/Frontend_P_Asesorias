@@ -1,6 +1,7 @@
   import { Component, OnInit } from '@angular/core';
   import { Router } from '@angular/router';
   import Swal from 'sweetalert2'
+  
 
 
   @Component({
@@ -9,6 +10,7 @@
     styleUrls: ['./home-admin.component.css']
   })
   export class HomeAdminComponent implements OnInit {
+
     constructor(private rou: Router,) { }
 
     ngOnInit(): void {}

@@ -8,6 +8,8 @@ import { HomeExpertComponent } from './components/home-expert/home-expert.compon
 import { ExpertgGuard } from './guards/expertg.guard';
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { StudentgGuard } from './guards/studentg.guard';
+import { NgxPaginationModule } from 'ngx-pagination'; // Importa la biblioteca de paginación
+
 
 const routes: Routes = [
   {
@@ -41,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),  NgxPaginationModule],
   exports: [RouterModule]
 })
 
