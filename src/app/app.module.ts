@@ -11,8 +11,10 @@ import { HomeExpertComponent } from './components/home-expert/home-expert.compon
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
-import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
+import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
+import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 
 
 @NgModule({
@@ -23,8 +25,9 @@ import { EstudiantesComponent } from './components/admincomponents/estudiantes/e
     HomeAdminComponent,
     HomeExpertComponent,
     HomeStudentComponent,
-    AdministradoresComponent,
-    EstudiantesComponent
+    EstudiantesComponent,
+    CursosComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +35,8 @@ import { EstudiantesComponent } from './components/admincomponents/estudiantes/e
     ReactiveFormsModule,
     FormsModule,
     SweetAlert2Module,
-    HttpClientModule
-
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

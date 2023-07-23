@@ -8,8 +8,11 @@ import { HomeExpertComponent } from './components/home-expert/home-expert.compon
 import { ExpertgGuard } from './guards/expertg.guard';
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { StudentgGuard } from './guards/studentg.guard';
-import { NgxPaginationModule } from 'ngx-pagination'; // Importa la biblioteca de paginación
-
+import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
+import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
+import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
+import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -22,8 +25,39 @@ const routes: Routes = [
 
   {
     path: 'homeadmin',
-    component: HomeAdminComponent,
-    canActivate: [AdmingGuard]
+    component: HomeAdminComponent, children: [
+      {
+        path: '', // child route path
+        component: HomeadminComponent,
+        //canActivate: [AdmingGuard] // child route component that the router renders
+      },
+      {
+        path: 'instructores', 
+        component: InstructoresComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'estudiantes', 
+        component: EstudiantesComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'cursos', 
+        component: CursosComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'perfil', 
+        component: PerfilComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      // {
+      //   path:'**',
+      //   redirectTo:'404NotFound',
+      // }
+      
+    ],
+    //canActivate: [AdmingGuard]
 
   },
 
@@ -43,7 +77,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),  NgxPaginationModule],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 
