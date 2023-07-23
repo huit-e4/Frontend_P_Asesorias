@@ -12,6 +12,7 @@ import { HomeStudentComponent } from './components/home-student/home-student.com
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
+import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HomeadminComponent } from './components/admincomponents/homeadmin/homea
     HomeAdminComponent,
     HomeExpertComponent,
     HomeStudentComponent,
-    HomeadminComponent
+    HomeadminComponent,
+    AdministradoresComponent
   ],
   imports: [
     BrowserModule,

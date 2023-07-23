@@ -12,8 +12,8 @@
     <a class="navbar-brand" href="#">Administrador</a>
     <div class="dropdown ">
       <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="assets/access.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <span>NUsuario</span>
+        <img src="assets/userP.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <span>{{userD?.name}}</span>
       </a>
       <ul class="dropdown-menu text-small shadow dropdown-menu-end" aria-labelledby="dropdownUser2" style="">
         <li><a class="dropdown-item" href="#"><i class="bi bi-person "></i> &nbsp;   Perfil</a></li>
@@ -32,13 +32,13 @@
             <a class="nav-link ms-4 active" aria-current="page" routerLink="/homeadmin" data-bs-dismiss="offcanvas"> <i class="fs-5 bi-house"></i><span class="ms-2">Home</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-4" routerLink="./instructores" data-bs-dismiss="offcanvas"><i class="fs-5 bi-person-vcard"></i><span class="ms-2">Instructores</span></a>
+            <a class="nav-link ms-4" routerLink="./instructors" data-bs-dismiss="offcanvas"><i class="fs-5 bi-person-vcard"></i><span class="ms-2">Instructores</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./instructores" data-bs-dismiss="offcanvas"><i class="fs-5 bi-people"></i><span class="ms-2">Estudiantes</span> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link ms-4" routerLink="./instructores" data-bs-dismiss="offcanvas"><i class="fs-5 bi-person-gear"></i><span class="ms-2">Administradores</span> </a>
+            <a class="nav-link ms-4" routerLink="./administrators" data-bs-dismiss="offcanvas"><i class="fs-5 bi-person-gear"></i><span class="ms-2">Administradores</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./instructores" data-bs-dismiss="offcanvas"><i class="fs-5 bi-mortarboard"></i><span class="ms-2">Cursos</span> </a>

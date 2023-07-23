@@ -11,7 +11,10 @@
   export class HomeAdminComponent implements OnInit {
     constructor(private rou: Router,) { }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+     this.getUser();
+
+    }
 
     logOut() {
       localStorage.removeItem('token');
@@ -40,7 +43,13 @@
       });
     }
 
+userD:any;;
+  getUser(){
+    const userL=JSON.parse(localStorage.getItem('user')||'[]');
+    this.userD=userL;
+    console.log(this.userD);
 
     
+  }
 
   }

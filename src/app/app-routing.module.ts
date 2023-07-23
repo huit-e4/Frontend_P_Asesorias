@@ -10,6 +10,7 @@ import { HomeStudentComponent } from './components/home-student/home-student.com
 import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
+import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 
 const routes: Routes = [
   {
@@ -24,23 +25,26 @@ const routes: Routes = [
     path: 'homeadmin',
     component: HomeAdminComponent, children: [
       {
-        path: '', // child route path
+        path: '', 
         component: HomeadminComponent,
-        canActivate: [AdmingGuard] // child route component that the router renders
+        canActivate: [AdmingGuard] 
       },
       {
-        path: 'instructores', 
+        path: 'instructors', 
         component: InstructoresComponent,
         canActivate: [AdmingGuard] 
       },
-      // {
-      //   path:'**',
-      //   redirectTo:'404NotFound',
-      // }
-      
+      {
+        path: 'administrators', 
+        component: AdministradoresComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path:'**',
+        redirectTo:''
+      }
     ],
     canActivate: [AdmingGuard]
-
   },
 
   {
