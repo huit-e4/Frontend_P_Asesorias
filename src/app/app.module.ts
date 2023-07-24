@@ -13,6 +13,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     HomeExpertComponent,
     HomeStudentComponent,
     HomeadminComponent,
-    AdministradoresComponent
+    AdministradoresComponent,
+    InstructoresComponent
   ],
   imports: [
     BrowserModule,
