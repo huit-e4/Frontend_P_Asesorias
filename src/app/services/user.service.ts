@@ -76,5 +76,11 @@ export class UserService {
     return this.http.get(this.url + '/api/admins');
   }
 
+  getEstudiantes() {
+    return this.http.get(this.url + '/api/students');
+  }
+
+  
+
   
 }

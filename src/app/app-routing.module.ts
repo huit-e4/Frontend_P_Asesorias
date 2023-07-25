@@ -8,8 +8,12 @@ import { HomeExpertComponent } from './components/home-expert/home-expert.compon
 import { ExpertgGuard } from './guards/expertg.guard';
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { StudentgGuard } from './guards/studentg.guard';
-import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
+import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+
+import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
+import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
+import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 
 const routes: Routes = [
@@ -27,24 +31,40 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeadminComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] // child route component that the router renders
       },
       {
         path: 'instructors', 
         component: InstructoresComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'estudiantes', 
+        component: EstudiantesComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'cursos', 
+        component: CursosComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'perfil', 
+        component: PerfilComponent,
+        //canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 
         component: AdministradoresComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    canActivate: [AdmingGuard]
+    //canActivate: [AdmingGuard]
+
   },
 
   {
@@ -63,7 +83,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 
