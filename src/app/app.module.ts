@@ -16,6 +16,7 @@ import { EstudiantesComponent } from './components/admincomponents/estudiantes/e
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
 import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { InstructoresComponent } from './components/admincomponents/instructores
     EstudiantesComponent,
     CursosComponent,
     PerfilComponent,
-    InstructoresComponent
+    InstructoresComponent,
+    AdministradoresComponent
   ],
   imports: [
     BrowserModule,
