@@ -32,39 +32,39 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeadminComponent,
-        canActivate: [AdmingGuard] // child route component that the router renders
+       // canActivate: [AdmingGuard] // child route component that the router renders
       },
       {
         path: 'instructors', 
         component: InstructoresComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'estudiantes', 
         component: EstudiantesComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'cursos', 
         component: CursosComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'perfil', 
         component: PerfilComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 
         component: AdministradoresComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    canActivate: [AdmingGuard]
+    //canActivate: [AdmingGuard]
 
   },
 

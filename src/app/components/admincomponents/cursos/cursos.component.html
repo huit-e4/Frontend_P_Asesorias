@@ -17,6 +17,7 @@
           <tr>
             <th>#Numero</th>
             <th>Nombre</th>
+            <th>Descripcion</th>
             <th>Precio</th>
             <th>Disponible</th>
           </tr>
@@ -26,8 +27,9 @@
           <tr *ngFor="let curso of getCoursesForCurrentPage()">
             <td>{{ curso.id }}</td>
             <td>{{ curso.nombre }}</td>
+            <td>{{ curso.desc }}</td>
             <td>{{ curso.precio }}</td>
-            <td>{{ curso.disponible ? 'Sí' : 'No' }}</td>
+            <td>{{ curso.active ? 'Sí' : 'No' }}</td>
           </tr>
         </tbody>
       </table>
