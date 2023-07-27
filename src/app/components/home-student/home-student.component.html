@@ -1,5 +1,59 @@
-<div class="button">
-    <button type="submit" class="btn btn-danger" (click)="confirmarAlert()">Primary</button>
+<!-- <div class="button">
+  <button type="submit" class="btn btn-danger" (click)="confirmarAlert()">Primary</button>
+</div>
+<hr>
+<p>home-admin works!</p> -->
+
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand">Estudiante</a>
+    <div class="dropdown ">
+      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="assets/userP.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <span>{{userD?.name}}</span>
+      </a>
+      <ul class="dropdown-menu text-small shadow dropdown-menu-end" aria-labelledby="dropdownUser2" style="">
+        <li><a class="dropdown-item" routerLink="perfil"><i class="bi bi-person "></i> &nbsp;   Perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+          <a class="dropdown-item" href="javascript:void(0);" (click)="confirmarAlert()" style="cursor: pointer;">
+            <i class="bi bi-box-arrow-left"></i> &nbsp; Cerrar sesión
+          </a>
+        </li>      </ul>
+    </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body px-0">
+        <ul class="navbar-nav justify-content-end flex-grow-1 ">
+          <li class="nav-item">
+            <a class="nav-link ms-4 active" aria-current="page" routerLink="/homeadmin" data-bs-dismiss="offcanvas"> <i class="fs-5 bi-house"></i><span class="ms-2">Home</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link ms-4" routerLink="./instructors" data-bs-dismiss="offcanvas"><i class="fs-5 bi-person-vcard"></i><span class="ms-2">Instructores</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link ms-4" routerLink="./cursos" data-bs-dismiss="offcanvas"><i class="fs-5 bi-mortarboard"></i><span class="ms-2">Cursos</span> </a>
+          </li>
+      
+        </ul>
+
+      </div>
+    </div>
   </div>
-  <hr>
-  <p>home-student works!</p>
+</nav>
+
+<br> <br> <br>
+
+
+<div>
+  
+  <router-outlet>
+  </router-outlet>
+</div>

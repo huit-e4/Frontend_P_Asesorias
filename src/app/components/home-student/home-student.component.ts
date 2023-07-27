@@ -10,7 +10,10 @@ import Swal from 'sweetalert2'
 export class HomeStudentComponent implements OnInit {
   constructor(private rou: Router,) { }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+     this.getUser();
+
+    }
 
     logOut() {
       localStorage.removeItem('token');
@@ -39,5 +42,13 @@ export class HomeStudentComponent implements OnInit {
       });
     }
 
+userD:any;;
+  getUser(){
+    const userL=JSON.parse(localStorage.getItem('user')||'[]');
+    this.userD=userL;
+    console.log(this.userD);
+
+    
+  }
 
 }
