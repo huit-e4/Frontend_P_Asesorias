@@ -11,6 +11,11 @@ import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
+import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
+import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
+import { HomeComponent } from './components/expercomponents/home/home.component';
+import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
 
 const routes: Routes = [
   {
@@ -27,39 +32,78 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeadminComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'instructors', 
         component: InstructoresComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 
         component: AdministradoresComponent,
-        canActivate: [AdmingGuard] 
+        //canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    canActivate: [AdmingGuard]
+    //canActivate: [AdmingGuard]
   },
 
   {
-    path: 'homeexpert',
-    component: HomeExpertComponent,
-    canActivate: [ExpertgGuard]
+    path: 'homeExpert',
+    component: HomeExpertComponent, children: [
+      {
+        path: '', 
+        component: HomeComponent,
+        //canActivate: [ExpertgGuard] 
+      },
+      {
+        path: 'subirCv', 
+        component: CargarCvComponent,
+        //canActivate: [AdmingGuard] 
+    },
+      {
+        path: 'perfil', 
+        component: PerfilComponent,
+        //canActivate: [AdmingGuard] 
+      },
+  
+      {
+        path: 'alumnos', 
+        component: AsesoriasComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'Asesoria', 
+        component: AsesoriasComponent,
+        //canActivate: [AdmingGuard] 
+      },
+     
+      {
+        path: 'salir', 
+        component: LoginComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'inscritos', 
+        component: InscripcionesComponent,
+        //canActivate: [AdmingGuard] 
+      },
+      {
+        path:'**',
+        redirectTo:''
+      }
+    ],
+    //canActivate: [ExpertgGuard]
+    
 
   },
 
-  {
-    path: 'homestudent',
-    component: HomeStudentComponent,
-    canActivate: [StudentgGuard]
-
-  },
+ 
+ 
 ];
 
 @NgModule({

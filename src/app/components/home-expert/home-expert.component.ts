@@ -39,5 +39,13 @@ export class HomeExpertComponent implements OnInit{
       }
     });
   }
+  userD:any;;
+  getUser(){
+    const userL=JSON.parse(localStorage.getItem('user')||'[]');
+    this.userD=userL;
+    console.log(this.userD);
+
+    
+  }
 
 }

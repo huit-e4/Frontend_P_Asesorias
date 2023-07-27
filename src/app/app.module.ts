@@ -13,6 +13,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
+import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
+import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
+import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
+import { HomeComponent } from './components/expercomponents/home/home.component';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     HomeExpertComponent,
     HomeStudentComponent,
     HomeadminComponent,
-    AdministradoresComponent
+    AdministradoresComponent,
+    PerfilComponent,
+    AsesoriasComponent,
+    CargarCvComponent,
+    InscripcionesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
