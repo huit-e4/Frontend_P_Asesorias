@@ -13,12 +13,13 @@ import { EstudiantesComponent } from './components/admincomponents/estudiantes/e
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
-import { HomeComponent } from './components/expercomponents/home/home.component';
+//import { HomeComponent } from './components/expercomponents/home/home.component';
 import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
-import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
 import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
 import { PerfilAComponent } from './components/admincomponents/perfil-a/perfil-a.component';
+import { PerfilExpertComponent } from './components/expercomponents/perfil-expert/perfil-expert.component';
+import { HomeExpertoComponent } from './components/expercomponents/home-experto/home-experto.component';
 
 
 
@@ -75,10 +76,10 @@ const routes: Routes = [
 
   {
     path: 'homeexpert',
-    component: HomeExpertComponent, children: [
+    component: HomeExpertoComponent, children: [
       {
         path: '', 
-        component: HomeComponent,
+        component: HomeExpertComponent,
         canActivate: [ExpertgGuard] 
       },
       {
@@ -88,7 +89,7 @@ const routes: Routes = [
     },
       {
         path: 'perfil', 
-        component: PerfilComponent,
+        component: PerfilExpertComponent,
         canActivate: [AdmingGuard] 
       },
   
