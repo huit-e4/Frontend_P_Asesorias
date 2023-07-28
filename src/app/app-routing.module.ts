@@ -11,14 +11,14 @@ import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
-import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { HomeComponent } from './components/expercomponents/home/home.component';
+import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
 import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
 import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
-import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
-import { HomeComponent } from './components/expercomponents/home/home.component';
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
+import { PerfilAComponent } from './components/admincomponents/perfil-a/perfil-a.component';
 
 
 
@@ -37,39 +37,40 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeadminComponent,
-        canActivate: [AdmingGuard] // child route component that the router renders
+       // canActivate: [AdmingGuard] // child route component that the router renders
       },
       {
         path: 'instructors', 
         component: InstructoresComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'estudiantes', 
         component: EstudiantesComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'cursos', 
         component: CursosComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path: 'perfil', 
-        component: PerfilComponent,
-        canActivate: [AdmingGuard] 
+        component: PerfilAComponent,
+        //canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 
         component: AdministradoresComponent,
-        canActivate: [AdmingGuard] 
+       // canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    canActivate: [AdmingGuard]
+    //canActivate: [AdmingGuard]
+
   },
 
   {

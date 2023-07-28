@@ -1,3 +1,4 @@
+
 <div class="container">
   <h2>Lista de Estudiantes</h2>
 
@@ -6,6 +7,7 @@
     <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
       <option value="nombre">Nombre (A-Z)</option>
       <option value="edad">Edad (menor a mayor)</option>
+      <option value="genero">Género</option> 
     </select>
   </div>
 
@@ -16,17 +18,34 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Matricula</th>
           <th>Edad</th>
+          <th>Sexo</th>
           <th>Email</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <!-- filas de la tabla -->
       <tbody>
         <tr *ngFor="let estudiante of getStudentsForCurrentPage()">
           <td>{{ estudiante.id }}</td>
-          <td>{{ estudiante.nombre }}</td>
+          <td>{{ estudiante.name }}</td>
+          <td>{{estudiante.lastname}}</td>
+          <td>{{estudiante.mat}}</td>
           <td>{{ estudiante.edad }}</td>
-          <td>{{ estudiante.correo }}</td>
+          <td>{{estudiante.sexo}}</td>
+          <td>{{ estudiante.email }}</td>
+          <td>
+            <!-- Botón para modificar -->
+            <button type="button" class="btn btn-primary btn-sm" (click)="modificarEstudiante(estudiante)">
+              <i class="bi bi-pencil"></i> Modificar
+            </button>
+            <!-- Botón para eliminar -->
+            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarEstudiante(estudiante)">
+              <i class="bi bi-trash"></i> Eliminar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
