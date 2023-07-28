@@ -31,8 +31,7 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     CursosComponent,
     PerfilComponent,
     InstructoresComponent,
-    AdministradoresComponent,
-    EstidiantescomponentComponent
+    AdministradoresComponent
   ],
   imports: [
     BrowserModule,
