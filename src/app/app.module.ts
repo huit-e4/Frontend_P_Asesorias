@@ -16,7 +16,6 @@ import { EstudiantesComponent } from './components/admincomponents/estudiantes/e
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
-import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
 import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
 import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
@@ -31,7 +30,6 @@ import { HomeComponent } from './components/expercomponents/home/home.component'
     HomeAdminComponent,
     HomeExpertComponent,
     HomeStudentComponent,
-    HomeadminComponent,
     AdministradoresComponent,
     EstudiantesComponent,
     CursosComponent,
