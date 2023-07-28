@@ -71,7 +71,7 @@ export class CursosComponent {
   }
 
   // Obtener los cursos para la página actual
-  getCoursesForCurrentPage() {
+  getCoursesForCurrentPage(): Curso[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     return this.expertsArr.slice(startIndex, endIndex);
@@ -94,24 +94,18 @@ export class CursosComponent {
 
   expertsArr:any[]=[];
 
-  getCursos(){
-    const users=this.userS.getCursos().subscribe((res:any)=>{
-      // console.log(res.users);
-      this.expertsArr=res.users;
-      console.log(this.expertsArr);
-      
-      
-  })}
 
-  loadData(){
+
+  getCursos(){
     // Llamar a la función getExperts() del servicio
-    this.userS.getEstudiantes().subscribe(
+    this.userS.getCursos().subscribe(
       (experts: any) => {
         // Mostrar los datos en la consola
-        console.log('Datos de expertos:', experts);
+        this.expertsArr=experts.asesorias;
+        console.log('Datos de curso:', experts);
       },
       (error) => {
-        console.error('Error al obtener los expertos:', error);
+        console.error('Error al obtener los cursos:', error);
       }
     );
   }

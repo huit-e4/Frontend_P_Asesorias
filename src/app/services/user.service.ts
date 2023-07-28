@@ -169,7 +169,7 @@ export class UserService {
   }
   }
 
-  getPerfil(): Observable<any> {
+  getUser(): Observable<any> {
     //return this.http.get(this.url + '/api/students');
     const token = localStorage.getItem('token');
   console.log(token);
@@ -193,8 +193,10 @@ export class UserService {
   }
   }
 
-  getUserProfile(): Observable<UserProfile> {
-    return this.http.get<UserProfile>(this.url);
-  }
+  
+
+ // getUserProfile(): Observable<UserProfile> {
+   // return this.http.get<UserProfile>(this.url);
+  //}
   
 }

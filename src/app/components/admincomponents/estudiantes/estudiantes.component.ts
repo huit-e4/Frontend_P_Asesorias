@@ -66,7 +66,7 @@ export class EstudiantesComponent {
     });
     this.setPage(this.currentPage); // Redefinir la página actual después de ordenar
   }
-
+ 
   // Obtener los estudiantes para la página actual
   getStudentsForCurrentPage(): Estudiante[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;
