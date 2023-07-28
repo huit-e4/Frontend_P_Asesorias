@@ -11,7 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 
 export class InstructoresComponent implements OnInit {
   ngOnInit(): void {
-    this.GetExperts();
+    this.loadData();
+    this.loadDataSolicitudes();
   }
   constructor(private userS:UserService) {
 
@@ -75,12 +76,39 @@ export class InstructoresComponent implements OnInit {
   }
   expertsArr:any[]=[];
 
-  GetExperts(){
-    const users=this.userS.getExperts().subscribe((res:any)=>{
-      // console.log(res.users);
-      this.expertsArr=res.users;
-      console.log(this.expertsArr);
+  // GetExperts(){
+  //   const users=this.userS.getExperts().subscribe((res:any)=>{
+  //     // console.log(res.users);
+  //     this.expertsArr=res.users;
+  //     console.log(this.expertsArr);
       
       
-  })}
+  // })}
+
+  loadData(){
+    // Llamar a la función getExperts() del servicio
+    this.userS.getExperts().subscribe(
+      (experts: any) => {
+        // Mostrar los datos en la consola
+        console.log('Datos de expertos:', experts);
+        this.expertsArr=experts.users;
+      },
+      (error) => {
+        console.error('Error al obtener los expertos:', error);
+      }
+    );
+  }
+  solicitudesArr:any[]=[]
+  loadDataSolicitudes(){
+    this.userS.getCv().subscribe(
+      (solicitudes: any) => {
+        // Mostrar los datos en la consola
+        console.log('Datos de expertos:', solicitudes);
+        this.solicitudesArr=solicitudes.asesorias;
+      },
+      (error) => {
+        console.error('Error al obtener los expertos:', error);
+      }
+    );
+  }
 }

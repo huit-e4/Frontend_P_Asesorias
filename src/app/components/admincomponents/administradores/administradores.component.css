@@ -12,6 +12,9 @@
     .card-img-overlay {
       z-index: 1;
     }
+
+    /* --bs-card-border-color: rgb(229 233 242); */
+    /* --bs-card-border-color: rgb(222 226 233 / 97%) */
   }
   
   .card-default {
@@ -299,3 +302,26 @@ p {
 /* body{
   background-color: #f5f6fa !important;
 } */
+
+@import "https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200&display=swap";
+
+/* * {
+  font: 500 20px/32px Roboto, 'MuseoModerno', sans-serif !important
+  font-family: roboto;
+} */
+
+body{
+  background-color: #f5f6fa ;
+  font-family: "Roboto", sans-serif !important;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+} 
+
+/* *,
+*:before,
+*::after {
+  font-family: "Roboto", sans-serif !important;
+  line-height: 1.5;
+} */
+body { background-color: black !important; }
