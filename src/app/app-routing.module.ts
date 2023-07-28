@@ -14,6 +14,11 @@ import { CursosComponent } from './components/admincomponents/cursos/cursos.comp
 import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
+import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
+import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
+import { HomeComponent } from './components/expercomponents/home/home.component';
+import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
 
 
 
@@ -65,22 +70,60 @@ const routes: Routes = [
       }
     ],
     canActivate: [AdmingGuard]
-
   },
 
   {
     path: 'homeexpert',
-    component: HomeExpertComponent,
+    component: HomeExpertComponent, children: [
+      {
+        path: '', 
+        component: HomeComponent,
+        canActivate: [ExpertgGuard] 
+      },
+      {
+        path: 'subirCv', 
+        component: CargarCvComponent,
+        canActivate: [AdmingGuard] 
+    },
+      {
+        path: 'perfil', 
+        component: PerfilComponent,
+        canActivate: [AdmingGuard] 
+      },
+  
+      {
+        path: 'alumnos', 
+        component: AsesoriasComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'Asesoria', 
+        component: AsesoriasComponent,
+        canActivate: [AdmingGuard] 
+      },
+     
+      {
+        path: 'salir', 
+        component: LoginComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'inscritos', 
+        component: InscripcionesComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path:'**',
+        redirectTo:''
+      }
+    ],
     canActivate: [ExpertgGuard]
+    
 
   },
 
-  {
-    path: 'homestudent',
-    component: HomeStudentComponent,
-    canActivate: [StudentgGuard]
-
-  },
+ 
+ 
 ];
 
 @NgModule({

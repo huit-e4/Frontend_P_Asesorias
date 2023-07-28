@@ -17,6 +17,11 @@ import { CursosComponent } from './components/admincomponents/cursos/cursos.comp
 import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
+import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
+import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
+import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
+import { HomeComponent } from './components/expercomponents/home/home.component';
 
 
 @NgModule({
@@ -27,11 +32,17 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     HomeAdminComponent,
     HomeExpertComponent,
     HomeStudentComponent,
+    HomeadminComponent,
+    AdministradoresComponent,
     EstudiantesComponent,
     CursosComponent,
     PerfilComponent,
     InstructoresComponent,
-    AdministradoresComponent
+    AdministradoresComponent,
+    AsesoriasComponent,
+    CargarCvComponent,
+    InscripcionesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,7 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     FormsModule,
     SweetAlert2Module,
     HttpClientModule,
-    CommonModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
