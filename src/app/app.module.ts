@@ -19,7 +19,8 @@ import { AdministradoresComponent } from './components/admincomponents/administr
 import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
 import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
-import { HomeComponent } from './components/expercomponents/home/home.component';
+import { PerfilExpertComponent } from './components/expercomponents/perfil-expert/perfil-expert.component';
+import { HomeExpertoComponent } from './components/expercomponents/home-experto/home-experto.component';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { HomeComponent } from './components/expercomponents/home/home.component'
     AsesoriasComponent,
     CargarCvComponent,
     InscripcionesComponent,
-    HomeComponent
+  
+    PerfilExpertComponent,
+        HomeExpertoComponent
   ],
   imports: [
     BrowserModule,
