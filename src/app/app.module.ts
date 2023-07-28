@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
-import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 
@@ -29,7 +28,6 @@ import { AdministradoresComponent } from './components/admincomponents/administr
     HomeStudentComponent,
     EstudiantesComponent,
     CursosComponent,
-    PerfilComponent,
     InstructoresComponent,
     AdministradoresComponent
   ],

@@ -11,9 +11,9 @@ import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
 import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
-import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { PerfilAComponent } from './components/admincomponents/perfil-a/perfil-a.component';
 
 
 
@@ -51,7 +51,7 @@ const routes: Routes = [
       },
       {
         path: 'perfil', 
-        component: PerfilComponent,
+        component: PerfilAComponent,
         //canActivate: [AdmingGuard] 
       },
       {
