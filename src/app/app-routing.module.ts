@@ -9,6 +9,9 @@ import { ExpertgGuard } from './guards/expertg.guard';
 import { HomeStudentComponent } from './components/home-student/home-student.component';
 import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
+import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
+import { PerfilComponent } from './components/admincomponents/perfil/perfil.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 import { PerfilComponent } from './components/expercomponents/perfil/perfil.component';
@@ -16,6 +19,8 @@ import { AsesoriasComponent } from './components/expercomponents/asesorias/aseso
 import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
 import { HomeComponent } from './components/expercomponents/home/home.component';
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
+
+
 
 const routes: Routes = [
   {
@@ -32,24 +37,39 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeadminComponent,
-       // canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] // child route component that the router renders
       },
       {
         path: 'instructors', 
         component: InstructoresComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'estudiantes', 
+        component: EstudiantesComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'cursos', 
+        component: CursosComponent,
+        canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'perfil', 
+        component: PerfilComponent,
+        canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 
         component: AdministradoresComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    //canActivate: [AdmingGuard]
+    canActivate: [AdmingGuard]
   },
 
   {
@@ -58,46 +78,46 @@ const routes: Routes = [
       {
         path: '', 
         component: HomeComponent,
-        //canActivate: [ExpertgGuard] 
+        canActivate: [ExpertgGuard] 
       },
       {
         path: 'subirCv', 
         component: CargarCvComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
     },
       {
         path: 'perfil', 
         component: PerfilComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
   
       {
         path: 'alumnos', 
         component: AsesoriasComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
       {
         path: 'Asesoria', 
         component: AsesoriasComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
      
       {
         path: 'salir', 
         component: LoginComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
       {
         path: 'inscritos', 
         component: InscripcionesComponent,
-        //canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard] 
       },
       {
         path:'**',
         redirectTo:''
       }
     ],
-    //canActivate: [ExpertgGuard]
+    canActivate: [ExpertgGuard]
     
 
   },
@@ -107,7 +127,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 

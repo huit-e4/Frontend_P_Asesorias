@@ -68,5 +68,13 @@ export class UserService {
     }
     
   }
+
+  getExperts() {
+    return this.http.get(this.url + '/api/experts');
+  }
+  getAdmins() {
+    return this.http.get(this.url + '/api/admins');
+  }
+
   
 }

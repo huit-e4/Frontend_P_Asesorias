@@ -1,32 +1,33 @@
 <div class="container">
-    <h2>Todos los instructores</h2>
+    <h2>Lista de Cursos</h2>
   
     <div class="form-group">
       <label for="sortSelect">Ordenar por:</label>
       <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
         <option value="nombre">Nombre (A-Z)</option>
-        <option value="edad">Edad (menor a mayor)</option>
+        <option value="precio">Precio (menor a mayor)</option>
+        <option value="disponible">Disponibilidad</option>
       </select>
     </div>
   
-    <div class="table-responsive mt-3">
+    <div class="table-responsive">
       <table class="table table-striped">
         <!-- encabezados de la tabla -->
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#Numero</th>
             <th>Nombre</th>
-            <th>Edad</th>
-            <th>Email</th>
+            <th>Precio</th>
+            <th>Disponible</th>
           </tr>
         </thead>
         <!-- filas de la tabla -->
         <tbody>
-          <tr *ngFor="let i of getExpertsForCurrentPage()">
-            <td>{{ i.id }}</td>
-            <td>{{ i.name }}</td>
-            <td>{{ i.edad }}</td>
-            <td>{{ i.email }}</td>
+          <tr *ngFor="let curso of getCoursesForCurrentPage()">
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.precio }}</td>
+            <td>{{ curso.disponible ? 'Sí' : 'No' }}</td>
           </tr>
         </tbody>
       </table>
