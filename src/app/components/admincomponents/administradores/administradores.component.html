@@ -17,7 +17,7 @@
 
     <div class="col-lg-6 col-xl-4" *ngFor="let a of adminsArr">
       <div class="card card-default p-4">
-        <a href="javascript:0" class="media text-secondary" data-bs-toggle="modal" data-bs-target="#modal-contact">
+        <a href="javascript:0" class="media text-secondary" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(a)">
             <img src="assets/perfil-ad.jpg" class="mr-3 img-fluid rounded" alt="Avatar Image">
   
           <div class="media-body">
@@ -26,10 +26,11 @@
             <ul class="list-unstyled">
               <li class="d-flex mb-1">
                 <i class="mdi mdi-map mr-1"></i>
-                <span>Oaxaca de Júarez</span>
+
+                <span>{{a.mat}}</span>
               </li>
   
-              <li class="d-flex mb-1">
+              <!-- <li class="d-flex mb-1">
                 <i class="mdi mdi-email mr-1"></i>
                 <span>{{a.email}}</span>
               </li>
@@ -37,7 +38,7 @@
               <li class="d-flex mb-1">
                 <i class="mdi mdi-phone mr-1"></i>
                 <span>+52 991 99 632</span>
-              </li>
+              </li> -->
             </ul>
           </div>
         </a>
@@ -83,33 +84,36 @@
           <div class="row no-gutters">
             <div class="col-md-6">
               <div class="profile-content-left px-4">
-                <div class="card text-center widget-profile px-0 border-0">
+                <div class="card text-center widget-profile px-0 border-0 ">
                   <div class="card-img mx-auto rounded-circle">
                     <img src="assets/perfil-ad.jpg" alt="user image" class="rounded-circle">
                   </div>
   
                   <div class="card-body">
-                    <h4 class="py-2 text-dark">John D. Smith</h4>
-                    <p>john@gmail.com</p>
-                    <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Enviar mensaje</a>
+                    <h4 class="py-2 text-dark">{{datosModal?.name+" "+datosModal?.lastname}}</h4>
+                    <p>{{datosModal?.email}}</p>
+                    <!-- <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Enviar mensaje</a> -->
                   </div>
                 </div>
+
+                <div class="mt-4"><span><p>&nbsp;</p></span></div>
   
-                <div class="d-flex justify-content-between ">
+                <div class="d-flex justify-content-evenly mt-5">
                   <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2">1503</h6>
-                    <p>Visitas</p>
+                    <h6 class="text-dark pb-2">Estado</h6>
+                    <p >Activo</p>
+                  </div>
+
+                  <!-- <div class="text-center pb-4">
+                    <h6 class="text-dark pb-2"></h6>
+                    <p>&nbsp; &nbsp;</p>
+                  </div>
+                   -->
+                  <div class="text-center pb-4">
+                    <h6 class="text-dark pb-2">Edad</h6>
+                    <p>{{datosModal?.edad}}</p>
                   </div>
   
-                  <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2">2905</h6>
-                    <p>Comentarios</p>
-                  </div>
-  
-                  <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2">99</h6>
-                    <p>Positivos</p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -118,13 +122,13 @@
               <div class="contact-info px-4">
                 <h4 class="text-dark mb-1">Detalles del perfil</h4>
                 <p class="text-dark font-weight-medium pt-4 mb-2">Correo electrónico</p>
-                <p>john23@gmail.com</p>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Número de teléfono</p>
-                <p>+52 952 2641 31</p>
+                <p>{{datosModal?.email}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Matrícula</p>
+                <p>{{datosModal?.mat}}</p>
                 <p class="text-dark font-weight-medium pt-4 mb-2">Fecha de registro</p>
-                <p>Nov 15, 2023</p>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Estado</p>
-                <p>Activo</p>
+                <p>{{datosModal?.created_at|date}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Sexo</p>
+                <p>{{datosModal?.sexo}}</p>
               </div>
             </div>
           </div>

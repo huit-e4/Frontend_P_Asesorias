@@ -22,6 +22,8 @@ import { PerfilExpertComponent } from './components/expercomponents/perfil-exper
 import { HomeExpertoComponent } from './components/expercomponents/home-experto/home-experto.component';
 
 
+import { TablaSolicitudesIComponent } from './components/admincomponents/tabla-solicitudes-i/tabla-solicitudes-i.component';
+import { TablaInstructoresComponent } from './components/admincomponents/tabla-instructores/tabla-instructores.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,18 @@ const routes: Routes = [
         path: 'perfil', 
         component: PerfilAComponent,
         //canActivate: [AdmingGuard] 
+        component: InstructoresComponent, children:[
+         { path: '', 
+          component: TablaInstructoresComponent,
+          // canActivate: [AdmingGuard]
+         },
+          {
+          path: 'aprsolicitudes', 
+        component: TablaSolicitudesIComponent,
+        // canActivate: [AdmingGuard]
+      }
+        ],
+        // canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 

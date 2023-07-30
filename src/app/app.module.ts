@@ -21,6 +21,8 @@ import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar
 import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
 import { PerfilExpertComponent } from './components/expercomponents/perfil-expert/perfil-expert.component';
 import { HomeExpertoComponent } from './components/expercomponents/home-experto/home-experto.component';
+import { TablaSolicitudesIComponent } from './components/admincomponents/tabla-solicitudes-i/tabla-solicitudes-i.component';
+import { TablaInstructoresComponent } from './components/admincomponents/tabla-instructores/tabla-instructores.component';
 
 
 @NgModule({
@@ -41,7 +43,10 @@ import { HomeExpertoComponent } from './components/expercomponents/home-experto/
     InscripcionesComponent,
   
     PerfilExpertComponent,
-        HomeExpertoComponent
+        HomeExpertoComponent,
+    InstructoresComponent,
+    TablaSolicitudesIComponent,
+    TablaInstructoresComponent
   ],
   imports: [
     BrowserModule,

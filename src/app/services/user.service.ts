@@ -77,66 +77,29 @@ export class UserService {
     
   }
 
+  // getExperts() {
+  //   return this.http.get(this.url + '/api/experts');
+  // }
+  // getAdmins() {
+  //   return this.http.get(this.url + '/api/admins');
+  // }
 
-
-
-
-
-
- // getExperts() {
-  //  return this.http.get(this.url + '/api/experts');
- // }
- getExperts(): Observable<any> {
-  // Obtener el token del local storage
-  const token = localStorage.getItem('token');
-  console.log(token);
-
-  // Verificar si el usuario está autenticado
-  if (this.isAuth() && token) {
-
-    console.log('Entro al if');
-    // Configurar las cabeceras con el token de autenticación
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    // Realizar la solicitud a la API utilizando el token en las cabeceras
-    return this.http.get(this.url + '/api/experts', { headers });
-  } else {
-    // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-    // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-    // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-    return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-  }
-}
-
-
-
-
-  getAdmins() {
-    return this.http.get(this.url + '/api/admins');
-   
-  }
-
-
-
-
-  getCursos(): Observable<any> {
+  getAdmins(): Observable<any> {
     // Obtener el token del local storage
     const token = localStorage.getItem('token');
     console.log(token);
-  
+
     // Verificar si el usuario está autenticado
     if (this.isAuth() && token) {
-  
+
       console.log('Entro al if');
       // Configurar las cabeceras con el token de autenticación
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-  
+
       // Realizar la solicitud a la API utilizando el token en las cabeceras
-      return this.http.get(this.url + '/api/asesorias', { headers });
+      return this.http.get(this.url + '/api/admins', { headers });
     } else {
       // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
       // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
@@ -198,5 +161,80 @@ export class UserService {
  // getUserProfile(): Observable<UserProfile> {
    // return this.http.get<UserProfile>(this.url);
   //}
-  
+
+
+  getExperts(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.get(this.url + '/api/experts', { headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
+  getCvs(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.get(this.url + '/api/cvs', { headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
+  aprobarCv(id:number): Observable<any> {
+    // Obtener el token del local storage
+    console.log(id);
+    
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+const body={razon:"jdkfjdlk"}
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.put(this.url + `/api/actualizarCv/${id}`, body,{ headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
 }
