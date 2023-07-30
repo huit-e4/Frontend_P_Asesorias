@@ -44,7 +44,17 @@ const routes: Routes = [
       },
       {
         path: 'instructors', 
-        component: InstructoresComponent,
+        component: InstructoresComponent, children:[
+          { path: '', 
+           component: TablaInstructoresComponent,
+           // canActivate: [AdmingGuard]
+          },
+           {
+           path: 'aprsolicitudes', 
+          component: TablaSolicitudesIComponent,
+         // canActivate: [AdmingGuard]
+       }
+         ],
        // canActivate: [AdmingGuard] 
       },
       {
@@ -61,18 +71,6 @@ const routes: Routes = [
         path: 'perfil', 
         component: PerfilAComponent,
         //canActivate: [AdmingGuard] 
-        component: InstructoresComponent, children:[
-         { path: '', 
-          component: TablaInstructoresComponent,
-          // canActivate: [AdmingGuard]
-         },
-          {
-          path: 'aprsolicitudes', 
-        component: TablaSolicitudesIComponent,
-        // canActivate: [AdmingGuard]
-      }
-        ],
-        // canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 

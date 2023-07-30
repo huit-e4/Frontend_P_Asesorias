@@ -13,18 +13,6 @@ export class AdministradoresComponent implements OnInit{
   constructor(private userS:UserService, private elementRef: ElementRef){
 
   }
-<<<<<<< HEAD
-  adminsArr:any[]=[];
-  GetAdmins(){
-    const users=this.userS.getAdmins().subscribe((res:any)=>{
-      // console.log(res.users);
-      this.adminsArr=res.users;
-      console.log(this.adminsArr);
-      
-      
-  })}
-}
-=======
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
         .body.style.backgroundColor = '#f5f6fa ';
@@ -59,4 +47,3 @@ export class AdministradoresComponent implements OnInit{
     this.datosModal=Userdata;
   }
 }
->>>>>>> adminCompHA
