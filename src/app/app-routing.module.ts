@@ -11,6 +11,8 @@ import { StudentgGuard } from './guards/studentg.guard';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
+import { TablaSolicitudesIComponent } from './components/admincomponents/tabla-solicitudes-i/tabla-solicitudes-i.component';
+import { TablaInstructoresComponent } from './components/admincomponents/tabla-instructores/tabla-instructores.component';
 
 const routes: Routes = [
   {
@@ -31,8 +33,18 @@ const routes: Routes = [
       },
       {
         path: 'instructors', 
-        component: InstructoresComponent,
-        canActivate: [AdmingGuard] 
+        component: InstructoresComponent, children:[
+         { path: '', 
+          component: TablaInstructoresComponent,
+          // canActivate: [AdmingGuard]
+         },
+          {
+          path: 'aprsolicitudes', 
+        component: TablaSolicitudesIComponent,
+        // canActivate: [AdmingGuard]
+      }
+        ],
+        // canActivate: [AdmingGuard] 
       },
       {
         path: 'administrators', 

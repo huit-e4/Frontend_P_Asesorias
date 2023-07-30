@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
-  selector: 'app-instructores',
-  templateUrl: './instructores.component.html',
-  styleUrls: ['./instructores.component.css']
+  selector: 'app-tabla-instructores',
+  templateUrl: './tabla-instructores.component.html',
+  styleUrls: ['./tabla-instructores.component.css']
 })
+export class TablaInstructoresComponent implements OnInit {
 
-export class InstructoresComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
   }
@@ -97,5 +95,5 @@ export class InstructoresComponent implements OnInit {
       }
     );
   }
- 
+
 }

@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeadminComponent } from './components/admincomponents/homeadmin/homeadmin.component';
 import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
 import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
+import { TablaSolicitudesIComponent } from './components/admincomponents/tabla-solicitudes-i/tabla-solicitudes-i.component';
+import { TablaInstructoresComponent } from './components/admincomponents/tabla-instructores/tabla-instructores.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { InstructoresComponent } from './components/admincomponents/instructores
     HomeStudentComponent,
     HomeadminComponent,
     AdministradoresComponent,
-    InstructoresComponent
+    InstructoresComponent,
+    TablaSolicitudesIComponent,
+    TablaInstructoresComponent
   ],
   imports: [
     BrowserModule,
