@@ -12,17 +12,9 @@ import { HomeStudentComponent } from './components/home-student/home-student.com
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
-import { EstudiantesComponent } from './components/admincomponents/estudiantes/estudiantes.component';
-import { CursosComponent } from './components/admincomponents/cursos/cursos.component';
-import { InstructoresComponent } from './components/admincomponents/instructores/instructores.component';
-import { AdministradoresComponent } from './components/admincomponents/administradores/administradores.component';
-import { AsesoriasComponent } from './components/expercomponents/asesorias/asesorias.component';
-import { CargarCvComponent } from './components/expercomponents/cargar-cv/cargar-cv.component';
-import { InscripcionesComponent } from './components/expercomponents/inscripciones/inscripciones.component';
-import { PerfilExpertComponent } from './components/expercomponents/perfil-expert/perfil-expert.component';
-import { HomeExpertoComponent } from './components/expercomponents/home-experto/home-experto.component';
-import { TablaSolicitudesIComponent } from './components/admincomponents/tabla-solicitudes-i/tabla-solicitudes-i.component';
-import { TablaInstructoresComponent } from './components/admincomponents/tabla-instructores/tabla-instructores.component';
+import { AdminModule } from './components/admincomponents/admin.module';
+import { ExpertModule } from './components/expercomponents/expert.module';
+import { RouterLink } from '@angular/router';
 
 
 @NgModule({
@@ -32,21 +24,7 @@ import { TablaInstructoresComponent } from './components/admincomponents/tabla-i
     RegistroComponent,
     HomeAdminComponent,
     HomeExpertComponent,
-    HomeStudentComponent,
-    AdministradoresComponent,
-    EstudiantesComponent,
-    CursosComponent,
-    InstructoresComponent,
-    AdministradoresComponent,
-    AsesoriasComponent,
-    CargarCvComponent,
-    InscripcionesComponent,
-  
-    PerfilExpertComponent,
-        HomeExpertoComponent,
-    InstructoresComponent,
-    TablaSolicitudesIComponent,
-    TablaInstructoresComponent
+    HomeStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +33,10 @@ import { TablaInstructoresComponent } from './components/admincomponents/tabla-i
     FormsModule,
     SweetAlert2Module,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    AdminModule,
+    ExpertModule,
+    RouterLink
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-  import Swal from 'sweetalert2'
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home-expert',
@@ -9,15 +10,26 @@ import { Router } from '@angular/router';
 })
 export class HomeExpertComponent implements OnInit{
 
-  constructor(private rou: Router,) { }
+  constructor(private rou: Router, private authS: UserService) { }
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.getUser();
+  }
 
   logOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.rou.navigate(['/login']);
-}
+    this.authS.logOut().subscribe(
+      (response) => {
+        console.log('Logout exitoso:', response);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.rou.navigate(['/login']);
+      },
+      (error) => {
+        console.error('Error al hacer logout:', error);
+      }
+    );
+  }
 
   confirmarAlert() {
     Swal.fire({
