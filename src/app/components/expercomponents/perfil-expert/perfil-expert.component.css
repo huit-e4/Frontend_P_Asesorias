@@ -1,74 +1,67 @@
-body{
-
-	background: #E1BEE7;
-}
-
-.profile-card{
-
-	width: 350px;
-	height: 600px;
-	
-	border-radius: 5px;
-	background-image: linear-gradient(to right top, #ab47bc, #af50bf, #b358c2, #b660c5, #ba68c8);
-}
-
-
-
-
-
-
-
-
-
-.msg-button{
+/* Estilos para el contenedor del perfil */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    position: relative;
+  }
+  
+  /* Estilos para la imagen del perfil */
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Estilos para el nombre del administrador */
+  .admin-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #e0c645; /* Amarillo similar al de Genshin Impact */
+  }
+  
+  /* Estilos para la descripción del perfil */
+  .profile-description {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  /* Estilos para los detalles adicionales del perfil */
+  .profile-details {
+    margin-top: 30px;
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  /* Estilos para los detalles de cada ítem */
+  .profile-details-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el icono de cada ítem */
+  .profile-details-icon {
+    font-size: 20px;
     margin-right: 10px;
-	outline: 0 !important;
-	background: #fff;
-	box-shadow: none !important;
-    padding-right: 30px;
-    padding-left: 30px;
-    transition: all 0.3s;
-}
-
-.msg-button:hover{
-
-	transform: scaleX(1.1);
-}
-
-.profile .icons{
-
-	position: relative;
-	top: -335px;
-	list-style: none;
-	margin-left: 10px;
-
-}
-
-.profile .icons li{
-
-	height: 40px;
-	width: 40px;
-	background-color: #fff;
-	border-radius: 50%;
-	margin-top: 5px;
-	transition: all 0.4s;
-	color: #ab47bc;
-
-}
-
-.profile .icons li:hover{
-
-	cursor: pointer;
-	transform: scale(1.1);
-
-}
-
-
-.profile .icons li a{
-
-	height: 100%;
-	width: 100%;
-	background-color: #fff;
-	line-height: 40px;
-}
-
+  }
+  
+  /* Estilos para el texto de cada ítem */
+  .profile-details-text {
+    font-size: 18px;
+  }
+  
+ 
+  
+  
