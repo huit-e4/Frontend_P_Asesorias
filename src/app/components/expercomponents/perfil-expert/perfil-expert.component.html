@@ -1,48 +1,24 @@
-<div class="container d-flex justify-content-center mt-5">
-
-    <div class="profile-card">
-  
-          <div class="profile-image text-center mt-4">
-  
-            <img src="https://i.imgur.com/RrKeDv8.jpg" class="img-fluid rounded-circle img-thumbnail" width="130">
-            
-          </div>
-  
-      <div class="profile text-center mt-2 text-white">
-        
-          <h3 class="mt-2">Maria samantha</h3>
-          <span class="d-block">California, USA</span>
-  
-          <span class="d-block mt-3">Software developer and <br> Java Architect</span>
-          <p><strong>Email:</strong> admin@example.com</p>
-          <p><strong>Edad:</strong> 22</p>
-          <p><strong>Sexo:</strong> Masculino</p>       
-          <p><strong>Matricula:</strong> UTTI202015</p>
-          <p><strong>Edad:</strong> 23</p>
-  
-          <div class="mt-4">
-  
-            <button class="btn msg-button">Message</button>
-            <button class="btn msg-button">Following</button>
-            
-  
-          </div>
-  
-          <div class="icons">
-  
-          
-            
-  
-          </div>
-  
-  
+<div class="container mt-5">
+  <h2>Perfil de Experto</h2>
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="assets/po" class="card-img-top" alt="Admin Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{userD?.name}}</h5>
+          <p class="card-text">Cargo: Experto</p>
+        </div>
       </div>
-  
-      
-  
-  
-      
-  
     </div>
-    
+    <div class="col-md-8">
+      <h3>Información del Perfil</h3>
+      <p><strong>Nombre:</strong> {{userD?.name}}</p>
+      <p><strong>Email:</strong> {{userD?.email}}</p>
+      <p><strong>Edad:</strong> {{userD?.edad}}</p>
+      <p><strong>Sexo:</strong> {{userD?.sexo}}</p>       
+      <p><strong>Matricula:</strong>{{userD?.mat}}</p>
+
+      <!-- Puedes agregar más información del perfil del administrador según tus necesidades -->
+    </div>
   </div>
+</div>

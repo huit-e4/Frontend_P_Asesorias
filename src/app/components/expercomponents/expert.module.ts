@@ -15,11 +15,11 @@ const routes: Routes = [
   {
     path: 'homeexpert',
     component: HomeExpertComponent, children: [
-      // {
-      //   path: '', 
-      //   component: HomeExpertComponent,
-      //   canActivate: [ExpertgGuard] 
-      // },
+      {
+        path: '', 
+        component: HomeExpertoComponent,
+        canActivate: [ExpertgGuard] 
+      },
       {
         path: 'subirCv',
         component: CargarCvComponent,
@@ -71,7 +71,8 @@ const routes: Routes = [
     HomeExpertoComponent,
     InscripcionesComponent,
     PerfilExpertComponent,
-    SubircvComponent
+    SubircvComponent,
+    
   ],
   imports: [
     CommonModule,
