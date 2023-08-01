@@ -8,6 +8,7 @@ import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/c
 })
 export class CargarCvComponent {
   selectedFile: File | null = null;
+  textoAsesoria: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +35,7 @@ export class CargarCvComponent {
       .subscribe(
         event => {
           if (event.type === HttpEventType.UploadProgress) {
-            const percentDone = Math.round(100 * event.loaded );
+            const percentDone = Math.round(100 * event.loaded);
             console.log(`File is ${percentDone}% loaded.`);
           } else if (event instanceof HttpResponse) {
             console.log('File is completely loaded!');
@@ -42,9 +43,14 @@ export class CargarCvComponent {
         },
         (err) => {
           console.log("Upload Error:", err);
-        }, () => {
+        },
+        () => {
           console.log("Upload done");
         }
       );
+  }
+
+  procesar() {
+    console.log('Contenido del textarea:', this.textoAsesoria);
   }
 }
