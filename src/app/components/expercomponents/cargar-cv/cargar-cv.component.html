@@ -1,20 +1,53 @@
-<div class="form-group">
-<div class="container mt-5" style="margin-top: 50 rem;">
-  <div class="card mt-5">
-    <div class="card-body">
-      <div class="mt-2">
-        <label for="exampleFormControlTextarea1" class="form-label">Redacta por qué quieres aplicar esta asesoría</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="textoAsesoria"></textarea>
+<!-- <form [formGroup]="cvForm" (ngSubmit)="saveRegister()">
+  <div class="form-group">
+    <div class="container mt-5" style="margin-top: 50 rem;">
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="mt-2">
+            <label for="exampleFormControlTextarea1" class="form-label">¿Por qué te interesa el empleo?*</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="razon" placeholder="Redacta tus razones..."></textarea>
+            <small *ngIf="validInput('razon')" class="form-text text-danger">
+              Campo requerido.
+            </small>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Carga tu CV aquí*</label>
+            <input class="form-control" type="file" id="formFile" formControlName="rutacV" accept="application/pdf">
+            <small *ngIf="validInput('rutaCv')" class="form-text text-danger">
+              Campo requerido.
+            </small>
+          </div>
+          <button type="submit" [disabled]="cvForm.invalid" class="btn btn-primary btn-block">Enviar</button>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="formFile" class="form-label">Carga tu CV aquí</label>
-        <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx">
-      </div>
-      <button type="button" class="btn btn-primary btn-lg" (click)="uploadFile()" [disabled]="!selectedFile">Subir CV</button>
     </div>
   </div>
-</div>
-</div>
+</form> -->
 
-
-
+<form [formGroup]="cvForm" (ngSubmit)="saveRegister()">
+  <div class="form-group">
+    <div class="container mt-5" style="margin-top: 50 rem;">
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="mt-2">
+            <label for="exampleFormControlTextarea1" class="form-label">¿Por qué te interesa el empleo?*</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="razon" placeholder="Redacta tus razones..."></textarea>
+            <small *ngIf="validInput('razon')" class="form-text text-danger">
+              Campo requerido.
+            </small>
+          </div>
+          <br>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Carga tu CV aquí*</label>
+            <input class="form-control" type="file" id="formFile" formControlName="rutaCv" accept=".pdf" (change)="onFileSelected($event)">
+            <small *ngIf="validInput('rutaCv')" class="form-text text-danger">
+              Campo requerido.
+            </small>
+          </div>
+          <button type="submit" [disabled]="cvForm.invalid" class="btn btn-primary btn-block">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
