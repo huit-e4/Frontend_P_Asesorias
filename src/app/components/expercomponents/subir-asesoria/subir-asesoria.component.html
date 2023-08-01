@@ -1,0 +1,32 @@
+<h1> Cargar Asesorias </h1>
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="procesar()">
+        <div>
+            <label class="form-label">
+                nombre del curso
+            </label>
+                <input type="text " name="nombre"  class="form-control" placeholder="por favor ingresa el nombre del curso" [(ngModel)]="persona.nombre">
+                
+            
+        </div>
+        <div >
+            <label class="form-label">
+                Costo del curso
+            </label>
+            <input type="number " name="costo" class="form-control" placeholder="ingresa el costo del curso" [(ngModel)]="persona.costo">
+        </div>
+        <div>
+            <label class="form-label">
+                Descripcion 
+            </label>
+                <input type="text " name="descripcion" class="form-control" placeholder="por favor describe tu curso" [(ngModel)]="persona.descripcion">
+                
+            
+        </div>
+        <button class="btn btn-primary" (click)="procesar" [disabled]="persona.costo > 9000"> Enviar</button>
+    </form>
+
+    </div>
+
+</div>

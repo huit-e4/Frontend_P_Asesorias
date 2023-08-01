@@ -9,17 +9,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ExpertgGuard } from 'src/app/guards/expertg.guard';
 import { HomeExpertComponent } from '../home-expert/home-expert.component';
-import { SubircvComponent } from './subircv/subircv.component';
+import { VerAsesoriasComponent } from './ver-asesorias/ver-asesorias.component';
+import { SubirAsesoriaComponent } from './subir-asesoria/subir-asesoria.component';
+import { ExpertosComponent } from './expertos/expertos.component';
 
 const routes: Routes = [
   {
     path: 'homeexpert',
     component: HomeExpertComponent, children: [
-      {
-        path: '', 
-        component: HomeExpertoComponent,
-        canActivate: [ExpertgGuard] 
-      },
+      // {
+      //   path: '', 
+      //   component: HomeExpertComponent,
+      //   canActivate: [ExpertgGuard] 
+      // },
       {
         path: 'subirCv',
         component: CargarCvComponent,
@@ -31,8 +33,8 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
-        path: 'uploadcv',
-        component: SubircvComponent,
+        path: 'SuvirAsesosria',
+        component: SubirAsesoriaComponent,
         canActivate: [ExpertgGuard]
       },
 
@@ -43,12 +45,17 @@ const routes: Routes = [
       },
       {
         path: 'Asesoria',
-        component: AsesoriasComponent,
+        component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
       },
       {
         path: 'inscritos',
         component: InscripcionesComponent,
+        canActivate: [ExpertgGuard]
+      },
+      {
+        path: 'verAsesorias',
+        component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
       },
       {
@@ -71,8 +78,7 @@ const routes: Routes = [
     HomeExpertoComponent,
     InscripcionesComponent,
     PerfilExpertComponent,
-    SubircvComponent,
-    
+    SubircvComponent
   ],
   imports: [
     CommonModule,

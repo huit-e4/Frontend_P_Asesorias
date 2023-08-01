@@ -1,13 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-
-interface Curso {
-  id: number;
-  nombre: string;
-  desc: string;
-  precio: number;
-  active: boolean;
-}
 
 @Component({
   selector: 'app-asesorias',
@@ -17,6 +8,17 @@ interface Curso {
 
 export class AsesoriasComponent {
 
-  
-
+  // Cargar los datos de los expertos
+  loadData() {
+    this.userS.getExperts().subscribe(
+      (experts: any) => {
+        // Mostrar los datos en la consola
+        console.log('Datos de expertos:', experts);
+        this.expertsArr = experts.users;
+      },
+      (error) => {
+        console.error('Error al obtener los expertos:', error);
+      }
+    );
+  }
 }

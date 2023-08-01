@@ -62,7 +62,7 @@ const routes: Routes = [
         redirectTo:''
       }
     ],
-    canActivate: [AdmingGuard]
+   // canActivate: [AdmingGuard]
 
   },
 
