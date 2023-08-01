@@ -12,7 +12,6 @@ import { HomeExpertComponent } from '../home-expert/home-expert.component';
 import { VerAsesoriasComponent } from './ver-asesorias/ver-asesorias.component';
 import { SubirAsesoriaComponent } from './subir-asesoria/subir-asesoria.component';
 import { ExpertosComponent } from './expertos/expertos.component';
-
 const routes: Routes = [
   {
     path: 'homeexpert',
@@ -78,7 +77,9 @@ const routes: Routes = [
     HomeExpertoComponent,
     InscripcionesComponent,
     PerfilExpertComponent,
-    SubircvComponent
+    VerAsesoriasComponent,
+    SubirAsesoriaComponent,
+    ExpertosComponent
   ],
   imports: [
     CommonModule,
