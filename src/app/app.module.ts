@@ -36,7 +36,7 @@ import { RouterLink } from '@angular/router';
     CommonModule,
     AdminModule,
     ExpertModule,
-    RouterLink
+    RouterLink,
   ],
   providers: [],
   bootstrap: [AppComponent]
