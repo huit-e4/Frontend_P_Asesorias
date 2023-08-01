@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { AdminModule } from './components/admincomponents/admin.module';
 import { ExpertModule } from './components/expercomponents/expert.module';
 import { RouterLink } from '@angular/router';
+import { EstudianteModule } from './components/estudiantescomponents/estudiante.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { RouterLink } from '@angular/router';
     CommonModule,
     AdminModule,
     ExpertModule,
-    RouterLink
+    RouterLink,
+    EstudianteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
