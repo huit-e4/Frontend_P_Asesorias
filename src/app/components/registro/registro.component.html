@@ -66,7 +66,6 @@
                       placeholder="Escribe tu matricula" (change)="updateProgress()">
                     <div *ngIf="registerForm.get('mat')?.invalid && registerForm.get('mat')?.touched"
                       class="error-message">Tu matricula es requerido con 10 caracteres</div>
-
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -127,8 +126,16 @@
                       class="error-message">El Rol es requerido</div>
                   </div>
 
+                  
+
 
                 </div>
+              </div>
+              <div class="mb-12">
+                <label class="form-check-label">
+                  <input type="checkbox" formControlName="termsAndConditions">
+                  Acepto los términos y condiciones
+                </label>
               </div>
               <div class="text-center mt-3">
                 <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar</button>
