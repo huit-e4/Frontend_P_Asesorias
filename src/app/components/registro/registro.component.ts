@@ -40,6 +40,7 @@ export class RegistroComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       cpassword: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
+      termsAndConditions: [false, Validators.requiredTrue]
     },
     { validators: CustomValidators.passwordsMatching }
     );
