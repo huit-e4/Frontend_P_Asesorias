@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -11,10 +11,21 @@ import { CustomValidators } from '../../validations/custom-validator';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit{
   
+  ngOnInit(): void {
+    this.updateProgress();
+  }
+
+  updateProgress() {
+    const totalFields = 9; // Cambia este valor si añades o quitas campos en el formulario
+    const completedFields = Object.values(this.registerForm.controls).filter(control => control.valid).length;
+    this.progress = (completedFields / totalFields) * 100;
+  }
 
   respuestaSeleccionada: string | undefined;
+  progress: number = 0;
+
   registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private userS: UserService,
@@ -53,6 +64,7 @@ registerData() {
     });
     // resetear el formulario después de guardar
     this.registerForm.reset();
+    this.updateProgress(); // Actualizar progreso después de guardar
     this.rou.navigate(['/login']);
     this.goodAlert();
   }
