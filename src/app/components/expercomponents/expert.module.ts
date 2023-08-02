@@ -12,6 +12,7 @@ import { HomeExpertComponent } from '../home-expert/home-expert.component';
 import { VerAsesoriasComponent } from './ver-asesorias/ver-asesorias.component';
 import { SubirAsesoriaComponent } from './subir-asesoria/subir-asesoria.component';
 import { ExpertosComponent } from './expertos/expertos.component';
+import { InfocvComponent } from './infocv/infocv.component';
 const routes: Routes = [
   {
     path: 'homeexpert',
@@ -32,8 +33,13 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
-        path: 'SuvirAsesosria',
+        path: 'SubirAsesosria',
         component: SubirAsesoriaComponent,
+        canActivate: [ExpertgGuard]
+      },
+      {
+        path: 'infocv',
+        component: InfocvComponent,
         canActivate: [ExpertgGuard]
       },
 
@@ -79,7 +85,8 @@ const routes: Routes = [
     PerfilExpertComponent,
     VerAsesoriasComponent,
     SubirAsesoriaComponent,
-    ExpertosComponent
+    ExpertosComponent,
+    InfocvComponent
   ],
   imports: [
     CommonModule,

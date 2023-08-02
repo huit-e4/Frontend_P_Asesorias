@@ -15,7 +15,7 @@
       <!-- encabezados de la tabla -->
       <thead>
         <tr>
-          <th>#Numero</th>
+          <th>#ID</th>
           <th>Nombre</th>
           <th>Descripcion</th>
           <th>Precio</th>
@@ -28,7 +28,7 @@
           <td>{{ curso.id }}</td>
           <td>{{ curso.nombre }}</td>
           <td>{{ curso.desc }}</td>
-          <td>{{ curso.precio }}</td>
+          <td>${{ curso.precio }}</td>
           <td>{{ curso.active ? 'Sí' : 'No' }}</td>
         </tr>
       </tbody>

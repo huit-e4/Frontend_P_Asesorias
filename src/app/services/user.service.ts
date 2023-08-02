@@ -237,29 +237,7 @@ export class UserService {
       return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
     }
   }
-  getCursos() {
-    const token = localStorage.getItem('token');
-    console.log(token);
-
-    // Verificar si el usuario está autenticado
-    if (this.isAuth() && token) {
-
-      console.log('Entro al if');
-      // Configurar las cabeceras con el token de autenticación
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
-
-      // Realizar la solicitud a la API utilizando el token en las cabeceras
-      return this.http.get(this.url + '/api/asesorias', { headers });
-    } else {
-      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-    }
-  }
-
+  
 
   //Cerrar sesion en cualquier rol
   logOut(): Observable<any> {
@@ -328,6 +306,50 @@ export class UserService {
       return this.http.post(this.url + '/api/subirCv',formData, { headers });
     } else {
       return new Observable();
+    }
+  }
+
+  //Funcion para registrar asesoria por parte del experto
+  addAsesoria(data: any) {
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.post(this.url + '/api/registrarA',data, { headers });
+    } else {
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
+
+  //Traer la informacion del CV del Experto
+  getCvActualUser(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.get(this.url + '/api/infocv', { headers });
+    } else {
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
     }
   }
 

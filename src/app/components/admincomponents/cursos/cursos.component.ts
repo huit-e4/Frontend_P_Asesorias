@@ -98,7 +98,7 @@ export class CursosComponent {
 
   getCursos(){
     // Llamar a la función getExperts() del servicio
-    this.userS.getCursos().subscribe(
+    this.userS.getAsesorias().subscribe(
       (experts: any) => {
         // Mostrar los datos en la consola
         this.expertsArr=experts.asesorias;

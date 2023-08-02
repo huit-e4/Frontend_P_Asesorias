@@ -12,8 +12,16 @@ import Swal from 'sweetalert2'
 })
 export class CargarCvComponent implements OnInit{
   constructor(private theForm: FormBuilder, private user: UserService, private rou: Router) { }
+  progress: number = 0;
 
   ngOnInit(): void {
+    this.updateProgress();
+  }
+
+  updateProgress() {
+    const totalFields = 2; // Cambia este valor si añades o quitas campos en el formulario
+    const completedFields = Object.values(this.cvForm.controls).filter(control => control.valid).length;
+    this.progress = (completedFields / totalFields) * 100;
   }
 
   selectedFile: File | null = null;
@@ -93,6 +101,7 @@ export class CargarCvComponent implements OnInit{
 
     // Restablecer el formulario después de enviar los datos
     this.cvForm.reset();
+    this.updateProgress(); // Actualizar progreso después de guardar
     this.selectedFile = null; // Reiniciar la variable del archivo seleccionado
   }
 
