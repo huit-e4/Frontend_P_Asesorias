@@ -12,16 +12,15 @@ import { HomeExpertComponent } from '../home-expert/home-expert.component';
 import { VerAsesoriasComponent } from './ver-asesorias/ver-asesorias.component';
 import { SubirAsesoriaComponent } from './subir-asesoria/subir-asesoria.component';
 import { ExpertosComponent } from './expertos/expertos.component';
-
 const routes: Routes = [
   {
     path: 'homeexpert',
     component: HomeExpertComponent, children: [
-       {
-       path: '', 
-       component: HomeExpertComponent,
-       canActivate: [ExpertgGuard] 
-      },
+      // {
+      //   path: '', 
+      //   component: HomeExpertComponent,
+      //   canActivate: [ExpertgGuard] 
+      // },
       {
         path: 'subirCv',
         component: CargarCvComponent,

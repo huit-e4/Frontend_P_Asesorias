@@ -1,64 +1,48 @@
-<div class="container">
-  <h2>Lista de Cursos</h2>
-
-  <div class="form-group">
-    <label for="sortSelect">Ordenar por:</label>
-    <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
-      <option value="nombre">Nombre (A-Z)</option>
-      <option value="precio">Precio (menor a mayor)</option>
-      <option value="disponible">Disponibilidad</option>
-    </select>
-  </div>
-
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <!-- encabezados de la tabla -->
-      <thead>
-        <tr>
-          <th>#Numero</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Precio</th>
-          <th>Disponible</th>
-        </tr>
-      </thead>
-      <!-- filas de la tabla -->
-      <tbody>
-        <tr *ngFor="let curso of getCoursesForCurrentPage()">
-          <td>{{ curso.id }}</td>
-          <td>{{ curso.nombre }}</td>
-          <td>{{ curso.desc }}</td>
-          <td>{{ curso.precio }}</td>
-          <td>{{ curso.active ? 'Sí' : 'No' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Agregar los controles de paginación con el diseño proporcionado -->
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [class.disabled]="currentPage === 1">
-      <a class="page-link" (click)="setPage(1)" aria-label="Primera">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item" [class.disabled]="currentPage === 1">
-      <a class="page-link" (click)="setPage(currentPage - 1)" aria-label="Anterior">
-        <span aria-hidden="true">&lsaquo;</span>
-      </a>
-    </li>
-    <li class="page-item" *ngFor="let pageNum of getPagesArray()" [class.active]="pageNum === currentPage">
-      <a class="page-link" (click)="setPage(pageNum)">{{ pageNum }}</a>
-    </li>
-    <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <a class="page-link" (click)="setPage(currentPage + 1)" aria-label="Siguiente">
-        <span aria-hidden="true">&rsaquo;</span>
-      </a>
-    </li>
-    <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <a class="page-link" (click)="setPage(totalPages)" aria-label="Última">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+<div class="container mt-5">
+    
+    <div class="row d-flex justify-content-center">
+        
+        <div class="col-md-7">
+            
+            <div class="card p-3 py-4">
+                
+                <div class="text-center">
+                    <img src="https://th.bing.com/th/id/OIP.yef7UAeerJmutA49To95OwHaIM?pid=ImgDet&rs=1" width="100" class="rounded-circle">
+                </div>
+                
+                <div class="text-center mt-3">
+                    <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                    <h5 class="mt-2 mb-0">Alexender Schidmt</h5>
+                    <span>UI/UX Designer</span>
+                    
+                    <div class="px-4 mt-1">
+                        <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    
+                    </div>
+                    
+                     <ul class="social-list">
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-dribbble"></i></li>
+                        <li><i class="fa fa-instagram"></i></li>
+                        <li><i class="fa fa-linkedin"></i></li>
+                        <li><i class="fa fa-google"></i></li>
+                    </ul>
+                    
+                    <div class="buttons">
+                        
+                       
+                    </div>
+                    
+                    
+                </div>
+                
+               
+                
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
 </div>
