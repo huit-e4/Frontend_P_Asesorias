@@ -96,4 +96,10 @@ export class TablaInstructoresComponent implements OnInit {
     );
   }
 
+  datosModal:any=null;
+  verModal(Userdata:any){
+    console.log(Userdata);
+    this.datosModal=Userdata;
+  }
+
 }

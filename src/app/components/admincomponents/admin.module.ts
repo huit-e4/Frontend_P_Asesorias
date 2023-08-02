@@ -12,6 +12,8 @@ import { TablaInstructoresComponent } from './tabla-instructores/tabla-instructo
 import { TablaSolicitudesIComponent } from './tabla-solicitudes-i/tabla-solicitudes-i.component';
 import { AdmingGuard } from 'src/app/guards/adming.guard';
 import { HomeAdminComponent } from '../home-admin/home-admin.component';
+import { TablaSolicitudesRComponent } from './tabla-solicitudes-r/tabla-solicitudes-r.component';
+import { TablaSolicitudesAComponent } from './tabla-solicitudes-a/tabla-solicitudes-a.component';
 
 const routes: Routes = [
   {
@@ -26,14 +28,24 @@ const routes: Routes = [
         path: 'instructors', 
         component: InstructoresComponent, children:[
           { path: '', 
-           component: TablaInstructoresComponent,
+           component: TablaSolicitudesAComponent,
            canActivate: [AdmingGuard]
           },
            {
            path: 'aprsolicitudes', 
           component: TablaSolicitudesIComponent,
-         canActivate: [AdmingGuard]
-       }
+          canActivate: [AdmingGuard]
+          },
+          {
+          path: 'solicitudesrec', 
+          component: TablaSolicitudesRComponent,
+          canActivate: [AdmingGuard]
+          },
+          {
+          path: 'solicitudesapr', 
+          component: TablaSolicitudesAComponent,
+          canActivate: [AdmingGuard]
+          }
          ],
        canActivate: [AdmingGuard] 
       },
@@ -78,7 +90,9 @@ const routes: Routes = [
     InstructoresComponent,
     PerfilAComponent,
     TablaInstructoresComponent,
-    TablaSolicitudesIComponent
+    TablaSolicitudesIComponent,
+    TablaSolicitudesRComponent,
+    TablaSolicitudesAComponent
 
   ],
   imports: [
@@ -95,7 +109,8 @@ const routes: Routes = [
     InstructoresComponent,
     PerfilAComponent,
     TablaInstructoresComponent,
-    TablaSolicitudesIComponent
+    TablaSolicitudesIComponent,
+    TablaSolicitudesRComponent
   ]
 })
 export class AdminModule { }
