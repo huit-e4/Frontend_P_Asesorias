@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
-
 @Component({
-  selector: 'app-tabla-solicitudes-i',
-  templateUrl: './tabla-solicitudes-i.component.html',
-  styleUrls: ['./tabla-solicitudes-i.component.css']
+  selector: 'app-tabla-solicitudes-a',
+  templateUrl: './tabla-solicitudes-a.component.html',
+  styleUrls: ['./tabla-solicitudes-a.component.css']
 })
-export class TablaSolicitudesIComponent implements OnInit {
+export class TablaSolicitudesAComponent implements OnInit{
+
   ngOnInit(): void {
   
     this.loadDataSolicitudes();
@@ -30,7 +30,7 @@ export class TablaSolicitudesIComponent implements OnInit {
   sortExperts() {
     this.solicitudesArr.sort((a, b) => {
       if (this.sortBy === 'nombre') {
-        return a.name.localeCompare(b.name); // Ordenar por nombre (orden alfabético)
+        return a.user.name.localeCompare(b.user.name); // Ordenar por nombre (orden alfabético)
       } 
       // else if (this.sortBy === 'edad') {
       //   return a.edad - b.edad; 
@@ -74,7 +74,7 @@ export class TablaSolicitudesIComponent implements OnInit {
   
   solicitudesArr:any[]=[]
   loadDataSolicitudes(){
-    this.userS.getCvsProceso().subscribe(
+    this.userS.getCvsAprobados().subscribe(
       (solicitudes: any) => {
         // Mostrar los datos en la consola
         console.log('Datos de cvs:', solicitudes);
@@ -136,48 +136,4 @@ export class TablaSolicitudesIComponent implements OnInit {
       }
     })
   }
-
-  RechazarCv(id:number){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success mx-1',
-        cancelButton: 'btn btn-danger mx-1'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: '¿Rechazar la solicitud?',
-      text: "",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, aceptar',
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.userS.rechazarCv(id).subscribe(
-          (res: any) => {
-            // Mostrar los datos en la consola
-            console.log('Datos de cvs:', res);
-            swalWithBootstrapButtons.fire(
-              '¡Rechazado!',
-              'La solicitud ha sido rechazada',
-              'success'
-            )
-          },
-          (error) => {
-            console.error('Error al rechazar cv:', error);
-          }
-        );
-      
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-      
-      }
-    })
-  }
-
 }

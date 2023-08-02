@@ -26,12 +26,12 @@
           <!-- filas de la tabla -->
           <tbody>
             <tr *ngFor="let i of getExpertsForCurrentPage()">
-              <td>{{ i.id }}</td>
+              <td>{{ i?.id }}</td>
               <td>{{ i.name + " "+ i.lastname}}</td>
               <td>{{ i.edad }}</td>
               <td>{{ i.email }}</td>
               <td>{{ i.mat }}</td>
-              <td><div ><button type="button" class="btn btn-primary btn-sm mx-2 mx-1"><i class="bi bi-eye"></i>Ver más</button><button type="button" class="btn btn-warning btn-sm mx-1"><i class="bi bi-pencil-square"></i>Editar</button> <button type="button" class="btn btn-danger btn-sm mx-1"><i class="bi bi-trash3"></i>Eliminar</button></div></td>
+              <td><div ><button type="button" class="btn btn-primary btn-sm mx-2 mx-1" data-bs-toggle="modal" data-bs-target="#modalInformacion" (click)="verModal(i)"><i class="bi bi-eye"></i>Ver más</button> <button type="button" class="btn btn-danger btn-sm mx-1"><i class="bi bi-trash3"></i>Eliminar</button></div></td>
               
             </tr>
           </tbody>
@@ -72,3 +72,90 @@
   
     <!-- <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
     <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div> -->
+         <!-- Modal detalles de la solicitud -->
+
+
+  <!-- modal de contacto -->
+
+  <div class="modal fade" id="modalInformacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-end border-bottom-0">
+          <!-- <button type="button" class="btn-edit-icon" data-dismiss="modal" aria-label="Close">
+            <i class="mdi mdi-pencil"></i>
+          </button> -->
+
+          <div class="dropdown">
+            <button class="btn-dots-icon classdots" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+  
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <!-- <a class="dropdown-item" href="#">Editar</a> -->
+                <a class="dropdown-item" href="#">Ver CV (PDF)</a>
+            
+            </div>
+          </div>
+  
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <i class="mdi mdi-close"></i>
+          </button>
+        </div>
+  
+        <div class="modal-body pt-0">
+          <div class="row no-gutters">
+            <div class="col-md-6">
+              <div class="profile-content-left px-4">
+                <div class="card text-center widget-profile px-0 border-0 ">
+                  <div class="card-img mx-auto rounded-circle">
+                    <img src="assets/userP.png" alt="user image" class="rounded-circle">
+                  </div>
+  
+                  <div class="card-body">
+                    <h4 class="py-2 text-dark">{{datosModal?.name+" "+datosModal?.lastname}}</h4>
+                    <p>{{datosModal?.email}}</p>
+                    <!-- <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Enviar mensaje</a> -->
+                  </div>
+                </div>
+
+                <div class="mt-4"><span><p>&nbsp;</p></span></div>
+  
+                <div class="d-flex justify-content-evenly mt-5">
+                  <div class="text-center pb-4">
+                    <h6 class="text-dark pb-2">Estado</h6>
+                    <p >Activo</p>
+                  </div>
+
+                  <!-- <div class="text-center pb-4">
+                    <h6 class="text-dark pb-2"></h6>
+                    <p>&nbsp; &nbsp;</p>
+                  </div>
+                   -->
+                  <div class="text-center pb-4">
+                    <h6 class="text-dark pb-2">Edad</h6>
+                    <p>{{datosModal?.edad}}</p>
+                  </div>
+  
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="contact-info px-4">
+                <h4 class="text-dark mb-1">Datos del instructor</h4>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Correo electrónico</p>
+                <p>{{datosModal?.email}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Matrícula</p>
+                <p>{{datosModal?.mat}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Fecha de registro</p>
+                <p>{{datosModal?.created_at|date}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Sexo</p>
+                <p>{{datosModal?.sexo}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
