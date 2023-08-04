@@ -70,6 +70,7 @@ export class SubirAsesoriaComponent implements OnInit {
         this.asesoriaForm.reset();
         this.updateProgress(); // Actualizar progreso después de guardar
         this.goodNot();
+        this.rou.navigate(['/homeexpert/Asesoria']);
       },
       error => {
         console.error('Error al guardar la asesoría:', error);
