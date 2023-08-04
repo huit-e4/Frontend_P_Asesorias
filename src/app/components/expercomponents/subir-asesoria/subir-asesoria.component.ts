@@ -57,21 +57,32 @@ export class SubirAsesoriaComponent implements OnInit {
 
 
   saveData() {
-    if (this.asesoriaForm && this.asesoriaForm.valid) {
-      const formData = {
-        nombre: this.asesoriaForm.get('nombre')!.value,
-        precio: this.asesoriaForm.get('precio')!.value,
-        desc: this.asesoriaForm.get('desc')!.value
-      };
-      this.user.addAsesoria(formData).subscribe(response => {
+  if (this.asesoriaForm && this.asesoriaForm.valid) {
+    const formData = {
+      nombre: this.asesoriaForm.get('nombre')!.value,
+      precio: this.asesoriaForm.get('precio')!.value,
+      desc: this.asesoriaForm.get('desc')!.value
+    };
+    this.user.addAsesoria(formData).subscribe(
+      response => {
         console.log('Asesoria guardada con éxito');
-      });
-      // resetear el formulario después de guardar
-      this.asesoriaForm.reset();
-      this.updateProgress(); // Actualizar progreso después de guardar
-      this.goodNot();
-    }
+        // resetear el formulario después de guardar
+        this.asesoriaForm.reset();
+        this.updateProgress(); // Actualizar progreso después de guardar
+        this.goodNot();
+        this.rou.navigate(['/homeexpert/Asesoria']);
+      },
+      error => {
+        console.error('Error al guardar la asesoría:', error);
+        this.asesoriaForm.reset();
+        this.updateProgress();
+        this.badNot();
+
+      }
+    );
   }
+}
+
 
   
 

@@ -91,11 +91,13 @@ export class CargarCvComponent implements OnInit{
         // Procesar la respuesta del backend si es necesario
         console.log('Respuesta del backend:', response);
         this.goodNot();
+        this.rou.navigate(['/homeexpert/infocv']);
       },
       (error) => {
         // Manejar el error si la solicitud falla
         console.error('Error al enviar datos al backend:', error);
         this.badNot();
+        this.rou.navigate(['/homeexpert']);
       }
     );
 
