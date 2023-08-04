@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject} from 'rxjs';
+import { Observable, BehaviorSubject, catchError, throwError} from 'rxjs';
 
 export interface UserProfile {
   nombre: string;
@@ -16,6 +16,7 @@ export interface UserProfile {
 
 
 export class UserService {
+  [x: string]: any;
 
   // private users: User[] = [];
 
@@ -54,6 +55,8 @@ export class UserService {
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }
+//para jalar los registros de asesorias
+  private apiUrl = 'http://localhost:8000/api/verAsesorias';
 
   //Guardar datos del usuario en localStorage
   saveUser(user: any) {
@@ -299,12 +302,40 @@ const body={razon:"jdkfjdlk"}
         });
   
         // Realizar la solicitud a la API utilizando el token en las cabeceras
-        return this.http.get(this.url + '/api/asesorias', { headers });
+        return this.http.get(this.url + '/api/verAsesorias', { headers });
       } else {
         // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
         // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
         // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
         return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
       }}
-  
+
+      
+  // Obtener registros de inscritos de una asesoría
+  // Obtener registros de inscritos de una asesoría
+getRegistrosDeAsesoria(asesoriaId: number): Observable<any[]> {
+  const token = localStorage.getItem('token');
+
+  // Verificar si el usuario está autenticado
+  if (this.isAuth() && token) {
+    // Configurar las cabeceras con el token de autenticación
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    // Realizar la solicitud a la API utilizando el token en las cabeceras
+    return this.http.get<any[]>(`${this.url}/${asesoriaId}/registros`, { headers }).pipe(
+      catchError(error => {
+        // Manejar el error si ocurre alguna falla en la solicitud HTTP
+        console.error('Error en la solicitud de registros de asesorías:', error);
+        // Puedes mostrar un mensaje de error o realizar alguna otra acción aquí
+        return throwError('Error en la solicitud de registros de asesorías');
+      })
+    );
+  } else {
+    // Si el usuario no está autenticado o no hay token, lanzar un error o redirigir a la página de inicio de sesión.
+    // Aquí retornamos un observable vacío, pero es mejor manejar el redireccionamiento según tu lógica.
+    return throwError('Usuario no autenticado o token inválido');
+  }
+}
 }

@@ -48,13 +48,8 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
-        path: 'inscritos',
+        path: 'inscritos/:cursoId', // Corregir aquí
         component: InscripcionesComponent,
-        canActivate: [ExpertgGuard]
-      },
-      {
-        path: 'verAsesorias',
-        component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
       },
       {

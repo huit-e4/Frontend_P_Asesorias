@@ -1,14 +1,23 @@
-.btn {
-    padding: .45rem 1.5rem .35rem;
-  }
-  
-  .gradient-custom {
-    /* fallback for old browsers */
-    background: #c471f5;
-  
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
-  
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
-  }
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+.offcanvas{
+    --bs-offcanvas-width: 325px;
+}
+li:hover{
+    background-color: rgb(239 240 241 / 80%);
+    /* rgb(239 240 241 / 80%) */
+}
+.nav-link{
+    color: rgb(51 51 57);
+}
+/* .navbar-nav {
+    --bs-nav-link-hover-color: rgb(255, 255, 255);
+} */
+/* @media(max-width:768px){
+    .navbar-nav >li:hover{
+        background-color: rgb(0 42 255);
+    }
+} */
+
+/* .offcanvas-body{
+    color: #212a39;
+} */

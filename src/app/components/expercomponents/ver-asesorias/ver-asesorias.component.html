@@ -15,11 +15,12 @@
       <!-- encabezados de la tabla -->
       <thead>
         <tr>
-          <th>#Numero</th>
+          <th>#Número</th>
           <th>Nombre</th>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Precio</th>
           <th>Disponible</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <!-- filas de la tabla -->
@@ -30,6 +31,9 @@
           <td>{{ curso.desc }}</td>
           <td>{{ curso.precio }}</td>
           <td>{{ curso.active ? 'Sí' : 'No' }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="irInscritos(curso)">Ver inscritos</button>
+          </td>
         </tr>
       </tbody>
     </table>
