@@ -1,0 +1,50 @@
+<div class="card">
+    <h1 class="btn btn-danger"> Sólo podrás registrar asesorias cuando tu CV haya sido aprobado. </h1>
+    <div class="progress mt-3">
+        <div class="progress-bar" [style.width.%]="progress" role="progressbar" [attr.aria-valuenow]="progress"
+            aria-valuemin="0" aria-valuemax="100">
+            Es tu progreso del form {{ progress }}%
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="asesoriaForm" (ngSubmit)="saveData()">
+            <h2>Datos de la asesoria:</h2>
+            <div class="mt-2">
+                <label class="form-label">
+                    Nombre del curso*
+                </label>
+                <input type="text" formControlName="nombre" class="form-control"
+                    placeholder="Por favor ingresa el nombre del curso..." (change)="updateProgress()">
+                <small *ngIf="validInput('nombre')" class="form-text text-danger">
+                    Campo requerido.
+                </small>
+            </div>
+            <div class="mt-2">
+                <label class="form-label">
+                    Costo del curso*
+                </label>
+                <input type="number" formControlName="precio" class="form-control"
+                    placeholder="Ingresa el costo del curso..." (change)="updateProgress()">
+                <small *ngIf="validInput('precio')" class="form-text text-danger">
+                    Campo requerido.
+                </small>
+                <small *ngIf="validInput('precio')" class="form-text text-danger">
+                    Precio menor a 10 mil
+                </small>
+            </div>
+            <div class="mt-2">
+                <label for="exampleFormControlTextarea1" class="form-label">Descripción*</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="desc"
+                    (change)="updateProgress()" placeholder="Redacta las características del curso..."></textarea>
+                <small *ngIf="validInput('desc')" class="form-text text-danger">
+                    Campo requerido.
+                </small>
+            </div>
+            <br>
+            <button type="submit" [disabled]="asesoriaForm.invalid" class="btn btn-primary btn-block">Registrar</button>
+
+        </form>
+
+    </div>
+
+</div>

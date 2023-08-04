@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-tabla-instructores',
-  templateUrl: './tabla-instructores.component.html',
-  styleUrls: ['./tabla-instructores.component.css']
+  selector: 'app-expertos',
+  templateUrl: './expertos.component.html',
+  styleUrls: ['./expertos.component.css']
 })
-export class TablaInstructoresComponent implements OnInit {
-
+export class ExpertosComponent {
   ngOnInit(): void {
     this.loadData();
   }
@@ -95,11 +94,5 @@ export class TablaInstructoresComponent implements OnInit {
       }
     );
   }
-
-  datosModal:any=null;
-  verModal(Userdata:any){
-    console.log(Userdata);
-    this.datosModal=Userdata;
-  }
-
+ 
 }

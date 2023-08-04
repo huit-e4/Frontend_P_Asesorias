@@ -1,0 +1,45 @@
+<div class="responsive">
+  <ng-container *ngIf="expertcv">
+    <table class="table table-striped table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Matricula</th>
+          <!-- <th scope="col">Ruta CV</th> -->
+          <th scope="col">Estado de CV</th>
+          <th scope="col">Mostrar CV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ expertcv.user.name }}</th>
+          <td>{{ expertcv.user.mat }}</td>
+          <!-- <td>{{ expertcv.rutaCv }}</td> -->
+          <td>{{ expertcv.status.estado }}</td>
+          <td>
+            <div class="col-xs-12 col-sm-12 col-md-8">
+              <div class="form-group">
+                <!-- <strong>PDF:</strong> -->
+                <!-- <a [href]="getPdfUrl(expertcv.pdf_filename)" target="_blank">Abrir PDF</a> -->
+                <embed [src]="getPdfUrl(expertcv.pdf_filename)" type="application/pdf" width="100%" height="300px" />
+              </div>
+            </div> 
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <!-- <p >No se encontraron datos de CV para mostrar.</p> -->
+
+  <div *ngIf="!expertcv">
+    <div class="alert alert-warning" role="alert">
+      Aún no has subido tu CV campeón!
+    </div>
+
+  </div>
+  
+
+  
+
+
+</div>

@@ -10,13 +10,11 @@ interface Curso {
 }
 
 @Component({
-  selector: 'app-cursos',
-  templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.css']
+  selector: 'app-ver-asesorias',
+  templateUrl: './ver-asesorias.component.html',
+  styleUrls: ['./ver-asesorias.component.css']
 })
-export class CursosComponent {
-
-
+export class VerAsesoriasComponent {
   ngOnInit(): void {
     this.getCursos();
     //this.loadData();
@@ -109,5 +107,6 @@ export class CursosComponent {
       }
     );
   }
+
 
 }

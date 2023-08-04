@@ -18,7 +18,7 @@ export class CursosEstudianteComponent implements OnInit{
   ngOnInit(): void {
     this.getAllCursos();
     // obtiene la lista de productos del servicio
-    this.userService.getCursos()
+    this.userService.getAsesorias()
       .pipe(
         catchError((error) => {
           console.error(error);
@@ -35,7 +35,7 @@ export class CursosEstudianteComponent implements OnInit{
 
 
   getAllCursos() {
-    this.userService.getCursos()
+    this.userService.getAsesorias()
       .pipe(
         catchError((error) => {
           console.error(error);
