@@ -1,27 +1,28 @@
-<div class="responsive">
+<!-- <div class="responsive">
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Razón</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Matricula</th>
         <th scope="col">Ruta CV</th>
         <th scope="col">Estado</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cv of expertcv">
-        <th scope="row">{{ cv.id }}</th>
-        <td>{{ cv.razon }}</td>
-        <td>{{ cv.rutaCv }}</td>
-        <td>{{ cv.statuscv_id }}</td>
-        <!-- <td>
+      <tr *ngIf="expertcv">
+        <th scope="row">{{ expertcv.user.name }}</th>
+        <td>{{ expertcv.user.mat }}</td>
+        <td>{{ expertcv.rutaCv }}</td>
+        <td>{{ expertcv.status.estado }}</td>
+        <td>
           <div class="col-xs-12 col-sm-12 col-md-8">
             <div class="form-group">
               <strong>PDF:</strong>
-              <embed [src]="'C:\xampp\htdocs\Back-End-P-Asesorias\public\storage\pdf'+cv.rutaCv" type="application/pdf" width="100%" height="500px" />
+              <embed [src]="getPdfUrl(expertcv.rutaCv)" type="application/pdf" width="100%" height="500px" />
             </div>
           </div> 
-        </td> -->
+
+        </td>
       </tr>
 
     </tbody>
@@ -30,3 +31,36 @@
 
 
 
+ -->
+
+ <div class="responsive">
+  <table class="table table-striped table-hover">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Matricula</th>
+        <!-- <th scope="col">Ruta CV</th> -->
+        <th scope="col">Estado de CV</th>
+        <th scope="col">Mostrar CV</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="expertcv">
+        <th scope="row">{{ expertcv.user.name }}</th>
+        <td>{{ expertcv.user.mat }}</td>
+        <!-- <td>{{ expertcv.rutaCv }}</td> -->
+        <td>{{ expertcv.status.estado }}</td>
+        <td>
+          <div class="col-xs-12 col-sm-12 col-md-8">
+            <div class="form-group">
+              <!-- <strong>PDF:</strong> -->
+              <!-- <a [href]="getPdfUrl(expertcv.pdf_filename)" target="_blank">Abrir PDF</a> -->
+              <embed [src]="getPdfUrl(expertcv.pdf_filename)" type="application/pdf" width="100%" height="300px" />
+
+            </div>
+          </div> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

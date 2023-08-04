@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-
-export interface Cv {
-  id: number;
-  razon: string;
-  rutaCv: string;
-  statuscv_id: number;
-}
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-infocv',
@@ -14,23 +8,23 @@ export interface Cv {
   styleUrls: ['./infocv.component.css']
 })
 export class InfocvComponent {
-  expertcv: Cv[] = []; // Usa la interfaz o tipo Cv para el arreglo
-
+expertcv:any //Para la data del cv
 
   ngOnInit(): void {
     this.getCvInfo();
   }
 
-  constructor(private userS: UserService) {
+  constructor(public userS: UserService, private sanitizer: DomSanitizer) {
   }
 
+  //Obtengo la info del cv del experto con sesion iniciada
   getCvInfo() {
     this.userS.getCvActualUser().subscribe(
       (response: any) => {
         if (response && response.cv) {
-          // Verifica si response.cv es un objeto y conviértelo en un arreglo si es necesario
-          this.expertcv = Array.isArray(response.cv) ? response.cv : [response.cv];
+          this.expertcv = response.cv; // Sin convertir a un arreglo
           console.log(this.expertcv);
+          
         } else {
           console.error('Datos del CV no recibidos correctamente desde el backend.');
         }
@@ -40,6 +34,20 @@ export class InfocvComponent {
       }
     );
   }
+
+ 
+  /**
+ * Obtiene la URL segura para cargar un archivo PDF a partir del nombre del archivo.
+ * @param pdf_filename El nombre del archivo PDF que se utilizará para construir la URL.
+ * @returns La URL segura del archivo PDF para ser incrustada en un elemento <embed>.
+ */
+  getPdfUrl(pdf_filename: string): SafeResourceUrl {
+    const unsafeUrl = this.userS.url + '/storage/pdf/' + pdf_filename;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+  }
+  
+
+  
 
 
 }
