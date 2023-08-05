@@ -87,7 +87,7 @@
             <p>{{datosSolicitud?.id}}</p>
             <p class="pt-3 mb-2 text-dark font-weight-medium">Estado de la Solicitud:</p>
             <p>{{datosSolicitud?.status.estado}}</p>
-            <button class="btn btn-primary mt-3">Ver CV (PDF) </button>
+            <a class="btn btn-primary mt-3" [href]="getPdfUrl(datosSolicitud?.pdf_filename)" target="_blank" target="_blank" rel="noopener noreferrer">Ver CV (PDF)</a>
               </div>
                   <div class="col-md-6">
 
