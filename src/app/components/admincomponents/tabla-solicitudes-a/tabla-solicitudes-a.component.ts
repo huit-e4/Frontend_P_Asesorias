@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -12,7 +13,7 @@ export class TablaSolicitudesAComponent implements OnInit{
   
     this.loadDataSolicitudes();
   }
-  constructor(private userS:UserService) {
+  constructor(private userS:UserService, private sanitizer: DomSanitizer) {
 
   }
 
@@ -135,5 +136,10 @@ export class TablaSolicitudesAComponent implements OnInit{
       
       }
     })
+  }
+
+  getPdfUrl(pdf_filename: string): SafeResourceUrl {
+    const unsafeUrl = this.userS.url + '/storage/pdf/' + pdf_filename;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 }
