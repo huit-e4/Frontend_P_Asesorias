@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 interface Curso {
   id: number;
@@ -7,6 +9,22 @@ interface Curso {
   desc: string;
   precio: number;
   active: boolean;
+}
+interface Registro {
+  id: number;
+  nombre: string;
+  desc: string;
+  precio: string;
+  active: number;
+  user: {
+    id: number;
+    name: string;
+    mat: string;
+    lastname: string;
+    edad: number;
+    sexo: string;
+    // ... other user properties
+  };
 }
 
 @Component({
@@ -17,36 +35,16 @@ interface Curso {
 export class VerAsesoriasComponent {
   ngOnInit(): void {
     this.getCursos();
+    
     //this.loadData();
   }
 
-  constructor(private userS:UserService) {
-  }
-
-  //cursos: Curso[] = [
-  //  { id: 1, nombre: 'Curso A', precio: 100, disponible: true },
- // { id: 2, nombre: 'Curso B', precio: 80, disponible: false },
- // { id: 3, nombre: 'Curso C', precio: 120, disponible: true },
- /// { id: 4, nombre: 'Curso D', precio: 90, disponible: true },
- /// { id: 5, nombre: 'Curso E', precio: 150, disponible: false },
- /// { id: 6, nombre: 'Curso F', precio: 70, disponible: true },
-  ///{ id: 7, nombre: 'Curso G', precio: 110, disponible: false },
- // { id: 8, nombre: 'Curso H', precio: 130, disponible: true },
- // { id: 9, nombre: 'Curso I', precio: 85, disponible: true },
- // { id: 10, nombre: 'Curso J', precio: 95, disponible: false },
- /// { id: 11, nombre: 'Curso K', precio: 140, disponible: true },
- //// { id: 12, nombre: 'Curso L', precio: 75, disponible: true },
- /// { id: 13, nombre: 'Curso M', precio: 115, disponible: false },
- /// { id: 14, nombre: 'Curso N', precio: 90, disponible: true },
- // { id: 15, nombre: 'Curso O', precio: 105, disponible: false },
- // { id: 16, nombre: 'Curso P', precio: 125, disponible: true },
-    // Agrega más cursos si lo deseas
- // ];
+  constructor(private userS: UserService, private router: Router) {}
 
   pageSize = 4; // Cantidad de cursos por página
   currentPage = 1; // Página actual
   sortBy = 'nombre'; // Criterio de ordenación inicial
-
+  registros: Registro[] = [];
   // Función para cambiar el criterio de ordenación
   changeSortBy(criteria: string) {
     this.sortBy = criteria;
@@ -61,7 +59,7 @@ export class VerAsesoriasComponent {
       } else if (this.sortBy === 'precio') {
         return a.precio - b.precio; // Ordenar por precio (de menor a mayor)
       } else if (this.sortBy === 'disponible') {
-        return a.disponible === b.disponible ? 0 : (a.disponible ? -1 : 1); // Ordenar por disponibilidad (disponibles primero)
+        return a.active === b.active ? 0 : (a.active ? -1 : 1); // Ordenar por disponibilidad (disponibles primero)
       }
       return 0;
     });
@@ -90,23 +88,76 @@ export class VerAsesoriasComponent {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
-  expertsArr:any[]=[];
+  expertsArr: Curso[] = [];
 
-
-
-  getCursos(){
-    // Llamar a la función getExperts() del servicio
-    this.userS.getAsesorias().subscribe(
+  getCursos() {
+    // Llamar a la función getAsesorias() del servicio para obtener la lista de cursos
+    this.userS.getVerAsesorias().subscribe(
       (experts: any) => {
         // Mostrar los datos en la consola
-        this.expertsArr=experts.asesorias;
+        this.expertsArr = experts.asesorias;
         console.log('Datos de curso:', experts);
+        
+        const regis = experts.registros
+        
+        console.log(regis);
+        
       },
       (error) => {
         console.error('Error al obtener los cursos:', error);
       }
     );
   }
+
+
+// ...
+
+
+
+datosSolicitud:any=null;
+
+verSolicitud(datos:any){
+  this.datosSolicitud=datos
+  console.log(this.datosSolicitud);
+  
+}
+
+getVerinscritos(id:number){
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success mx-1',
+      cancelButton: 'btn btn-danger mx-1'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+  }).then((result) => {
+    if (result.value) {
+      this.userS.getVerinscritos(id).subscribe(
+        (res:any) => {
+          // Mostrar los datos en la consola
+          console.log('Datos de estudiante:', res);
+          swalWithBootstrapButtons.fire()
+            
+        
+        },
+        (error) => {
+          console.error('Error al cargar estudiante:', error);
+        }
+      );
+    
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+    
+    }
+  })
+}
+
+
+  
 
 
 }
