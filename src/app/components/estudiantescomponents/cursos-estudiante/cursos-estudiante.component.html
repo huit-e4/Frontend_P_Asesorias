@@ -1,0 +1,20 @@
+
+<div class="row">
+  <div class="col-sm-4 mb-3 mb-sm-0" *ngFor="let prod of cursos">
+    <div class="card">
+
+      <div class="card-body">
+        <img
+          src="https://www.elespectador.com/resizer/3yL8RLSWj0wNQNiqAi0miA8teU8=/arc-anglerfish-arc2-prod-elespectador/public/ST67MWA4BFCQRP3WLYKEO2E5WE.jpg"
+          alt="..." width="390" height="250">
+        <h5 class="card-title">{{prod.nombre}}</h5>
+        <p class="card-text">{{prod.desc}}</p>
+        <p class="card-text">${{prod.precio}}</p>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+
+<h1>Aqui deben estar las Cards :c</h1>
