@@ -325,3 +325,57 @@ body{
   line-height: 1.5;
 } */
 body { background-color: black !important; }
+
+/* Estilo épico para el botón de eliminar */
+.btn-danger.btn-sm {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-danger.btn-sm:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Ajuste de la posición del botón con respecto a la imagen */
+.card-default {
+  position: relative;
+}
+
+.card-default .btn-danger.btn-sm {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.card-default .media {
+  margin-bottom: 30px;
+}
+
+.card-default .media img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-default .media-body {
+  flex: 1;
+}
+
+.card-default .list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.card-default ul li {
+  margin-bottom: 8px;
+}
+
+.card-default ul li i {
+  margin-right: 8px;
+}
