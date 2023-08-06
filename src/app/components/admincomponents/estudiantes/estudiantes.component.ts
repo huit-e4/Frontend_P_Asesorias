@@ -102,11 +102,25 @@ export class EstudiantesComponent {
 
   modificarEstudiante(estudiante: Estudiante) {
     alert(`Modificar estudiante: ${estudiante.name}`);
+    
   }
 
   // Función para eliminar estudiante (simplemente muestra un mensaje por ahora)
   eliminarEstudiante(estudiante: Estudiante) {
-    alert(`Eliminar estudiante: ${estudiante.name}`);
+    this.userS.eliminarestudiante(estudiante.id).subscribe(
+      (response: any) => {
+        // Si la API devuelve éxito, elimina el estudiante de la lista local
+        const index = this.expertsArr.findIndex((e) => e.id === estudiante.id);
+        if (index !== -1) {
+          this.expertsArr.splice(index, 1);
+        }
+        alert(`Estudiante "${estudiante.name}" eliminado correctamente.`);
+      },
+      (error) => {
+        console.error('Error al eliminar el estudiante:', error);
+        alert(`Error al eliminar el estudiante "${estudiante.name}".`);
+      }
+    );
   }
 
   
