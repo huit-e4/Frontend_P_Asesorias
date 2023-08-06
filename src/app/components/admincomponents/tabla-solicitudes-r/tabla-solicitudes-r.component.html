@@ -87,7 +87,11 @@
             <p>{{datosSolicitud?.id}}</p>
             <p class="pt-3 mb-2 text-dark font-weight-medium">Estado de la Solicitud:</p>
             <p>{{datosSolicitud?.status.estado}}</p>
-            <a class="btn btn-primary mt-3" [href]="getPdfUrl(datosSolicitud?.pdf_filename)" target="_blank" target="_blank" rel="noopener noreferrer">Ver CV (PDF)</a>
+            <a class="btn btn-primary mt-3 btn-margin" [href]="getPdfUrl(datosSolicitud?.pdf_filename)" target="_blank" target="_blank" rel="noopener noreferrer">Ver CV (PDF)</a>
+            <a class="btn btn-danger mt-3" (click)="eliminarSolicitud(datosSolicitud?.id)">
+             <i class="bi bi-trash3"></i> &nbsp;Eliminar
+            </a>
+
               </div>
                   <div class="col-md-6">
 
