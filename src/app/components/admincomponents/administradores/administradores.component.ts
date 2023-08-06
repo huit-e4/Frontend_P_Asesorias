@@ -46,4 +46,26 @@ export class AdministradoresComponent implements OnInit{
     console.log(Userdata);
     this.datosModal=Userdata;
   }
+  
+  eliminarAdmin(admin: any) {
+    // Aquí debes implementar la lógica para eliminar el administrador.
+    // Puedes utilizar el servicio this.userS.eliminarAdmin(admin.id) para eliminarlo del backend.
+
+    // Una vez que el administrador ha sido eliminado correctamente, puedes actualizar la lista de administradores
+    // para que el elemento desaparezca de la vista sin necesidad de recargar la página.
+
+    // Ejemplo (solo como referencia, la implementación real dependerá de tu servicio y backend):
+    this.userS.eliminaradmin(admin.id).subscribe(
+      (response: any) => {
+        console.log('Administrador eliminado:', response);
+        this.adminsArr = this.adminsArr.filter((item) => item.id !== admin.id);
+      },
+      (error) => {
+        console.error('Error al eliminar el administrador:', error);
+      }
+    );
+  }
+
+
+  
 }
