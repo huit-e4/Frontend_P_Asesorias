@@ -20,6 +20,7 @@
             <th>Descripcion</th>
             <th>Precio</th>
             <th>Disponible</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <!-- filas de la tabla -->
@@ -29,7 +30,18 @@
             <td>{{ curso.nombre }}</td>
             <td>{{ curso.desc }}</td>
             <td>{{ curso.precio }}</td>
-            <td>{{ curso.active ? 'Sí' : 'No' }}</td>
+            <td>{{ curso.active ? 'Si' : 'No' }}</td>
+            <td>
+              <!-- Botón para modificar -->
+              <button type="button" class="btn btn-primary btn-sm" (click)="modificarCurso(curso)">
+                <i class="bi bi-pencil"></i> Modificar
+              </button>
+              <!-- Botón para eliminar -->
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCurso(curso)">
+                <i class="bi bi-trash"></i> Eliminar
+              </button>
+            </td>
+
           </tr>
         </tbody>
       </table>
