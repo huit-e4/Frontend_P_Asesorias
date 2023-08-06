@@ -33,7 +33,7 @@ export class HomeEstudianteComponent implements OnInit {
     this.userS.getAsesorias().subscribe(
       (cursoS: any) => {
         // Mostrar los datos en la consola
-        console.log('Datos del curso:', cursoS);
+        // console.log('Datos del curso:', cursoS);
         this.cursoArr=cursoS.asesorias;
         console.log(this.cursoArr);
       },
