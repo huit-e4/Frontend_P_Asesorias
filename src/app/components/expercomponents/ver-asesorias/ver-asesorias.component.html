@@ -24,6 +24,8 @@
             <th>Descripcion</th>       
             <th>Precio</th>
             <th>Estado</th>
+            <th>Ver</th>
+            <th>Acciones</th>
 
           </tr>
         </thead>
@@ -40,6 +42,16 @@
            <!--  <button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#modalInformacion" [routerLink]="'/homeexpert/inscritos/'">
               <i class="bi bi-eye me-1"></i> Ver más
             </button>-->
+            <td>
+              <!-- Botón para modificar -->
+              <button type="button" class="btn btn-primary btn-sm" (click)="modificarCurso(i)">
+                <i class="bi bi-pencil"></i> Modificar
+              </button>
+              <!-- Botón para eliminar -->
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCurso(i)">
+                <i class="bi bi-trash"></i> Eliminar
+              </button>
+            </td>
         </tbody>
       </table>
     </div>
