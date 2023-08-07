@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 interface Curso {
   id: number;
@@ -32,19 +33,33 @@ interface Registro {
   templateUrl: './ver-asesorias.component.html',
   styleUrls: ['./ver-asesorias.component.css']
 })
-export class VerAsesoriasComponent {
+export class VerAsesoriasComponent implements OnInit{
+  private asesoriaDeletedSubscription: Subscription;
+
   ngOnInit(): void {
     this.getCursos();
-    
-    //this.loadData();
   }
 
-  constructor(private userS: UserService, private router: Router) {}
+  ngOnDestroy(): void {
+    // Importante desuscribirse al destruir el componente
+    this.asesoriaDeletedSubscription.unsubscribe();
+  }
+
+  
+
+  constructor(private userS: UserService, private router: Router) {
+    // Inicializar la suscripción en el constructor
+    this.asesoriaDeletedSubscription = this.userS.getAsesoriaDeletedObservable().subscribe(() => {
+      this.getCursos();
+    });
+   }
 
   pageSize = 4; // Cantidad de cursos por página
   currentPage = 1; // Página actual
   sortBy = 'nombre'; // Criterio de ordenación inicial
   registros: Registro[] = [];
+  students: { asesoria: any, registros: any[] } = { asesoria: null, registros: [] };
+
   // Función para cambiar el criterio de ordenación
   changeSortBy(criteria: string) {
     this.sortBy = criteria;
@@ -97,11 +112,7 @@ export class VerAsesoriasComponent {
         // Mostrar los datos en la consola
         this.expertsArr = experts.asesorias;
         console.log('Datos de curso:', experts);
-        
-        const regis = experts.registros
-        
-        console.log(regis);
-        
+
       },
       (error) => {
         console.error('Error al obtener los cursos:', error);
@@ -110,54 +121,76 @@ export class VerAsesoriasComponent {
   }
 
 
-// ...
+  // ...
 
 
 
-datosSolicitud:any=null;
+  datosSolicitud: any = null;
 
-verSolicitud(datos:any){
-  this.datosSolicitud=datos
-  console.log(this.datosSolicitud);
-  
-}
+  verSolicitud(datos: any) {
+    this.datosSolicitud = datos
+    console.log(this.datosSolicitud);
 
-getVerinscritos(id:number){
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success mx-1',
-      cancelButton: 'btn btn-danger mx-1'
-    },
-    buttonsStyling: false
-  })
-  
-  swalWithBootstrapButtons.fire({
-  }).then((result) => {
-    if (result.value) {
-      this.userS.getVerinscritos(id).subscribe(
-        (res:any) => {
-          // Mostrar los datos en la consola
-          console.log('Datos de estudiante:', res);
-          swalWithBootstrapButtons.fire()
-            
-        
-        },
-        (error) => {
-          console.error('Error al cargar estudiante:', error);
-        }
-      );
-    
-    } else if (
-      /* Read more about handling dismissals below */
-      result.dismiss === Swal.DismissReason.cancel
-    ) {
-    
-    }
-  })
-}
+  }
 
 
-  
+  verAlumnosRegistrados(id: number) {
+    // Llamar a la función getAsesorias() del servicio para obtener la lista de cursos
+    this.userS.getAlumnoInscrito(id).subscribe(
+      (alumnos: any) => {
+        // Mostrar los datos en la consola
+        this.students = alumnos
+        console.log('Alumnos de alta en el curso:', this.students);
+      },
+      (error) => {
+        console.error('Error al obtener los alumnos:', error);
+      }
+    );
+  }
+
+  //Borrar asesoria por id
+  borrarAsesoria(id: number) {
+    // Llamar a la función deleteAsesoriaById() del servicio para eliminar la asesoría por su ID
+    this.userS.deleteAsesoriaById(id).subscribe(
+      () => {
+        console.log('Asesoría eliminada con éxito');
+      },
+      (error) => {
+        console.error('Error al eliminar la asesoría:', error);
+        this.badNot();
+      }
+    );
+  }
+
+
+  badNot() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Algo salió mal...!'
+    })
+  }
+
+  confirmarAlert(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, do it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.borrarAsesoria(id); // Pasa el id como argumento a la función borrarAsesoria()
+        Swal.fire('Asesoria borrada!!!');
+      }
+    });
+  }
+
+
+
+
 
 
 }

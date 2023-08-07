@@ -1,5 +1,3 @@
-
-
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> </div>
   <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
@@ -35,11 +33,22 @@
             <td>{{i.desc}}</td>
             <td>$.{{i.precio}}</td>
             <td>{{i.active ? 'Sí' : 'No' }}</td>
-            <td><div ><button type="button" class="btn btn-primary btn-sm mx-1"   [routerLink]="'/homeexpert/inscritos/'"><i class="bi bi-eye me-1"></i>Ver Inscritos a mi curso</button></div></td>
-            <!-- <button type="button" class="btn btn-success btn-sm mx-1" (click)="AprobarCv(i.id)"><i class="bi bi-check-lg" ></i>Aprobar</button><button type="button" class="btn btn-danger btn-sm mx-1" (click)="RechazarCv(i.id)"><i class="bi bi-x-lg"></i>Rechazar </button> -->
-           <!--  <button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#modalInformacion" [routerLink]="'/homeexpert/inscritos/'">
-              <i class="bi bi-eye me-1"></i> Ver más
-            </button>-->
+            <td>
+              <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="verAlumnosRegistrados(i.id);">
+                  <i class="fas fa-fw fa-eye"></i> Ver alumnos inscritos <i class="fa-solid fa-user-graduate"></i>
+                </button>
+              </div>
+             
+            </td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-danger" (click)="confirmarAlert(i.id);">
+                  <i class="fas fa-fw fa-trash"></i> Eliminar asesoria
+                </button>
+              </div>
+             
+            </td>
         </tbody>
       </table>
     </div>
@@ -48,7 +57,31 @@
     
   </div>
 
-  <!-- Modal detalles de la solicitud -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Alumnos inscritos a este curso</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul *ngIf="students.registros.length > 0; else noAlumnos">
+          <!-- Utiliza *ngFor para recorrer los registros y mostrar los datos -->
+          <li *ngFor="let registro of students.registros">
+            {{ registro.user.mat }} | {{ registro.user.name }} {{ registro.user.lastname }}
+          </li>
+        </ul>
+        <!-- Mostrar este mensaje cuando el arreglo está vacío -->
+        <ng-template #noAlumnos>
+          <p>Aún no hay ningún alumno inscrito todavía.</p>
+        </ng-template>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
   
  

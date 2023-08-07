@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
 
@@ -10,11 +11,16 @@ import Swal from 'sweetalert2'
 })
 export class HomeExpertComponent implements OnInit{
 
-  constructor(private rou: Router, private authS: UserService) { }
+  constructor(private rou: Router, private authS: UserService, private sharedD: SharedDataService) { }
 
 
   ngOnInit(): void {
     this.getUser();
+      // Suscribirse a los cambios en los datos de usuario
+      this.sharedD.userData$.subscribe(userData => {
+        this.userD = userData;
+        console.log('Datos de usuario actualizados en HomeExpertComponent:', this.userD);
+      });
   }
 
   logOut() {
