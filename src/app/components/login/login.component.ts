@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Datos incorrectos!'
+      text: 'Datos incorrectos, ponte en contacto con el admin!'
     })
   }
 

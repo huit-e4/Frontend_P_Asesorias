@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject} from 'rxjs';
 
 
 export interface UserProfile {
@@ -508,29 +507,6 @@ export class UserService {
     }
   }
 
-  //Eliminar asesoria registrada, solo el experto puede hacerlo
-  // deleteAsesoriaById(id: number): Observable<any> {
-  //   // Obtener el token del local storage
-  //   const token = localStorage.getItem('token');
-
-  //   // Verificar si el usuario está autenticado
-  //   if (this.isAuth() && token) {
-  //     // Configurar las cabeceras con el token de autenticación
-  //     const headers = new HttpHeaders({
-  //       'Authorization': `Bearer ${token}`
-  //     });
-
-  //     // Realizar la solicitud a la API utilizando el token en las cabeceras
-  //     const url = `${this.url}/api/eliminarAsesoriaExperto/${id}`;
-
-  //     return this.http.delete(url, { headers });
-  //   } else {
-  //     // Retornar un observable vacío o throwError según tus necesidades
-  //     return new Observable();
-  //     // También podrías retornar throwError:
-  //     // return throwError('Usuario no autenticado');
-  //   }
-  // }
   deleteAsesoriaById(id: number): Observable<any> {
     // Obtener el token del local storage
     const token = localStorage.getItem('token');
@@ -572,7 +548,7 @@ export class UserService {
   }
 
 
-  //Actualizar perfil
+  //Actualizar perfil de cualquier rol
   actualizarPerfil(data: any) {
     const token = localStorage.getItem('token');
     console.log(token);
@@ -593,112 +569,109 @@ export class UserService {
     }
   }
 
+  eliminarestudiante(id: number): Observable<any> {
+    // Obtener el token del local storage
+    console.log(id);
 
-=======
-      eliminarcurso(id: number): Observable<any> {
-        // Obtener el token del local storage
-        console.log(id);
-    
-        const token = localStorage.getItem('token');
-        console.log(token);
-    
-        // Verificar si el usuario está autenticado
-        if (this.isAuth() && token) {
-    
-          console.log('Entro al if');
-          // Configurar las cabeceras con el token de autenticación
-          const headers = new HttpHeaders({
-            'Authorization': `Bearer ${token}`
-          });
-          // Realizar la solicitud a la API utilizando el token en las cabeceras
-          return this.http.delete(this.url + `/api/asesorias/${id}`,{ headers });
-        } else {
-          // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-          // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-          // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-          return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-        }
-      }
+    const token = localStorage.getItem('token');
+    console.log(token);
 
-      eliminarestudiante(id: number): Observable<any> {
-        // Obtener el token del local storage
-        console.log(id);
-    
-        const token = localStorage.getItem('token');
-        console.log(token);
-    
-        // Verificar si el usuario está autenticado
-        if (this.isAuth() && token) {
-    
-          console.log('Entro al if');
-          // Configurar las cabeceras con el token de autenticación
-          const headers = new HttpHeaders({
-            'Authorization': `Bearer ${token}`
-          });
-          // Realizar la solicitud a la API utilizando el token en las cabeceras
-          return this.http.delete(this.url + `/api/desactivaruser/${id}`,{ headers });
-        } else {
-          // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-          // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-          // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-          return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-        }
-      }
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
 
-      eliminarCV(id: number): Observable<any> {
-        // Obtener el token del local storage
-        console.log(id);
-    
-        const token = localStorage.getItem('token');
-        console.log(token);
-    
-        // Verificar si el usuario está autenticado
-        if (this.isAuth() && token) {
-    
-          console.log('Entro al if');
-          // Configurar las cabeceras con el token de autenticación
-          const headers = new HttpHeaders({
-            'Authorization': `Bearer ${token}`
-          });
-          // Realizar la solicitud a la API utilizando el token en las cabeceras
-          return this.http.delete(this.url + `/api/eliminarCv/${id}`,{ headers });
-        } else {
-          // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-          // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-          // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-          return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-        }
-      }
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/desactivaruser/${id}`, { headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
+  eliminarCV(id: number): Observable<any> {
+    // Obtener el token del local storage
+    console.log(id);
+
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/eliminarCv/${id}`, { headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
 
 
-      eliminaradmin(id: number): Observable<any> {
-        // Obtener el token del local storage
-        console.log(id);
-    
-        const token = localStorage.getItem('token');
-        console.log(token);
-    
-        // Verificar si el usuario está autenticado
-        if (this.isAuth() && token) {
-    
-          console.log('Entro al if');
-          // Configurar las cabeceras con el token de autenticación
-          const headers = new HttpHeaders({
-            'Authorization': `Bearer ${token}`
-          });
-          // Realizar la solicitud a la API utilizando el token en las cabeceras
-          return this.http.delete(this.url + `/api/desactivaruser/${id}`,{ headers });
-        } else {
-          // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
-          // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
-          // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
-          return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
-        }
-      }
+  eliminaradmin(id: number): Observable<any> {
+    // Obtener el token del local storage
+    console.log(id);
+
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/desactivaruser/${id}`, { headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
 
 
+  eliminarcurso(id: number): Observable<any> {
+    // Obtener el token del local storage
+    console.log(id);
 
-      
-  
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/asesorias/${id}`,{ headers });
+    } else {
+      // Si el usuario no está autenticado o no hay token, redirigir a la página de inicio de sesión u otra página apropiada.
+      // Por ejemplo, puedes utilizar un guard para proteger la ruta y redirigir en caso de que el usuario no esté autenticado.
+      // Aquí retornamos un observable vacío, pero puedes manejar el redireccionamiento según tu lógica.
+      return new Observable(); // Puedes también retornar throwError o un observable vacío, según tu necesidad.
+    }
+  }
+
+
 
 }
+

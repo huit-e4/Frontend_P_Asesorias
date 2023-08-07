@@ -114,7 +114,7 @@ export class EstudiantesComponent {
         if (index !== -1) {
           this.expertsArr.splice(index, 1);
         }
-        alert(`Estudiante "${estudiante.name}" eliminado correctamente.`);
+        alert(`Estudiante "${estudiante.name}" desactivado correctamente.`);
       },
       (error) => {
         console.error('Error al eliminar el estudiante:', error);

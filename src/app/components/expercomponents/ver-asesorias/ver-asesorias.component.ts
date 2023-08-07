@@ -199,32 +199,4 @@ export class VerAsesoriasComponent implements OnInit{
   }
 
 
-
-modificarCurso(curso: Curso) {
-  alert(`Modificar estudiante: ${curso.nombre}`);
-  
-}
-
-// Función para eliminar estudiante (simplemente muestra un mensaje por ahora)
-eliminarCurso(curso: Curso) {
-  this.userS.eliminarcurso(curso.id).subscribe(
-    (response: any) => {
-      // Si la API devuelve éxito, elimina el estudiante de la lista local
-      const index = this.expertsArr.findIndex((e) => e.id === curso.id);
-      if (index !== -1) {
-        this.expertsArr.splice(index, 1);
-      }
-      alert(`Curso "${curso.nombre}" eliminado correctamente.`);
-    },
-    (error) => {
-      console.error('Error al eliminar el curso:', error);
-      alert(`Error al eliminar el curso "${curso.nombre}".`);
-    }
-  );
-}
-
-
-
-
-
 }
