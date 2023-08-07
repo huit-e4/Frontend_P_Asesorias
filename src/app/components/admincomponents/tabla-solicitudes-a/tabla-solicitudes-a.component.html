@@ -33,7 +33,7 @@
               <td>{{i.id}}</td>
               <td>{{i.user.name + " " + i.user.lastname}}</td>
               <td>{{i.user.mat}}</td>
-              <td>{{i.status.estado}}</td>
+              <td class="text-success weightStatus">{{i.status.estado}}</td>
               <td>{{i.created_at | date}} </td>
               <td><div ><button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#modalInformacion" (click)="verSolicitud(i)"><i class="bi bi-eye me-1"></i>Ver más</button></div></td>
               
@@ -98,7 +98,7 @@
                 </li>
                 <li>
                   <!-- Agregar la función de eliminar -->
-                  <a class="dropdown-item text-danger" (click)="eliminarSolicitud(datosSolicitud?.id)">
+                  <a class="dropdown-item text-danger" (click)="eliminarSolicitud(datosSolicitud?.id)" style="cursor: pointer;">
                     <i class="bi bi-trash3"></i> &nbsp;Eliminar
                   </a>
                 </li>

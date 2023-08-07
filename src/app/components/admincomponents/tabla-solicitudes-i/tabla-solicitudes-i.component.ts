@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -16,7 +16,7 @@ export class TablaSolicitudesIComponent implements OnInit {
   constructor(private userS:UserService,  private sanitizer: DomSanitizer) {
 
   }
-
+  @ViewChild('closeModalButton') closeModalButtonRef!: ElementRef;
   pageSize = 9; // Cantidad de estudiantes por página
   currentPage = 1; // Página actual
   sortBy = 'default'; // Criterio de ordenación inicial
@@ -118,6 +118,12 @@ export class TablaSolicitudesIComponent implements OnInit {
           (res: any) => {
             // Mostrar los datos en la consola
             console.log('Datos de cvs:', res);
+            // if (id === res.cvid) {
+            //   this.solicitudesArr = this.solicitudesArr.filter((datoscv) => datoscv.id !== res.cvid);
+            //   this.cerrarModal()
+            // } 
+              this.solicitudesArr = this.solicitudesArr.filter((datoscv) => datoscv.id !== id);
+              this.cerrarModal()
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
               'La solicitud ha sido aceptada',
@@ -161,6 +167,8 @@ export class TablaSolicitudesIComponent implements OnInit {
           (res: any) => {
             // Mostrar los datos en la consola
             console.log('Datos de cvs:', res);
+            this.solicitudesArr = this.solicitudesArr.filter((datoscv) => datoscv.id !== id);
+            this.cerrarModal()
             swalWithBootstrapButtons.fire(
               '¡Rechazado!',
               'La solicitud ha sido rechazada',
@@ -186,5 +194,7 @@ export class TablaSolicitudesIComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 
-
+  cerrarModal(){
+    this.closeModalButtonRef.nativeElement.click();
+  }
 }
