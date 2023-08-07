@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AsesoriasComponent } from './asesorias/asesorias.component';
 import { CargarCvComponent } from './cargar-cv/cargar-cv.component';
 import { HomeExpertoComponent } from './home-experto/home-experto.component';
 import { PerfilExpertComponent } from './perfil-expert/perfil-expert.component';
@@ -41,12 +40,6 @@ const routes: Routes = [
         component: InfocvComponent,
         canActivate: [ExpertgGuard]
       },
-
-      {
-        path: 'alumnos',
-        component: AsesoriasComponent,
-        canActivate: [ExpertgGuard]
-      },
       {
         path: 'Asesoria',
         component: VerAsesoriasComponent,
@@ -72,7 +65,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AsesoriasComponent,
     CargarCvComponent,
     HomeExpertoComponent,
     PerfilExpertComponent,
@@ -88,7 +80,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [
-    AsesoriasComponent,
     CargarCvComponent,
     HomeExpertoComponent,
     PerfilExpertComponent
