@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AsesoriasComponent } from './asesorias/asesorias.component';
 import { CargarCvComponent } from './cargar-cv/cargar-cv.component';
 import { HomeExpertoComponent } from './home-experto/home-experto.component';
-import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { PerfilExpertComponent } from './perfil-expert/perfil-expert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -54,11 +53,6 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
-        path: 'inscritos',
-        component: InscripcionesComponent,
-        canActivate: [ExpertgGuard]
-      },
-      {
         path: 'verAsesorias',
         component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
@@ -81,7 +75,6 @@ const routes: Routes = [
     AsesoriasComponent,
     CargarCvComponent,
     HomeExpertoComponent,
-    InscripcionesComponent,
     PerfilExpertComponent,
     VerAsesoriasComponent,
     SubirAsesoriaComponent,
@@ -98,7 +91,6 @@ const routes: Routes = [
     AsesoriasComponent,
     CargarCvComponent,
     HomeExpertoComponent,
-    InscripcionesComponent,
     PerfilExpertComponent
   ]
 })

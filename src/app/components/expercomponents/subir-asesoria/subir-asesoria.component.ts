@@ -81,6 +81,7 @@ export class SubirAsesoriaComponent implements OnInit {
       }
     );
   }
+  
 }
 
 

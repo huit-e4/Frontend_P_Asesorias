@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
 
@@ -9,12 +10,12 @@ import Swal from 'sweetalert2'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
-  constructor(private theForm: FormBuilder, private user: UserService, private rou: Router){}
-    
+export class LoginComponent implements OnInit {
+  constructor(private theForm: FormBuilder, private user: UserService, private sharedD: SharedDataService, private rou: Router) { }
 
 
-  goodNot(){
+
+  goodNot() {
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit{
     })
   }
 
-  badNot(){
+  badNot() {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit{
     })
   }
 
-  ErrorNot(){
+  ErrorNot() {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -44,15 +45,15 @@ export class LoginComponent implements OnInit{
 
 
   loginForm: FormGroup = this.theForm.group({
-    email: ["",[Validators.required, Validators.email]],
-    password: ["",Validators.required]
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", Validators.required]
   })
 
 
   ngOnInit(): void {
   }
 
-  
+
 
 
   saveLogin() {
@@ -62,6 +63,9 @@ export class LoginComponent implements OnInit{
           // this.openSnackBar('Login successfully!!!', 'Close');
           this.user.saveToken(datos.Token);
           this.user.saveUser(datos.Usuario);
+          // En la función saveLogin(), después de autenticar al usuario y obtener los datos
+          // del usuario, actualiza los datos en el servicio SharedDataService
+          this.sharedD.updateUserData(datos.Usuario);
           console.log(datos);
           this.loginForm.reset();
 
@@ -100,7 +104,7 @@ export class LoginComponent implements OnInit{
     );
   }
 
-  validInput(campo: string){
+  validInput(campo: string) {
     return this.loginForm.controls[campo].errors && this.loginForm.controls[campo].touched
 
   }
