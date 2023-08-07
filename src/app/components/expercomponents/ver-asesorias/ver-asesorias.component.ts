@@ -154,6 +154,7 @@ export class VerAsesoriasComponent implements OnInit{
     this.userS.deleteAsesoriaById(id).subscribe(
       () => {
         console.log('Asesoría eliminada con éxito');
+        this.goodNot();
       },
       (error) => {
         console.error('Error al eliminar la asesoría:', error);
@@ -167,7 +168,7 @@ export class VerAsesoriasComponent implements OnInit{
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Algo salió mal...!'
+      text: 'No puedes borrar una asesoria si tienes alumnos inscritos!'
     })
   }
 
@@ -183,9 +184,18 @@ export class VerAsesoriasComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         this.borrarAsesoria(id); // Pasa el id como argumento a la función borrarAsesoria()
-        Swal.fire('Asesoria borrada!!!');
       }
     });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Asesoria borrada exitosamente!!!',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
 
