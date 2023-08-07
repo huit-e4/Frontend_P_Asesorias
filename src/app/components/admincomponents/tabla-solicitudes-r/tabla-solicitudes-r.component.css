@@ -145,4 +145,7 @@ strong{
     color: #585e62
 }
 
-  
+/* Agregar margen entre los botones */
+.btn-margin {
+  margin-right: 5px;
+}

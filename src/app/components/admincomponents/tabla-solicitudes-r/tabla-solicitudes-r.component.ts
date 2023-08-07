@@ -141,4 +141,44 @@ export class TablaSolicitudesRComponent implements OnInit {
     const unsafeUrl = this.userS.url + '/storage/pdf/' + pdf_filename;
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
+
+
+  eliminarSolicitud(id: number) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger mx-1',
+        cancelButton: 'btn btn-secondary mx-1'
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Eliminar solicitud?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Llamada al servicio para eliminar la solicitud
+        this.userS.eliminarCV(id).subscribe(
+          (res: any) => {
+            console.log('Solicitud eliminada:', res);
+            // Actualizar la lista de solicitudes para que desaparezca de la vista
+            this.solicitudesArr = this.solicitudesArr.filter((item) => item.id !== id);
+            swalWithBootstrapButtons.fire(
+              '¡Eliminada!',
+              'La solicitud ha sido eliminada',
+              'success'
+            );
+          },
+          (error) => {
+            console.error('Error al eliminar solicitud:', error);
+          }
+        );
+      }
+    });
+  }
 }
