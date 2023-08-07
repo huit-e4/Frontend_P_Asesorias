@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-administradores',
@@ -65,6 +66,52 @@ export class AdministradoresComponent implements OnInit{
       }
     );
   }
+
+  eliminar(id:number, ){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success mx-1',
+        cancelButton: 'btn btn-danger mx-1'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas desactivar administrador?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, aceptar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      
+      if (result.isConfirmed ) {
+        this.adminsArr.splice( -1);
+        this.userS.eliminaradmin(id).subscribe(
+          (res: any, ) => {
+            // Mostrar los datos en la consola
+            console.log('Datos de administrador:', res);
+            swalWithBootstrapButtons.fire(
+              '¡Aceptado!',
+              'Solicitud ha sido aceptada',
+              'success'
+            )
+          },
+          (error) => {
+            console.error('Error al desactivar:', error);
+          }
+        );
+      
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+      
+      }
+    })
+  }
+
 
 
   
