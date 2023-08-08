@@ -14,6 +14,7 @@ import { AdmingGuard } from 'src/app/guards/adming.guard';
 import { HomeAdminComponent } from '../home-admin/home-admin.component';
 import { TablaSolicitudesRComponent } from './tabla-solicitudes-r/tabla-solicitudes-r.component';
 import { TablaSolicitudesAComponent } from './tabla-solicitudes-a/tabla-solicitudes-a.component';
+import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
        canActivate: [AdmingGuard] 
       },
       {
+        path: 'registrarusuario', 
+        component: RegistrarusuarioComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
         path: 'cursos', 
         component: CursosComponent,
        canActivate: [AdmingGuard] 
@@ -92,7 +98,8 @@ const routes: Routes = [
     TablaInstructoresComponent,
     TablaSolicitudesIComponent,
     TablaSolicitudesRComponent,
-    TablaSolicitudesAComponent
+    TablaSolicitudesAComponent,
+    RegistrarusuarioComponent
 
   ],
   imports: [
@@ -110,7 +117,8 @@ const routes: Routes = [
     PerfilAComponent,
     TablaInstructoresComponent,
     TablaSolicitudesIComponent,
-    TablaSolicitudesRComponent
+    TablaSolicitudesRComponent,
+    RegistrarusuarioComponent
   ]
 })
 export class AdminModule { }

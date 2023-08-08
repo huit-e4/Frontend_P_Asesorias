@@ -1,25 +1,99 @@
 <div class="container mt-5">
-    <h2>Perfil de {{userD?.name}}</h2>
-    <div class="row mt-3">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/3" class="card-img-top" alt="Admin Avatar">
-          <div class="card-body">
-            <h5 class="card-title">{{userD?.name}}</h5>
-            <p class="card-text">Cargo: Estudiante</p>
-          </div>
+  <h2>Perfil de {{userD?.name}}</h2>
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="assets/3" class="card-img-top" alt="Admin Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{userD?.name}}</h5>
+          <p class="card-text">Cargo: Estudiante</p>
         </div>
       </div>
-      <div class="col-md-8">
-        <h3>Información del Perfil</h3>
-        <p><strong>Nombre:</strong> {{userD?.name}}</p>
-        <p><strong>Email:</strong> {{userD?.email}}</p>
-        <p><strong>Edad:</strong> {{userD?.edad}}</p>
-        <p><strong>Sexo:</strong> {{userD?.sexo}}</p>       
-        <p><strong>Matricula:</strong>{{userD?.mat}}</p>
+    </div>
+    <div class="col-md-8">
+      <h3>Información del Perfil</h3>
+      <p><strong>Nombre:</strong> {{userD?.name}}</p>
+      <p><strong>Email:</strong> {{userD?.email}}</p>
+      <p><strong>Edad:</strong> {{userD?.edad}}</p>
+      <p><strong>Sexo:</strong> {{userD?.sexo}}</p>
+      <p><strong>Matricula:</strong>{{userD?.mat}}</p>
 
-        <!-- Puedes agregar más información del perfil del estudiante según tus necesidades -->
+      <hr>
+      <div class="card">
+        <div class="card-body">
+          <h2>Sólo puedes actualizar estos datos</h2>
+          <form [formGroup]="perfilForm" (ngSubmit)="saveData()">
+            <div class="row">
+              <!-- Columna 1 -->
+              <div class="col-sm-4">
+                <div class="mt-2">
+                  <label class="form-label">Nombre(s)*</label>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Ingresa tu nombre"
+                    value="{{userD?.name}}">
+                  <small *ngIf="validInput('name')" class="form-text text-danger">
+                    Campo requerido.
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="mt-2">
+                  <label class="form-label">Apellido*</label>
+                  <input type="text" class="form-control" formControlName="lastname" placeholder="Ingresa tus apellidos"
+                    value="{{userD?.lastname}">
+                  <small *ngIf="validInput('lastname')" class="form-text text-danger">
+                    Campo requerido.
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="mt-2">
+                  <label class="form-label">Matrícula*</label>
+                  <input type="text" class="form-control" formControlName="mat" placeholder="Ingresa tu matricula"
+                    value="{{userD?.mat}}">
+                  <small *ngIf="validInput('mat')" class="form-text text-danger">
+                    Campo requerido.
+                  </small>
+                  <small *ngIf="validInput('mat')" class="form-text text-danger">
+                    Deben ser 10 caracteres
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="mt-2">
+                  <label class="form-label">Correo*</label>
+                  <input type="text" class="form-control" formControlName="email" placeholder="Ingresa tu correo"
+                    value="{{userD?.email}}">
+                  <small *ngIf="validInput('email')" class="form-text text-danger">
+                    Campo requerido.
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="mt-2">
+                  <label class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" formControlName="password"
+                    placeholder="Pon una password segura de 10 caracteres">
+                  <small class="form-text text-primary">
+                    Si no quieres cambiar tu password, deja el campo vacio.
+                  </small>
+                </div>
+              </div>
+
+
+            </div>
+            <br>
+            <button type="submit" [disabled]="perfilForm.invalid" class="btn btn-primary btn-block"><i
+                class="fa-solid fa-spinner"></i> Actualizar datos</button>
+
+          </form>
+        </div>
       </div>
+
+      <!-- Puedes agregar más información del perfil del estudiante según tus necesidades -->
     </div>
   </div>
-  
+</div>

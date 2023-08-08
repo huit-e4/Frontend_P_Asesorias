@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 interface Curso {
   id: number;
@@ -144,6 +145,51 @@ getCoursesForCurrentPage(): Curso[] {
     );
   }
   
+
+  eliminar(id:number, ){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success mx-1',
+        cancelButton: 'btn btn-danger mx-1'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas desactivar asesoria?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, aceptar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      
+      if (result.isConfirmed ) {
+        this.expertsArr.splice( -1);
+        this.userS.eliminarcurso(id).subscribe(
+          (res: any, ) => {
+            // Mostrar los datos en la consola
+            console.log('Datos de asesoria :', res);
+            swalWithBootstrapButtons.fire(
+              '¡Aceptado!',
+              'Solicitud ha sido aceptada',
+              'success'
+            )
+          },
+          (error) => {
+            console.error('Error al desactivar:', error);
+          }
+        );
+      
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+      
+      }
+    })
+  }
 
   
   

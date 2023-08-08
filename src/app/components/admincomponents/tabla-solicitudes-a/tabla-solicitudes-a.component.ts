@@ -182,5 +182,7 @@ export class TablaSolicitudesAComponent implements OnInit{
     });
   }
 
+
+  
   
 }
