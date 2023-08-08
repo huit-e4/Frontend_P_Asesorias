@@ -32,12 +32,9 @@
             <td>{{ curso.precio }}</td>
             <td>{{ curso.active ? 'Si' : 'No' }}</td>
             <td>
-              <!-- Botón para modificar -->
-              <button type="button" class="btn btn-primary btn-sm" (click)="modificarCurso(curso)">
-                <i class="bi bi-pencil"></i> Modificar
-              </button>
+
               <!-- Botón para eliminar -->
-              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCurso(curso)">
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(curso.id)">
                 <i class="bi bi-trash"></i> Eliminar
               </button>
             </td>

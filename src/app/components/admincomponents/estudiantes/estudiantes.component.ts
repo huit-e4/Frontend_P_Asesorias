@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 interface Estudiante {
   id: number;
@@ -135,6 +136,51 @@ export class EstudiantesComponent {
         console.error('Error al obtener los expertos:', error);
       }
     );
+  }
+
+  eliminar(id:number, ){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success mx-1',
+        cancelButton: 'btn btn-danger mx-1'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas desactivar estudiante?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, aceptar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      
+      if (result.isConfirmed ) {
+        this.expertsArr.splice( -1);
+        this.userS.eliminarestudiante(id).subscribe(
+          (res: any, ) => {
+            // Mostrar los datos en la consola
+            console.log('Datos de estudiante:', res);
+            swalWithBootstrapButtons.fire(
+              '¡Aceptado!',
+              'Solicitud ha sido aceptada',
+              'success'
+            )
+          },
+          (error) => {
+            console.error('Error al desactivar:', error);
+          }
+        );
+      
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+      
+      }
+    })
   }
 
 }
