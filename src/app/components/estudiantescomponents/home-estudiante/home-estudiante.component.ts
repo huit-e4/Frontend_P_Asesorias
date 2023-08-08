@@ -78,13 +78,13 @@ export class HomeEstudianteComponent implements OnInit {
 
   confirmarAlert(id: number) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estás seguro de unirte al curso?',
+      text: "No puedes revertirlo!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, do it!'
+      confirmButtonText: 'Si, quiero!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.unirmeAlCurso(id); // Pasa el id como argumento a la función borrarAsesoria()
