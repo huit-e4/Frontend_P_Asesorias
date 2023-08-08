@@ -1,144 +1,98 @@
 <div class="breadcrumb-wrapper breadcrumb-contacts">
-    <div class=" margintop-div1">
-      <h3>Administradores</h3>
-  
-    
-    </div>
-<!--   
-    <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-add-contact"> Agregar administrador
-      </button>
-    </div>
-  </div> -->
+  <div class="margintop-div1">
+    <h3>Administradores</h3>
+  </div>
+</div>
 
 <!-- Contactos cards -->
 
 <div class="row mt-4">
+  <div class="col-lg-6 col-xl-4" *ngFor="let a of adminsArr">
+    <div class="card card-default p-4">
+      <a href="javascript:0" class="media text-secondary" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(a)">
+        <img src="assets/perfil-ad.jpg" class="mr-3 img-fluid rounded" alt="Avatar Image">
+        <div class="media-body">
+          <h5 class="mt-0 mb-2 text-dark">{{a.name + " " + a.lastname}}</h5>
+          <ul class="list-unstyled">
+            <li class="d-flex mb-1">
+              <i class="mdi mdi-map mr-1"></i>
+              <span>{{a.mat}}</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <div class="button-container mt-3">
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(a)">
+            <i class="bi bi-eye"></i> Ver más
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="eliminar(a.id)">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="col-lg-6 col-xl-4" *ngFor="let a of adminsArr">
-      <div class="card card-default p-4">
-        <a href="javascript:0" class="media text-secondary" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(a)">
-            <img src="assets/perfil-ad.jpg" class="mr-3 img-fluid rounded" alt="Avatar Image">
-  
-          <div class="media-body">
-            <h5 class="mt-0 mb-2 text-dark">{{a.name+" "+a.lastname}}</h5>
-  
-            <ul class="list-unstyled">
-              <li class="d-flex mb-1">
-                <i class="mdi mdi-map mr-1"></i>
+<!-- modal de contacto -->
 
-                <span>{{a.mat}}</span>
-              </li>
-             
-  
-              <!-- <li class="d-flex mb-1">
-                <i class="mdi mdi-email mr-1"></i>
-                <span>{{a.email}}</span>
-              </li>
-  
-              <li class="d-flex mb-1">
-                <i class="mdi mdi-phone mr-1"></i>
-                <span>+52 991 99 632</span>
-              </li> -->
-            </ul>
-          </div>
-        </a>
-        <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(a.id)">
-          <i class="bi bi-trash"></i> Eliminar
+<div class="modal fade" id="modal-contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-end border-bottom-0">
+        <div class="dropdown">
+          <button class="btn-dots-icon classdots" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item text-danger"><i class="bi bi-trash3 "></i> &nbsp; Eliminar</a></li>
+          </ul>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="mdi mdi-close"></i>
         </button>
       </div>
-    </div>
-
-  </div>
-
-
-
-
-
-
-  <!-- modal de contacto -->
-
-  <div class="modal fade" id="modal-contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header justify-content-end border-bottom-0">
-          <!-- <button type="button" class="btn-edit-icon" data-dismiss="modal" aria-label="Close">
-            <i class="mdi mdi-pencil"></i>
-          </button> -->
-
-          <div class="dropdown">
-            <button class="btn-dots-icon classdots" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-  
-          
-                <!-- <a class="dropdown-item" href="#">Editar</a> -->
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownMenuButton" >
-                  <li><a class="dropdown-item text-danger" ><i class="bi bi-trash3 "></i> &nbsp; Eliminar</a></li>
-                </ul>
-            
-        
-          </div>
-  
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <i class="mdi mdi-close"></i>
-          </button>
-        </div>
-  
-        <div class="modal-body pt-0">
-          <div class="row no-gutters">
-            <div class="col-md-6">
-              <div class="profile-content-left px-4">
-                <div class="card text-center widget-profile px-0 border-0 ">
-                  <div class="card-img mx-auto rounded-circle">
-                    <img src="assets/perfil-ad.jpg" alt="user image" class="rounded-circle">
-                  </div>
-  
-                  <div class="card-body">
-                    <h4 class="py-2 text-dark">{{datosModal?.name+" "+datosModal?.lastname}}</h4>
-                    <p>{{datosModal?.email}}</p>
-                    <!-- <a class="btn btn-primary btn-pill btn-lg my-4" href="#">Enviar mensaje</a> -->
-                  </div>
+      <div class="modal-body pt-0">
+        <div class="row no-gutters">
+          <div class="col-md-6">
+            <div class="profile-content-left px-4">
+              <div class="card text-center widget-profile px-0 border-0 ">
+                <div class="card-img mx-auto rounded-circle">
+                  <img src="assets/perfil-ad.jpg" alt="user image" class="rounded-circle">
                 </div>
-
-                <div class="mt-4"><span><p>&nbsp;</p></span></div>
-  
-                <div class="d-flex justify-content-evenly mt-5">
-                  <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2">Estado</h6>
-                    <p >Activo</p>
-                  </div>
-
-                  <!-- <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2"></h6>
-                    <p>&nbsp; &nbsp;</p>
-                  </div>
-                   -->
-                  <div class="text-center pb-4">
-                    <h6 class="text-dark pb-2">Edad</h6>
-                    <p>{{datosModal?.edad}}</p>
-                  </div>
-  
+                <div class="card-body">
+                  <h4 class="py-2 text-dark">{{datosModal?.name+" "+datosModal?.lastname}}</h4>
+                  <p>{{datosModal?.email}}</p>
+                </div>
+              </div>
+              <div class="mt-4"><span><p>&nbsp;</p></span></div>
+              <div class="d-flex justify-content-evenly mt-5">
+                <div class="text-center pb-4">
+                  <h6 class="text-dark pb-2">Estado</h6>
+                  <p>Activo</p>
+                </div>
+                <div class="text-center pb-4">
+                  <h6 class="text-dark pb-2">Edad</h6>
+                  <p>{{datosModal?.edad}}</p>
                 </div>
               </div>
             </div>
-  
-            <div class="col-md-6">
-              <div class="contact-info px-4">
-                <h4 class="text-dark mb-1">Detalles del perfil</h4>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Correo electrónico</p>
-                <p>{{datosModal?.email}}</p>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Matrícula</p>
-                <p>{{datosModal?.mat}}</p>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Fecha de registro</p>
-                <p>{{datosModal?.created_at|date}}</p>
-                <p class="text-dark font-weight-medium pt-4 mb-2">Sexo</p>
-                <p>{{datosModal?.sexo}}</p>
-              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="contact-info px-4">
+              <h4 class="text-dark mb-1">Detalles del perfil</h4>
+              <p class="text-dark font-weight-medium pt-4 mb-2">Correo electrónico</p>
+              <p>{{datosModal?.email}}</p>
+              <p class="text-dark font-weight-medium pt-4 mb-2">Matrícula</p>
+              <p>{{datosModal?.mat}}</p>
+              <p class="text-dark font-weight-medium pt-4 mb-2">Fecha de registro</p>
+              <p>{{datosModal?.created_at|date}}</p>
+              <p class="text-dark font-weight-medium pt-4 mb-2">Sexo</p>
+              <p>{{datosModal?.sexo}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
