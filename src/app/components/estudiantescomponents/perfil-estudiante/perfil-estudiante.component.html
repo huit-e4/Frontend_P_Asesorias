@@ -1,24 +1,68 @@
-<div class="container mt-5">
-  <h2>Perfil de {{userD?.name}}</h2>
-  <div class="row mt-3">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="assets/3" class="card-img-top" alt="Admin Avatar">
-        <div class="card-body">
-          <h5 class="card-title">{{userD?.name}}</h5>
-          <p class="card-text">Cargo: Estudiante</p>
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://arakmu.ac.ir/images/school-health/fa/page/editor/2019/1567851779-item-icon.png" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{userD?.name}} {{userD?.lastname}}</h5>
+            <p class="text-muted mb-1">Estudiante</p>
+            <div class="d-flex justify-content-center mb-2">
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-8">
-      <h3>Información del Perfil</h3>
-      <p><strong>Nombre:</strong> {{userD?.name}}</p>
-      <p><strong>Email:</strong> {{userD?.email}}</p>
-      <p><strong>Edad:</strong> {{userD?.edad}}</p>
-      <p><strong>Sexo:</strong> {{userD?.sexo}}</p>
-      <p><strong>Matricula:</strong>{{userD?.mat}}</p>
-
-      <hr>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{userD?.name}} {{userD?.lastname}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{userD?.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Edad</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{userD?.edad}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Sexo</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{userD?.sexo}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Matricula</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{userD?.mat}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card">
         <div class="card-body">
           <h2>Sólo puedes actualizar estos datos</h2>
@@ -28,8 +72,8 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Nombre(s)*</label>
-                  <input type="text" class="form-control" formControlName="name" placeholder="Ingresa tu nombre"
-                    value="{{userD?.name}}">
+                  <input type="text" class="form-control" formControlName="name"
+                    placeholder="Ingresa tu nombre" value="{{userD?.name}}">
                   <small *ngIf="validInput('name')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -39,8 +83,8 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Apellido*</label>
-                  <input type="text" class="form-control" formControlName="lastname" placeholder="Ingresa tus apellidos"
-                    value="{{userD?.lastname}">
+                  <input type="text" class="form-control" formControlName="lastname"
+                    placeholder="Ingresa tus apellidos" value="{{userD?.lastname}">
                   <small *ngIf="validInput('lastname')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -50,11 +94,11 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Matrícula*</label>
-                  <input type="text" class="form-control" formControlName="mat" placeholder="Ingresa tu matricula"
-                    value="{{userD?.mat}}">
+                  <input type="text" class="form-control" formControlName="mat"
+                    placeholder="Ingresa tu matricula" value="{{userD?.mat}}">
                   <small *ngIf="validInput('mat')" class="form-text text-danger">
                     Campo requerido.
-                  </small>
+                  </small> 
                   <small *ngIf="validInput('mat')" class="form-text text-danger">
                     Deben ser 10 caracteres
                   </small>
@@ -64,8 +108,8 @@
               <div class="col-sm-6">
                 <div class="mt-2">
                   <label class="form-label">Correo*</label>
-                  <input type="text" class="form-control" formControlName="email" placeholder="Ingresa tu correo"
-                    value="{{userD?.email}}">
+                  <input type="text" class="form-control" formControlName="email"
+                    placeholder="Ingresa tu correo" value="{{userD?.email}}">
                   <small *ngIf="validInput('email')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -76,10 +120,10 @@
                 <div class="mt-2">
                   <label class="form-label">Contraseña</label>
                   <input type="password" class="form-control" formControlName="password"
-                    placeholder="Pon una password segura de 10 caracteres">
-                  <small class="form-text text-primary">
-                    Si no quieres cambiar tu password, deja el campo vacio.
-                  </small>
+                    placeholder="Pon una password segura de 10 caracteres" >
+                    <small class="form-text text-primary">
+                      Si no quieres cambiar tu password, deja el campo vacio.
+                    </small>
                 </div>
               </div>
 
@@ -92,8 +136,6 @@
           </form>
         </div>
       </div>
-
-      <!-- Puedes agregar más información del perfil del estudiante según tus necesidades -->
     </div>
   </div>
-</div>
+</section>
