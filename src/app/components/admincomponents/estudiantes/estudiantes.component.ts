@@ -165,7 +165,7 @@ export class EstudiantesComponent {
             console.log('Datos de estudiante:', res);
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
-              'Solicitud ha sido aceptada',
+              'Estudiante a sido desactivado',
               'success'
             )
           },

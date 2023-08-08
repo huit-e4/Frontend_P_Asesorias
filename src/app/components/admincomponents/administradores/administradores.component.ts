@@ -94,7 +94,7 @@ export class AdministradoresComponent implements OnInit{
             console.log('Datos de administrador:', res);
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
-              'Solicitud ha sido aceptada',
+              'Administrador a sido desactivado',
               'success'
             )
           },
