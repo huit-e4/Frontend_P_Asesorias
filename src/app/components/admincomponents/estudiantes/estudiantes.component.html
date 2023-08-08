@@ -37,12 +37,8 @@
           <td>{{estudiante.sexo}}</td>
           <td>{{ estudiante.email }}</td>
           <td>
-            <!-- Botón para modificar -->
-            <button type="button" class="btn btn-primary btn-sm" (click)="modificarEstudiante(estudiante)">
-              <i class="bi bi-pencil"></i> Modificar
-            </button>
             <!-- Botón para eliminar -->
-            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarEstudiante(estudiante)">
+            <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(estudiante.id)">
               <i class="bi bi-trash"></i> Desactivar
             </button>
           </td>
