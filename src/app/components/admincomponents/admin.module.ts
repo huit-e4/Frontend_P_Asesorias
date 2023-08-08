@@ -15,6 +15,11 @@ import { HomeAdminComponent } from '../home-admin/home-admin.component';
 import { TablaSolicitudesRComponent } from './tabla-solicitudes-r/tabla-solicitudes-r.component';
 import { TablaSolicitudesAComponent } from './tabla-solicitudes-a/tabla-solicitudes-a.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
+import { DesactivadosComponent } from './desactivados/desactivados.component';
+import { AdminDesactivadosComponent } from './admin-desactivados/admin-desactivados.component';
+import { StudentsDesactivadosComponent } from './students-desactivados/students-desactivados.component';
+import { InstructoresDesactivadosComponent } from './instructores-desactivados/instructores-desactivados.component';
+import { AsesoriasDesactivadosdosComponent } from './asesorias-desactivadosdos/asesorias-desactivadosdos.component';
 
 const routes: Routes = [
   {
@@ -76,6 +81,31 @@ const routes: Routes = [
        canActivate: [AdmingGuard] 
       },
       {
+        path: 'desactivados', 
+        component: DesactivadosComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'admDesactivados', 
+        component: AdminDesactivadosComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'estDesactivados', 
+        component: StudentsDesactivadosComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'AseDesactivados', 
+        component: AsesoriasDesactivadosdosComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
+        path: 'insDesactivados', 
+        component: InstructoresDesactivadosComponent,
+       canActivate: [AdmingGuard] 
+      },
+      {
         path:'**',
         redirectTo:''
       }
@@ -99,7 +129,12 @@ const routes: Routes = [
     TablaSolicitudesIComponent,
     TablaSolicitudesRComponent,
     TablaSolicitudesAComponent,
-    RegistrarusuarioComponent
+    RegistrarusuarioComponent,
+    DesactivadosComponent,
+    AdminDesactivadosComponent,
+    StudentsDesactivadosComponent,
+    InstructoresDesactivadosComponent,
+    AsesoriasDesactivadosdosComponent
 
   ],
   imports: [
