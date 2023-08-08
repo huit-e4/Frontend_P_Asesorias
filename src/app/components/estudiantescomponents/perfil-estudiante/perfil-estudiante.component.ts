@@ -56,7 +56,9 @@ export class PerfilEstudianteComponent {
         name: this.perfilForm.get('name')!.value,
         lastname: this.perfilForm.get('lastname')!.value,
         mat: this.perfilForm.get('mat')!.value,
-        email: this.perfilForm.get('email')!.value
+        email: this.perfilForm.get('email')!.value,
+        password: this.perfilForm.get('password')!.value // Incluso si es una cadena vacía, se enviará
+
       };
       this.userS.actualizarPerfil(formData).subscribe(
         () => {

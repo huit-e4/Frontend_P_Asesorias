@@ -1,6 +1,9 @@
 import { OnInit } from '@angular/core';
 import { Component, ElementRef } from '@angular/core';
+import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-home-estudiante',
@@ -11,7 +14,7 @@ export class HomeEstudianteComponent implements OnInit {
   ngOnInit(): void {
     this.GetCursos();
   }
-  constructor(private userS:UserService, private elementRef: ElementRef){
+  constructor(private userS:UserService, private elementRef: ElementRef, private us: StudentsService){
 
   }
   ngAfterViewInit() {
@@ -48,4 +51,55 @@ export class HomeEstudianteComponent implements OnInit {
     console.log(Userdata);
     this.datosModal=Userdata;
   }
+
+
+  //Unirse al curso
+  unirmeAlCurso(id: number) {
+    this.us.registrarCurso(id).subscribe(
+      () => {
+        console.log('Registro exitoso');
+        this.goodNot();
+      },
+      (error) => {
+        console.error('Error al intentar registrarse:', error);
+        this.badNot();
+      }
+    );
+  }
+
+
+  badNot() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Solo te puedes unir una vez al curso papu!'
+    })
+  }
+
+  confirmarAlert(id: number) {
+    Swal.fire({
+      title: '¿Estás seguro de unirte al curso?',
+      text: "No puedes revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, quiero!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.unirmeAlCurso(id); // Pasa el id como argumento a la función borrarAsesoria()
+      }
+    });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Alta de curso exitosa!!!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
 }

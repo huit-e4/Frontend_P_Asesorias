@@ -20,6 +20,7 @@
         <img src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-12.png" class="mr-3 img-fluid rounded" alt="Avatar Image">
         <div class="media-body">
           <h5 class="mt-0 mb-2 text-dark">{{a.nombre}}</h5>
+          <!-- <h5 class="mt-0 mb-2 text-dark">{{a.id}}</h5> -->
           <ul class="list-unstyled">
             <li class="d-flex mb-1">
               <i class="mdi mdi-email mr-1"></i>
@@ -36,7 +37,7 @@
           <!-- Add "Ver detalles" button -->
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="button" class="btn btn-success btn-sm"> <i class="fas fa-fw fa-plus"></i>/i> Inscribirme</button>
+            <button type="button" class="btn btn-outline-success btn-sm" (click)="confirmarAlert(a.id);"> <i class="fas fa-fw fa-plus"></i> Inscribirme</button>
           </div>
         </div>
       </a>
