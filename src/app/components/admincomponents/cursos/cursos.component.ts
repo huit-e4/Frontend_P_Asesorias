@@ -173,7 +173,7 @@ getCoursesForCurrentPage(): Curso[] {
             console.log('Datos de asesoria :', res);
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
-              'Solicitud ha sido aceptada',
+              'Curso a sido desactivado',
               'success'
             )
           },
