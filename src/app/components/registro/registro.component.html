@@ -1,149 +1,152 @@
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/login" routerLinkActive="active">
-            <i class="fas fa-sign-in-alt"></i> Login
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/register" routerLinkActive="active">
-            <i class="fas fa-user-plus"></i> Registrarse
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          <div class="registro-container">
-            <h1 class="text-center">Crea tu cuenta</h1>
-            <div class="progress mt-3">
-              <div class="progress-bar" [style.width.%]="progress" role="progressbar" [attr.aria-valuenow]="progress"
-                aria-valuemin="0" aria-valuemax="100">
-                Es tu progreso del form {{ progress }}%
+  <div class="login-box">
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="logo">
+                  <span class="logo-font">Go</span>Snippets
               </div>
+          </div>
+      </div>
+      <div class="card-body">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="registro-container">
+              <h2 class="text-center">Formulario de Resgistro</h2>
+              <div class="progress mt-3">
+                <div class="progress-bar" [style.width.%]="progress" role="progressbar" [attr.aria-valuenow]="progress"
+                  aria-valuemin="0" aria-valuemax="100">
+                  Es tu progreso del form {{ progress }}%
+                </div>
+              </div>
+   
             </div>
-            <form [formGroup]="registerForm" (ngSubmit)="registerData()">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label">Nombre*:</label>
-                    <input type="text" class="form-control" formControlName="name"
-                      [ngClass]="{ 'error-field': registerForm.get('name')?.invalid && registerForm.get('name')?.touched }"
-                      placeholder="Escribe tu nombre" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
-                      class="error-message">El nombre es requerido</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Apellidos*:</label>
-                    <input type="text" class="form-control" formControlName="lastname"
-                      [ngClass]="{ 'error-field': registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched }"
-                      placeholder="Escribe tus apellidos" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched"
-                      class="error-message">Tu apellidos es requerido</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Sexo*:</label>
-                    <select class="form-control" formControlName="sexo"
-                      [ngClass]="{ 'error-field': registerForm.get('sexo')?.invalid && registerForm.get('sexo')?.touched }"
-                      (change)="updateProgress()">
-                      <option value="" disabled selected>Seleccione su sexo</option>
-                      <option value="masculino">Masculino</option>
-                      <option value="femenino">Femenino</option>
-                    </select>
-                    <div *ngIf="registerForm.get('sexo')?.invalid && registerForm.get('sexo')?.touched"
-                      class="error-message">El sexo es requerido</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Matrícula*:</label>
-                    <input type="text" class="form-control" formControlName="mat"
-                      [ngClass]="{ 'error-field': registerForm.get('mat')?.invalid && registerForm.get('mat')?.touched }"
-                      placeholder="Escribe tu matricula" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('mat')?.invalid && registerForm.get('mat')?.touched"
-                      class="error-message">Tu matricula es requerido con 10 caracteres</div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label">Email*:</label>
-                    <input type="email" class="form-control" formControlName="email"
-                      [ngClass]="{ 'error-field': registerForm.get('email')?.invalid && registerForm.get('email')?.touched }"
-                      placeholder="Escribe tu correo" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
-                      class="error-message">Tu email es requerido</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Password*:</label>
-                    <input type="password" class="form-control" formControlName="password"
-                      [ngClass]="{ 'error-field': registerForm.get('password')?.invalid && registerForm.get('password')?.touched }"
-                      placeholder="Escribe una password segura" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
-                      class="error-message">Tu password es requerido</div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Confirmar Password*:</label>
-                    <input type="password" class="form-control" formControlName="cpassword"
-                      [ngClass]="{ 'error-field': registerForm.get('cpassword')?.invalid && registerForm.get('cpassword')?.touched }"
-                      placeholder="Confirma tu password de nuevo" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('cpassword')?.invalid && registerForm.get('cpassword')?.touched"
-                      class="error-message">La confirmación es requerida</div>
-                    <div
-                      *ngIf="this.registerForm.get('cpassword')?.dirty && this.registerForm.hasError('passwordsNotMatching')"
-                      class="error-message">La password no coincide</div>
-                  </div>
-
-
-
-                  <div class="mb-3">
-                    <label class="form-label">Edad*:</label>
-                    <input type="number" class="form-control" formControlName="edad"
-                      [ngClass]="{ 'error-field': registerForm.get('edad')?.invalid && registerForm.get('edad')?.touched }"
-                      placeholder="Escribe tu edad bro" (change)="updateProgress()">
-                    <div *ngIf="registerForm.get('edad')?.invalid && registerForm.get('edad')?.touched"
-                      class="error-message">Tu edad es requerido</div>
-                  </div>
-
-
-
-                  <div class="mb-3">
-                    <label class="form-label">Rol*:</label>
-                    <select class="form-control" formControlName="rol_id"
-                      [ngClass]="{ 'error-field': registerForm.get('rold_id')?.invalid && registerForm.get('rold_id')?.touched }"
-                      (change)="updateProgress()">
-                      <option value="" disabled selected>Seleccione su rol</option>
-                      <option value="1">Administrador</option>
-                      <option value="2">Experto</option>
-                      <option value="3">Estudiante</option>
-                    </select>
-                    <div *ngIf="registerForm.get('rol_id')?.invalid && registerForm.get('rol_id')?.touched"
-                      class="error-message">El Rol es requerido</div>
-                  </div>
-
-                  
-
-
-                </div>
-              </div>
-              <div class="mb-12">
-                <label class="form-check-label">
-                  <input type="checkbox" formControlName="termsAndConditions">
-                  Acepto los términos y condiciones
-                </label>
-              </div>
-              <div class="text-center mt-3">
-                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar</button>
-              </div>
-            </form>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+          <div class="col-sm-6">
+              <br>
+              <form [formGroup]="registerForm" (ngSubmit)="registerData()">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Nombre*:</label>
+                        <input type="text" class="form-control" formControlName="name"
+                          [ngClass]="{ 'error-field': registerForm.get('name')?.invalid && registerForm.get('name')?.touched }"
+                          placeholder="Escribe tu nombre" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+                          class="error-message" class="form-text text-danger">El nombre es requerido</div>
+                      </div>
+    
+                      <div class="mb-3">
+                        <label class="form-label">Apellidos*:</label>
+                        <input type="text" class="form-control" formControlName="lastname"
+                          [ngClass]="{ 'error-field': registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched }"
+                          placeholder="Escribe tus apellidos" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('lastname')?.invalid && registerForm.get('lastname')?.touched"
+                          class="error-message" class="form-text text-danger">Tu apellidos es requerido</div>
+                      </div>
+    
+                      <div class="mb-3">
+                        <label class="form-label">Sexo*:</label>
+                        <select class="form-control" formControlName="sexo"
+                          [ngClass]="{ 'error-field': registerForm.get('sexo')?.invalid && registerForm.get('sexo')?.touched }"
+                          (change)="updateProgress()">
+                          <option value="" disabled selected>Seleccione su sexo</option>
+                          <option value="masculino">Masculino</option>
+                          <option value="femenino">Femenino</option>
+                        </select>
+                        <div *ngIf="registerForm.get('sexo')?.invalid && registerForm.get('sexo')?.touched"
+                          class="error-message" class="form-text text-danger">El sexo es requerido</div>
+                      </div>
+    
+                      <div class="mb-3">
+                        <label class="form-label">Matrícula*:</label>
+                        <input type="text" class="form-control" formControlName="mat"
+                          [ngClass]="{ 'error-field': registerForm.get('mat')?.invalid && registerForm.get('mat')?.touched }"
+                          placeholder="Escribe tu matricula" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('mat')?.invalid && registerForm.get('mat')?.touched"
+                          class="error-message" class="form-text text-danger">Tu matricula es requerido con 10 caracteres</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label">Email*:</label>
+                        <input type="email" class="form-control" formControlName="email"
+                          [ngClass]="{ 'error-field': registerForm.get('email')?.invalid && registerForm.get('email')?.touched }"
+                          placeholder="Escribe tu correo" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                          class="error-message" class="form-text text-danger">Tu email es requerido</div>
+                      </div>
+    
+                      <div class="mb-3">
+                        <label class="form-label">Password*:</label>
+                        <input type="password" class="form-control" formControlName="password"
+                          [ngClass]="{ 'error-field': registerForm.get('password')?.invalid && registerForm.get('password')?.touched }"
+                          placeholder="Escribe una password segura" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                          class="error-message" class="form-text text-danger">Tu password es requerido</div>
+                      </div>
+    
+                      <div class="mb-3">
+                        <label class="form-label">Confirmar Password*:</label>
+                        <input type="password" class="form-control" formControlName="cpassword"
+                          [ngClass]="{ 'error-field': registerForm.get('cpassword')?.invalid && registerForm.get('cpassword')?.touched }"
+                          placeholder="Confirma tu password de nuevo" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('cpassword')?.invalid && registerForm.get('cpassword')?.touched"
+                          class="error-message" class="form-text text-danger">La confirmación es requerida</div>
+                        <div
+                          *ngIf="this.registerForm.get('cpassword')?.dirty && this.registerForm.hasError('passwordsNotMatching')"
+                          class="error-message" class="form-text text-danger">La password no coincide</div>
+                      </div>
+    
+    
+    
+                      <div class="mb-3">
+                        <label class="form-label">Edad*:</label>
+                        <input type="number" class="form-control" formControlName="edad"
+                          [ngClass]="{ 'error-field': registerForm.get('edad')?.invalid && registerForm.get('edad')?.touched }"
+                          placeholder="Escribe tu edad bro" (change)="updateProgress()">
+                        <div *ngIf="registerForm.get('edad')?.invalid && registerForm.get('edad')?.touched"
+                          class="error-message" class="form-text text-danger">Tu edad es requerido</div>
+                      </div>
+    
+    
+    
+                      <div class="mb-3">
+                        <label class="form-label">Rol*:</label>
+                        <select class="form-control" formControlName="rol_id"
+                          [ngClass]="{ 'error-field': registerForm.get('rold_id')?.invalid && registerForm.get('rold_id')?.touched }"
+                          (change)="updateProgress()">
+                          <option value="" disabled selected>Seleccione su rol</option>
+                          <option value="1">Administrador</option>
+                          <option value="2">Experto</option>
+                          <option value="3">Estudiante</option>
+                        </select>
+                        <div *ngIf="registerForm.get('rol_id')?.invalid && registerForm.get('rol_id')?.touched"
+                          class="error-message">El Rol es requerido</div>
+                      </div>
+    
+                      
+    
+    
+                    </div>
+                  </div>
+                  <div class="mb-12">
+                    <label class="form-check-label">
+                      <input type="checkbox" formControlName="termsAndConditions">
+                      Acepto los términos y condiciones
+                    </label>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button  type="submit" class="btn btn-primary " [disabled]="registerForm.invalid">Registrar</button>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <div class="float-right">Ya tienes cuenta? <a href="login">Inicia sesión</a></div>
+                </div>
+                </form>
+          </div>
+      </div>
   </div>
 </div>

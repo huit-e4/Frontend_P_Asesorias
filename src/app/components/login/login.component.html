@@ -1,49 +1,70 @@
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/login" routerLinkActive="active">
-            <i class="fas fa-sign-in-alt"></i>  Login
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/register" routerLinkActive="active">
-            <i class="fas fa-user-plus"></i> Registrarse
-          </a>
-        </li> 
-      </ul>
-    </div>
-    <div class="card-body">
-      <div class="login-container">
-        <div class="logo-container">
-          <img src="assets/access.png" alt="Logo" class="img-fluid">
-        </div>
-        <h1 class="text-center">Iniciar sesión</h1>
-        <form [formGroup]="loginForm" (ngSubmit)="saveLogin()">
-          <div class="form-group">
-            <label for="email">Email*</label>
-            <input type="text" id="email" formControlName="email" placeholder="Ingrese su email">
-            <small *ngIf="validInput('email')" class="form-text text-danger">
-              Email requerido.
-            </small>
+  <div class="login-box">
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="logo">
+                  <span class="logo-font">UT</span>Asesorias
+              </div>
           </div>
-          
-          <div class="form-group">
-            <label for="password">Password*</label>
-            <input type="password" id="password" formControlName="password" placeholder="Ingrese su contraseña">
-            <small *ngIf="validInput('password')" class="form-text text-danger">
-              Password requerido
-            </small>
-          </div>
-          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block">Entrar</button>
-        </form>
       </div>
-    </div>
+      <div class="row">
+          <div class="col-sm-6">
+              <br>
+              <h3 class="header-title">LOGIN</h3>
+              <form [formGroup]="loginForm" class="login-form" (ngSubmit)="saveLogin()">
+                  <div class="form-group">
+                    <input class="form-control" type="text" id="email" formControlName="email" placeholder="Ingrese su email">
+                    <div *ngIf="validInput('email')" class="form-text text-danger">Email requerido
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <input class="form-control" type="password" id="password" formControlName="password" placeholder="Ingrese su contraseña">
+                    <div *ngIf="validInput('password')" class="form-text text-danger">Password requerido
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block">Entrar</button>
+                 </div>
+                 <div class="form-group">
+                  <div class="text-center">Aún no tienes cuenta? <a href="register">Registrte ahora</a></div>
+              </div>
+                </form>
+          </div>
+          <div class="col-sm-6 hide-on-mobile">
+              <div id="demo" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ul class="carousel-indicators">
+                      <li data-target="#demo" data-slide-to="0" class="active"></li>
+                      <li data-target="#demo" data-slide-to="1"></li>
+                  </ul>
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <div class="slider-feature-card">
+                              <img src="https://i.imgur.com/YMn8Xo1.png" alt="">
+                              <h3 class="slider-title">Title Here</h3>
+                              <p class="slider-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, odio!</p>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <div class="slider-feature-card">
+                              <img src="https://i.imgur.com/Yi5KXKM.png" alt="">
+                              <h3 class="slider-title">Title Here</h3>
+                              <p class="slider-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, debitis?</p>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Left and right controls -->
+                  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                      <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#demo" data-slide="next">
+                      <span class="carousel-control-next-icon"></span>
+                  </a>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
-<!-- <pre>{{ loginForm.value | json }}</pre>
-<hr> -->
-
-
-
