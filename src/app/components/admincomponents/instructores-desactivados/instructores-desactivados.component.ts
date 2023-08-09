@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,7 +13,7 @@ export class InstructoresDesactivadosComponent {
   
   ngOnInit(): void {
     
-
+    this.getInstructores()
   }
 
   
@@ -25,11 +26,11 @@ export class InstructoresDesactivadosComponent {
   // Función para cambiar el criterio de ordenación
   changeSortBy(criteria: string) {
     this.sortBy = criteria;
-    this.sortStudents();
+    this.sortusers();
   }
 
   // Función para ordenar los Instructores según el criterio seleccionado
-  sortStudents() {
+  sortusers() {
     this.expertsArr.sort((a, b) => {
       if (this.sortBy === 'nombre') {
         return a.name.localeCompare(b.name); // Ordenar por nombre (orden alfabético)
@@ -44,7 +45,7 @@ export class InstructoresDesactivadosComponent {
   }
  
   // Obtener los Instructores para la página actual
-  getStudentsForCurrentPage() {
+  getusersForCurrentPage() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     return this.expertsArr.slice(startIndex, endIndex);
@@ -68,7 +69,8 @@ export class InstructoresDesactivadosComponent {
   expertsArr:any[]=[];
 
   getInstructores(){
-    const users=this.userS.getEstudiantes().subscribe((res:any)=>{
+    const route="expertsdesactivados"
+    const users=this.userS.getExpertosDesac(route).subscribe((res:any)=>{
       // console.log(res.users);
       this.expertsArr=res.users;
       console.log(this.expertsArr);
@@ -76,44 +78,8 @@ export class InstructoresDesactivadosComponent {
       
   })}
 
-  modificarEstudiante(estudiante:any) {
-    alert(`Modificar estudiante: ${estudiante.name}`);
-    
-  }
 
-  // Función para eliminar estudiante (simplemente muestra un mensaje por ahora)
-  eliminarEstudiante(estudiante:any) {
-    this.userS.eliminarestudiante(estudiante.id).subscribe(
-      (response: any) => {
-        // Si la API devuelve éxito, elimina el estudiante de la lista local
-        const index = this.expertsArr.findIndex((e) => e.id === estudiante.id);
-        if (index !== -1) {
-          this.expertsArr.splice(index, 1);
-        }
-        alert(`Estudiante "${estudiante.name}" desactivado correctamente.`);
-      },
-      (error) => {
-        console.error('Error al eliminar el estudiante:', error);
-        alert(`Error al eliminar el estudiante "${estudiante.name}".`);
-      }
-    );
-  }
-
-  
-  loadData(){
-    // Llamar a la función getExperts() del servicio
-    this.userS.getEstudiantes().subscribe(
-      (experts: any) => {
-        // Mostrar los datos en la consola
-        console.log('Datos de expertos:', experts);
-      },
-      (error) => {
-        console.error('Error al obtener los expertos:', error);
-      }
-    );
-  }
-
-  eliminar(id:number, ){
+  activar(id:number, ){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success mx-1',
@@ -123,7 +89,7 @@ export class InstructoresDesactivadosComponent {
     })
     
     swalWithBootstrapButtons.fire({
-      title: '¿Deseas desactivar estudiante?',
+      title: '¿Deseas activar experto?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -133,14 +99,15 @@ export class InstructoresDesactivadosComponent {
     }).then((result) => {
       
       if (result.isConfirmed ) {
-        this.expertsArr.splice( -1);
-        this.userS.eliminarestudiante(id).subscribe(
-          (res: any, ) => {
+        
+        this.userS.activarExpert(id).subscribe(
+          (res: any ) => {
             // Mostrar los datos en la consola
             console.log('Datos de estudiante:', res);
+            this.expertsArr = this.expertsArr.filter((item) => item.id !== id);
             swalWithBootstrapButtons.fire(
               '¡Aceptado!',
-              'Solicitud ha sido aceptada',
+              'El experto ha sido activado',
               'success'
             )
           },
@@ -150,7 +117,6 @@ export class InstructoresDesactivadosComponent {
         );
       
       } else if (
-        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
       

@@ -19,7 +19,6 @@ import { DesactivadosComponent } from './desactivados/desactivados.component';
 import { AdminDesactivadosComponent } from './admin-desactivados/admin-desactivados.component';
 import { StudentsDesactivadosComponent } from './students-desactivados/students-desactivados.component';
 import { InstructoresDesactivadosComponent } from './instructores-desactivados/instructores-desactivados.component';
-import { AsesoriasDesactivadosdosComponent } from './asesorias-desactivadosdos/asesorias-desactivadosdos.component';
 
 const routes: Routes = [
   {
@@ -96,11 +95,6 @@ const routes: Routes = [
        canActivate: [AdmingGuard] 
       },
       {
-        path: 'AseDesactivados', 
-        component: AsesoriasDesactivadosdosComponent,
-       canActivate: [AdmingGuard] 
-      },
-      {
         path: 'insDesactivados', 
         component: InstructoresDesactivadosComponent,
        canActivate: [AdmingGuard] 
@@ -133,8 +127,7 @@ const routes: Routes = [
     DesactivadosComponent,
     AdminDesactivadosComponent,
     StudentsDesactivadosComponent,
-    InstructoresDesactivadosComponent,
-    AsesoriasDesactivadosdosComponent
+    InstructoresDesactivadosComponent
 
   ],
   imports: [
@@ -153,7 +146,12 @@ const routes: Routes = [
     TablaInstructoresComponent,
     TablaSolicitudesIComponent,
     TablaSolicitudesRComponent,
-    RegistrarusuarioComponent
+    RegistrarusuarioComponent,
+    DesactivadosComponent,
+    AdminDesactivadosComponent,
+    StudentsDesactivadosComponent,
+    InstructoresDesactivadosComponent,
+
   ]
 })
 export class AdminModule { }

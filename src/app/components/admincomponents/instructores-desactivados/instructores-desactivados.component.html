@@ -1,7 +1,11 @@
 
 <div class="container">
     <h2>Instructores desactivados</h2>
-  
+  <!-- <div class="row">
+    <div class="col mb-3 mt-3">
+        <button type="button" class="btn btn-primary">Activar todos</button>
+    </div>
+  </div> -->
     <div class="form-group">
       <label for="sortSelect">Ordenar por:</label>
       <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
@@ -28,7 +32,7 @@
         </thead>
         <!-- filas de la tabla -->
         <tbody>
-          <tr *ngFor="let i of getStudentsForCurrentPage()">
+          <tr *ngFor="let i of getusersForCurrentPage()">
             <td>{{ i.id }}</td>
             <td>{{ i.name }}</td>
             <td>{{i.lastname}}</td>
@@ -38,8 +42,8 @@
             <td>{{ i.email }}</td>
             <td>
               <!-- Botón para eliminar -->
-              <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(i.id)">
-                <i class="bi bi-trash"></i> Desactivar
+              <button type="button" class="btn btn-primary btn-sm" (click)="activar(i.id)">
+                <i class="bi bi-check-lg"></i> Activar
               </button>
             </td>
           </tr> 
