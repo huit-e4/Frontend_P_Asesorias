@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 interface Estudiante {
   id: number;
@@ -28,7 +29,7 @@ export class EstudiantesComponent {
     //this.loadData();
   }
 
-  constructor(private userS:UserService) {
+  constructor(private userS:UserService, private rou:Router) {
   }
 
 
@@ -181,6 +182,13 @@ export class EstudiantesComponent {
       
       }
     })
+  }
+
+  editarUsuario(id: number){
+    console.log('TESING', id);
+    this.rou.navigateByUrl(`homeadmin/editarstudent/${id}`); 
+
+    
   }
 
 }

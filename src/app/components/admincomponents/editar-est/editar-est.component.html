@@ -1,0 +1,85 @@
+<div class="card">
+    <div class="card-body">
+        <h2>Sólo puedes actualizar estos datos</h2>
+        <form [formGroup]="userForm" (ngSubmit)="saveData()">
+            <div class="row">
+                <!-- Columna 1 -->
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Nombre(s)*</label>
+                        <input type="text" class="form-control" value="{{user_data.name}}" formControlName="name"
+                            placeholder="Ingresa tu nombre">
+                        <small *ngIf="validInput('name')" class="form-text text-danger">
+                            Campo requerido.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Apellido*</label>
+                        <input type="text" class="form-control" formControlName="lastname" value="{{user_data.lastname}}"
+                            placeholder="Ingresa tus apellidos">
+                        <small *ngIf="validInput('lastname')" class="form-text text-danger">
+                            Campo requerido.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Matrícula*</label>
+                        <input type="text" class="form-control" formControlName="mat" value="{{user_data.mat}}"
+                            placeholder="Ingresa tu matricula">
+                        <small *ngIf="validInput('mat')" class="form-text text-danger">
+                            Campo requerido.
+                        </small>
+                        <small *ngIf="validInput('mat')" class="form-text text-danger">
+                            Deben ser 10 caracteres
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Edad*</label>
+                        <input type="number" class="form-control" formControlName="edad" placeholder="Ingresa tu edad" value="{{user_data.edad}}">
+                        <small *ngIf="validInput('edad')" class="form-text text-danger">
+                            Campo requerido.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Correo*</label>
+                        <input type="text" class="form-control" formControlName="email" placeholder="Ingresa tu correo" value="{{user_data.email}}">
+                        <small *ngIf="validInput('email')" class="form-text text-danger">
+                            Campo requerido.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="mt-2">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password"
+                            placeholder="Pon una password segura de 10 caracteres">
+                        <small class="form-text text-primary">
+                            Si no quieres cambiar tu password, deja el campo vacio.
+                        </small>
+                        <small *ngIf="validInput('password')" class="form-text text-danger">
+                            Deben ser 10 caracteres.
+                        </small>
+                    </div>
+                </div>
+
+
+            </div>
+            <br>
+            <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary btn-block"><i
+                    class="fa-solid fa-spinner"></i> Actualizar datos</button>
+
+        </form>
+    </div>
+</div>

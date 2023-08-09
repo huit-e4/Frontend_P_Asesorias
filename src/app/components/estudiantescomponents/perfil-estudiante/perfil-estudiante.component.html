@@ -85,6 +85,8 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Apellido*</label>
+                  <input type="text" class="form-control" formControlName="lastname" placeholder="Ingresa tus apellidos"
+                    value="{{userD?.lastname}}">
                   <input type="text" class="form-control" formControlName="lastname"
                     placeholder="Ingresa tus apellidos" value="{{userD?.lastname}">
                   <small *ngIf="validInput('lastname')" class="form-text text-danger">
@@ -122,6 +124,13 @@
                 <div class="mt-2">
                   <label class="form-label">Contraseña</label>
                   <input type="password" class="form-control" formControlName="password"
+                    placeholder="Pon una password segura de 10 caracteres">
+                  <small class="form-text text-primary">
+                    Si no quieres cambiar tu password, deja el campo vacio.
+                  </small>
+                  <small *ngIf="validInput('password')" class="form-text text-danger">
+                    Deben ser 10 caracteres.
+                  </small>
                     placeholder="Pon una password segura de 10 caracteres" >
                     <small class="form-text text-primary">
                       Si no quieres cambiar tu password, deja el campo vacio.

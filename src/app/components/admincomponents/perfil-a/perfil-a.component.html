@@ -85,7 +85,7 @@
                 <div class="mt-2">
                   <label class="form-label">Apellido*</label>
                   <input type="text" class="form-control" formControlName="lastname"
-                    placeholder="Ingresa tus apellidos" value="{{userD?.lastname}">
+                    placeholder="Ingresa tus apellidos" value="{{userD?.lastname}}">
                   <small *ngIf="validInput('lastname')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -125,6 +125,9 @@
                     <small class="form-text text-primary">
                       Si no quieres cambiar tu password, deja el campo vacio.
                     </small>
+                    <small *ngIf="validInput('password')" class="form-text text-danger">
+                      Deben ser 10 caracteres.
+                  </small>
                 </div>
               </div>
 

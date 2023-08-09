@@ -1,4 +1,3 @@
-
 <div class="container">
   <h2>Lista de Estudiantes</h2>
 
@@ -7,7 +6,7 @@
     <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
       <option value="nombre">Nombre (A-Z)</option>
       <option value="edad">Edad (menor a mayor)</option>
-      <option value="genero">Género</option> 
+      <option value="genero">Género</option>
     </select>
   </div>
 
@@ -25,6 +24,7 @@
           <th>Email</th>
           <th>Acciones</th>
         </tr>
+
       </thead>
       <!-- filas de la tabla -->
       <tbody>
@@ -36,13 +36,16 @@
           <td>{{ estudiante.edad }}</td>
           <td>{{estudiante.sexo}}</td>
           <td>{{ estudiante.email }}</td>
-          <td>
+          <td class="separar">
             <!-- Botón para eliminar -->
+            <button type="button" class="btn btn-primary btn-sm separar" (click)="editarUsuario(estudiante.id)">
+              <i class="bi bi-trash"></i>Editar
+            </button>
             <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(estudiante.id)">
               <i class="bi bi-trash"></i> Desactivar
             </button>
           </td>
-        </tr> 
+        </tr>
       </tbody>
     </table>
   </div>

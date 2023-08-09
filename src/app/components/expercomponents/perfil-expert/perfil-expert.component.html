@@ -73,8 +73,8 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Nombre(s)*</label>
-                  <input type="text" class="form-control" formControlName="name"
-                    placeholder="Ingresa tu nombre" value="{{userD?.name}}">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Ingresa tu nombre"
+                    value="{{userD?.name}}">
                   <small *ngIf="validInput('name')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -84,8 +84,8 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Apellido*</label>
-                  <input type="text" class="form-control" formControlName="lastname"
-                    placeholder="Ingresa tus apellidos" value="{{userD?.lastname}">
+                  <input type="text" class="form-control" formControlName="lastname" placeholder="Ingresa tus apellidos"
+                    value="{{userD?.lastname}}">
                   <small *ngIf="validInput('lastname')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -95,11 +95,11 @@
               <div class="col-sm-4">
                 <div class="mt-2">
                   <label class="form-label">Matrícula*</label>
-                  <input type="text" class="form-control" formControlName="mat"
-                    placeholder="Ingresa tu matricula" value="{{userD?.mat}}">
+                  <input type="text" class="form-control" formControlName="mat" placeholder="Ingresa tu matricula"
+                    value="{{userD?.mat}}">
                   <small *ngIf="validInput('mat')" class="form-text text-danger">
                     Campo requerido.
-                  </small> 
+                  </small>
                   <small *ngIf="validInput('mat')" class="form-text text-danger">
                     Deben ser 10 caracteres
                   </small>
@@ -109,8 +109,8 @@
               <div class="col-sm-6">
                 <div class="mt-2">
                   <label class="form-label">Correo*</label>
-                  <input type="text" class="form-control" formControlName="email"
-                    placeholder="Ingresa tu correo" value="{{userD?.email}}">
+                  <input type="text" class="form-control" formControlName="email" placeholder="Ingresa tu correo"
+                    value="{{userD?.email}}">
                   <small *ngIf="validInput('email')" class="form-text text-danger">
                     Campo requerido.
                   </small>
@@ -121,10 +121,13 @@
                 <div class="mt-2">
                   <label class="form-label">Contraseña</label>
                   <input type="password" class="form-control" formControlName="password"
-                    placeholder="Pon una password segura de 10 caracteres" >
-                    <small class="form-text text-primary">
-                      Si no quieres cambiar tu password, deja el campo vacio.
-                    </small>
+                    placeholder="Pon una password segura de 10 caracteres">
+                  <small class="form-text text-primary">
+                    Si no quieres cambiar tu password, deja el campo vacio.
+                  </small>
+                  <small *ngIf="validInput('password')" class="form-text text-danger">
+                    Deben ser 10 caracteres.
+                  </small>
                 </div>
               </div>
 

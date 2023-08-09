@@ -15,72 +15,96 @@ import { HomeAdminComponent } from '../home-admin/home-admin.component';
 import { TablaSolicitudesRComponent } from './tabla-solicitudes-r/tabla-solicitudes-r.component';
 import { TablaSolicitudesAComponent } from './tabla-solicitudes-a/tabla-solicitudes-a.component';
 import { RegistrarusuarioComponent } from './registrarusuario/registrarusuario.component';
+
+import { EditarEstComponent } from './editar-est/editar-est.component';
+import { EditarAdComponent } from './editar-ad/editar-ad.component';
+import { EditarExpComponent } from './editar-exp/editar-exp.component';
+
 import { TablaDeExpertComponent } from './tabla-de-expert/tabla-de-expert.component';
 import { DesactivadosComponent } from './desactivados/desactivados.component';
 import { AdminDesactivadosComponent } from './admin-desactivados/admin-desactivados.component';
 import { StudentsDesactivadosComponent } from './students-desactivados/students-desactivados.component';
 import { InstructoresDesactivadosComponent } from './instructores-desactivados/instructores-desactivados.component';
 
+
 const routes: Routes = [
   {
     path: 'homeadmin',
     component: HomeAdminComponent, children: [
       {
-        path: '', 
+        path: '',
         component: HomeadminComponent,
-       canActivate: [AdmingGuard] // child route component that the router renders
+        canActivate: [AdmingGuard] // child route component that the router renders
       },
       {
-        path: 'instructors', 
-        component: InstructoresComponent, children:[
-          { path: '', 
-           component: TablaSolicitudesAComponent,
-           canActivate: [AdmingGuard]
-          },
-           {
-           path: 'aprsolicitudes', 
-          component: TablaSolicitudesIComponent,
-          canActivate: [AdmingGuard]
+        path: 'instructors',
+        component: InstructoresComponent, children: [
+          {
+            path: '',
+            component: TablaSolicitudesAComponent,
+            canActivate: [AdmingGuard]
           },
           {
-          path: 'solicitudesrec', 
-          component: TablaSolicitudesRComponent,
-          canActivate: [AdmingGuard]
+            path: 'aprsolicitudes',
+            component: TablaSolicitudesIComponent,
+            canActivate: [AdmingGuard]
           },
           {
-          path: 'solicitudesapr', 
-          component: TablaSolicitudesAComponent,
-          canActivate: [AdmingGuard]
+            path: 'solicitudesrec',
+            component: TablaSolicitudesRComponent,
+            canActivate: [AdmingGuard]
+          },
+          {
+            path: 'solicitudesapr',
+            component: TablaSolicitudesAComponent,
+            canActivate: [AdmingGuard]
           }
-         ],
-       canActivate: [AdmingGuard] 
+        ],
+        canActivate: [AdmingGuard]
       },
       {
-        path: 'estudiantes', 
+        path: 'estudiantes',
         component: EstudiantesComponent,
-       canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard]
       },
       {
-        path: 'registrarusuario', 
+        path: 'registrarusuario',
         component: RegistrarusuarioComponent,
-       canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard]
       },
       {
-        path: 'cursos', 
+        path: 'editaradmin/:id',
+        component: EditarAdComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'editarstudent/:id',
+        component: EditarEstComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'editarexprt/:id',
+        component: EditarExpComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'cursos',
         component: CursosComponent,
-       canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard]
       },
       {
-        path: 'perfil', 
+        path: 'perfil',
         component: PerfilAComponent,
-        canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard]
       },
       {
-        path: 'administrators', 
+        path: 'administrators',
         component: AdministradoresComponent,
-       canActivate: [AdmingGuard] 
+        canActivate: [AdmingGuard]
       },
       {
+        path: '**',
+        redirectTo: ''
         path: 'Activo', 
         component: TablaDeExpertComponent,
         canActivate: [AdmingGuard] },
@@ -109,7 +133,7 @@ const routes: Routes = [
         redirectTo:''
       }
     ],
-   // canActivate: [AdmingGuard]
+    // canActivate: [AdmingGuard]
 
   },
 
@@ -129,12 +153,14 @@ const routes: Routes = [
     TablaSolicitudesRComponent,
     TablaSolicitudesAComponent,
     RegistrarusuarioComponent,
+    EditarEstComponent,
+    EditarAdComponent,
+    EditarExpComponent
     TablaDeExpertComponent,
     DesactivadosComponent,
     AdminDesactivadosComponent,
     StudentsDesactivadosComponent,
     InstructoresDesactivadosComponent
-
   ],
   imports: [
     CommonModule,
@@ -142,7 +168,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes)
   ],
-  exports:[
+  exports: [
     AdministradoresComponent,
     CursosComponent,
     EstudiantesComponent,

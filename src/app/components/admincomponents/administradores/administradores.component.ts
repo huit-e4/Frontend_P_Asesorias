@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -11,7 +12,7 @@ export class AdministradoresComponent implements OnInit{
   ngOnInit(): void {
     this.GetAdmins();
   }
-  constructor(private userS:UserService, private elementRef: ElementRef){
+  constructor(private userS:UserService, private elementRef: ElementRef, private rou: Router){
 
   }
   ngAfterViewInit() {
@@ -110,6 +111,13 @@ export class AdministradoresComponent implements OnInit{
       
       }
     })
+  }
+
+  editarUsuario(id: number){
+    console.log('TESING', id);
+    this.rou.navigateByUrl(`homeadmin/editaradmin/${id}`); 
+
+    
   }
 
 
