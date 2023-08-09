@@ -106,7 +106,7 @@ export class InstructoresDesactivadosComponent {
             console.log('Datos de estudiante:', res);
             this.expertsArr = this.expertsArr.filter((item) => item.id !== id);
             swalWithBootstrapButtons.fire(
-              '¡Aceptado!',
+              '¡Activación exitosa!',
               'El experto ha sido activado',
               'success'
             )
