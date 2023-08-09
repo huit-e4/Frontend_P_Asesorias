@@ -11,6 +11,7 @@ import { VerAsesoriasComponent } from './ver-asesorias/ver-asesorias.component';
 import { SubirAsesoriaComponent } from './subir-asesoria/subir-asesoria.component';
 import { ExpertosComponent } from './expertos/expertos.component';
 import { InfocvComponent } from './infocv/infocv.component';
+import { TablaDeExpertComponent } from '../admincomponents/tabla-de-expert/tabla-de-expert.component';
 const routes: Routes = [
   {
     path: 'homeexpert',
@@ -50,6 +51,7 @@ const routes: Routes = [
         component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
       },
+      
       {
         path: '**',
         redirectTo: ''
