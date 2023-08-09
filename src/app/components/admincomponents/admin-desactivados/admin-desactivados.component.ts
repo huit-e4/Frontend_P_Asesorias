@@ -105,7 +105,7 @@ export class AdminDesactivadosComponent {
             console.log('Datos de estudiante:', res);
             this.expertsArr = this.expertsArr.filter((item) => item.id !== id);
             swalWithBootstrapButtons.fire(
-              '¡Aceptado!',
+              '¡Activación exitosa!',
               'El administrador ha sido activado',
               'success'
             )

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -28,7 +29,7 @@ export class TablaDeExpertComponent {
     //this.loadData();
   }
 
-  constructor(private userS:UserService) {
+  constructor(private userS:UserService, private rou: Router) {
   }
 
 
@@ -181,6 +182,13 @@ export class TablaDeExpertComponent {
       
       }
     })
+  }
+
+  editarUsuario(id: number){
+    console.log('TESING', id);
+    this.rou.navigateByUrl(`homeadmin/editarexperto/${id}`); 
+
+    
   }
 
 }

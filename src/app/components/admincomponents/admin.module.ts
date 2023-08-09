@@ -83,7 +83,7 @@ const routes: Routes = [
         canActivate: [AdmingGuard]
       },
       {
-        path: 'editarexprt/:id',
+        path: 'editarexperto/:id',
         component: EditarExpComponent,
         canActivate: [AdmingGuard]
       },
@@ -102,35 +102,41 @@ const routes: Routes = [
         component: AdministradoresComponent,
         canActivate: [AdmingGuard]
       },
+      // {
+      //   path: '**',
+      //   redirectTo: '',
+      //   path: 'Activo',
+      //   component: TablaDeExpertComponent,
+      //   canActivate: [AdmingGuard]
+      // },
+      {
+        path: 'Activo',
+        component: TablaDeExpertComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'desactivados',
+        component: DesactivadosComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'admDesactivados',
+        component: AdminDesactivadosComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'estDesactivados',
+        component: StudentsDesactivadosComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
+        path: 'insDesactivados',
+        component: InstructoresDesactivadosComponent,
+        canActivate: [AdmingGuard]
+      },
       {
         path: '**',
         redirectTo: ''
-        path: 'Activo', 
-        component: TablaDeExpertComponent,
-        canActivate: [AdmingGuard] },
-        {
-        path: 'desactivados', 
-        component: DesactivadosComponent,
-       canActivate: [AdmingGuard] 
-      },
-      {
-        path: 'admDesactivados', 
-        component: AdminDesactivadosComponent,
-       canActivate: [AdmingGuard] 
-      },
-      {
-        path: 'estDesactivados', 
-        component: StudentsDesactivadosComponent,
-       canActivate: [AdmingGuard] 
-      },
-      {
-        path: 'insDesactivados', 
-        component: InstructoresDesactivadosComponent,
-       canActivate: [AdmingGuard] 
-      },
-      {
-        path:'**',
-        redirectTo:''
       }
     ],
     // canActivate: [AdmingGuard]
@@ -155,7 +161,7 @@ const routes: Routes = [
     RegistrarusuarioComponent,
     EditarEstComponent,
     EditarAdComponent,
-    EditarExpComponent
+    EditarExpComponent,
     TablaDeExpertComponent,
     DesactivadosComponent,
     AdminDesactivadosComponent,
