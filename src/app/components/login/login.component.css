@@ -77,18 +77,19 @@ body {
 }
 
 .slider-feature-card {
-    background: #fff;
-    max-width: 280px;
+    background: rgba(255, 255, 255, 0.548);
+    max-width: 300px;
     margin: 0 auto;
     padding: 30px;
     text-align: center;
     -webkit-box-shadow: 0 2px 25px -3px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 25px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
 }
 
 .slider-feature-card img {
-    height: 80px;
-    margin-top: 30px;
+    height: 150px;
+    margin-top: 10px;
     margin-bottom: 30px;
 }
 
