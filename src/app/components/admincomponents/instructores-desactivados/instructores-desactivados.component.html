@@ -1,11 +1,10 @@
 
 <div class="container">
     <h2>Instructores desactivados</h2>
-  <!-- <div class="row">
-    <div class="col mb-3 mt-3">
-        <button type="button" class="btn btn-primary">Activar todos</button>
-    </div>
-  </div> -->
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-success me-md-2" type="button" (click)="confirmarAlert();"> <i class="fa-solid fa-reply-all"></i> Activar todos los instructores</button>
+  </div>
+  <br>
     <div class="form-group">
       <label for="sortSelect">Ordenar por:</label>
       <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">

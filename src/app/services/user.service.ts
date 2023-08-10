@@ -758,6 +758,67 @@ export class UserService {
     }
   }
 
+  //Activar todos los expertos en un clic
+  activarAllExperts(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      console.log('token', headers);
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/activarexperts`, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
+
+  //Activar todos los admins en un clic
+  activarAllAdmins(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      console.log('token', headers);
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/activaradmins`, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
+  //Activar todos los estudiantes en un clic
+  activarAllStudents(): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      console.log('token', headers);
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.delete(this.url + `/api/activarstudents`, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
 
 }
 

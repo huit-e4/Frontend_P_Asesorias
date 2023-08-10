@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +17,7 @@ export class StudentsDesactivadosComponent {
   }
 
   
-  constructor(private userS:UserService) {
+  constructor(private userS:UserService, private rou: Router) {
   }
   pageSize = 4; // Cantidad de Instructores por página
   currentPage = 1; // Página actual
@@ -120,6 +121,46 @@ export class StudentsDesactivadosComponent {
       ) {
       
       }
+    })
+  }
+
+  
+  activarTodo() {
+    this.userS.activarAllStudents().subscribe(
+      () => {
+        console.log('Se activaron todos los experts');
+        this.goodNot();
+        this.rou.navigate(['/homeadmin/estudiantes']);
+      },
+      (error) => {
+        console.error('Error al activar los experts:', error);
+      }
+    );
+  }
+
+  confirmarAlert() {
+    Swal.fire({
+      title: '¿Estás seguro de activar todos los expertos?',
+      text: "No podrás revertis esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, quiero!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.activarTodo(); // Pasa el id como argumento a la función borrarAsesoria()
+      }
+    });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Actualización éxitosa!!!',
+      showConfirmButton: false,
+      timer: 1500
     })
   }
 }

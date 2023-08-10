@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -9,14 +10,14 @@ import Swal from 'sweetalert2';
 })
 export class AdminDesactivadosComponent {
 
-  
+
   ngOnInit(): void {
-    
+
     this.getInstructores()
   }
 
-  
-  constructor(private userS:UserService) {
+
+  constructor(private userS: UserService, private rou: Router) {
   }
   pageSize = 4; // Cantidad de Instructores por página
   currentPage = 1; // Página actual
@@ -42,7 +43,7 @@ export class AdminDesactivadosComponent {
     });
     this.setPage(this.currentPage); // Redefinir la página actual después de ordenar
   }
- 
+
   // Obtener los Instructores para la página actual
   getusersForCurrentPage() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
@@ -65,20 +66,21 @@ export class AdminDesactivadosComponent {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
-  expertsArr:any[]=[];
+  expertsArr: any[] = [];
 
-  getInstructores(){
-    const route="adminsdesactivados"
-    const users=this.userS.getExpertosDesac(route).subscribe((res:any)=>{
+  getInstructores() {
+    const route = "adminsdesactivados"
+    const users = this.userS.getExpertosDesac(route).subscribe((res: any) => {
       // console.log(res.users);
-      this.expertsArr=res.users;
+      this.expertsArr = res.users;
       console.log(this.expertsArr);
-      
-      
-  })}
 
 
-  activar(id:number, ){
+    })
+  }
+
+
+  activar(id: number,) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success mx-1',
@@ -86,7 +88,7 @@ export class AdminDesactivadosComponent {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Deseas activar administrador?',
       text: "",
@@ -96,11 +98,11 @@ export class AdminDesactivadosComponent {
       cancelButtonText: 'No, cancelar',
       reverseButtons: true
     }).then((result) => {
-      
-      if (result.isConfirmed ) {
-        
+
+      if (result.isConfirmed) {
+
         this.userS.activarExpert(id).subscribe(
-          (res: any ) => {
+          (res: any) => {
             // Mostrar los datos en la consola
             console.log('Datos de estudiante:', res);
             this.expertsArr = this.expertsArr.filter((item) => item.id !== id);
@@ -114,12 +116,53 @@ export class AdminDesactivadosComponent {
             console.error('Error al desactivar:', error);
           }
         );
-      
+
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {
-      
+
       }
+    })
+  }
+
+
+
+  activarTodo() {
+    this.userS.activarAllAdmins().subscribe(
+      () => {
+        console.log('Se activaron todos los experts');
+        this.goodNot();
+        this.rou.navigate(['/homeadmin/administrators']);
+      },
+      (error) => {
+        console.error('Error al activar los experts:', error);
+      }
+    );
+  }
+
+  confirmarAlert() {
+    Swal.fire({
+      title: '¿Estás seguro de activar todos los expertos?',
+      text: "No podrás revertis esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, quiero!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.activarTodo(); // Pasa el id como argumento a la función borrarAsesoria()
+      }
+    });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Actualización éxitosa!!!',
+      showConfirmButton: false,
+      timer: 1500
     })
   }
 }

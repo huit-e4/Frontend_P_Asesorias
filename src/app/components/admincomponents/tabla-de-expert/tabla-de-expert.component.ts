@@ -165,7 +165,7 @@ export class TablaDeExpertComponent {
             // Mostrar los datos en la consola
             console.log('Datos de el Experto:', res);
             swalWithBootstrapButtons.fire(
-              '¡Aceptado!',
+              '¡Desactivación éxitosa!',
               'Estudiante a sido desactivado',
               'success'
             )
