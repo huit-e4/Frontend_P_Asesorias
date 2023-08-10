@@ -1,11 +1,11 @@
 
-<nav class="navbar bg-body-tertiary fixed-top">
+<nav class="navbar fixed-top">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand">Estudiante</a>
+    <button class="navbar-toggler custom-navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+  aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+    <a class="navbar-brand">ESTUDIANTE</a>
     <div class="dropdown " *ngIf="userD">
       <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
         data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,7 +38,7 @@
 
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./perfil-estudiante" data-bs-dismiss="offcanvas"><i
-                class="fs-5 bi-person-gear"></i><span class="ms-2">Mi peril</span> </a>
+                class="fs-5 bi-person-gear"></i><span class="ms-2">Mi perfil</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link ms-4" routerLink="./cursos-estudiante" data-bs-dismiss="offcanvas"><i
