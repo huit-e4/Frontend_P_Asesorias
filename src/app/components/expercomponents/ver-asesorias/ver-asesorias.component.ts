@@ -3,11 +3,19 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 interface Curso {
   id: number;
   nombre: string;
   desc: string;
+  img_filename: string;
+  categoria_id: number;
+  categoria:{
+    id:number;
+    nombre:string;
+  }
   precio: number;
   active: boolean;
 }
@@ -47,7 +55,7 @@ export class VerAsesoriasComponent implements OnInit{
 
   
 
-  constructor(private userS: UserService, private router: Router) {
+  constructor(private userS: UserService, private router: Router, private sanitizer: DomSanitizer) {
     // Inicializar la suscripción en el constructor
     this.asesoriaDeletedSubscription = this.userS.getAsesoriaDeletedObservable().subscribe(() => {
       this.getCursos();
@@ -196,6 +204,11 @@ export class VerAsesoriasComponent implements OnInit{
       showConfirmButton: false,
       timer: 1500
     })
+  }
+
+  getImgUrl(img_filename: string): SafeResourceUrl {
+    const unsafeUrl = this.userS.url + '/storage/imgscursos/' + img_filename;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 
 

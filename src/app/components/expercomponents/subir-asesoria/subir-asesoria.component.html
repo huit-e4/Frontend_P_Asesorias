@@ -40,6 +40,26 @@
                     Campo requerido.
                 </small>
             </div>
+
+            <div class="mt-2">
+                <select class="form-select" aria-label="Default select example" formControlName="categoria_id" (change)="updateProgress()">
+                    <option disabled selected value="">Seleccciona categoria*</option>
+                    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.nombre }}</option>
+                </select>
+                <small *ngIf="validInput('categoria_id')" class="form-text text-danger">
+                    Debes seleccionar una categoria.
+                </small>
+            </div>
+
+            <div class="mt-2">
+                <label for="formFile" class="form-label">Carga tu imagen aquí*</label>
+                <input class="form-control" type="file" id="formFile" formControlName="imgcurso" accept="image/jpeg, image/png"
+                  (change)="onFileSelected($event)" (change)="updateProgress()">
+                <small *ngIf="validInput('imgcurso')" class="form-text text-danger">
+                  Campo requerido.
+                </small>
+              </div>
+
             <br>
             <button type="submit" [disabled]="asesoriaForm.invalid" class="btn btn-primary btn-block">Registrar</button>
 

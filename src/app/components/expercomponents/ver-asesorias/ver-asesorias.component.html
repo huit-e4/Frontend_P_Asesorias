@@ -1,32 +1,35 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"> </div>
-  <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+  <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+    tabindex="0">
     <h3>Cursos inpartidos</h3>
 
     <div class="form-group">
       <label for="sortSelect">Ordenar por:</label>
       <select class="form-control" id="sortSelect" [(ngModel)]="sortBy" (change)="changeSortBy(sortBy)">
-          <option value="default">---Seleccione---</option>
+        <option value="default">---Seleccione---</option>
         <option value="nombre">Nombre (A-Z)</option>
         <!-- <option value="edad">Edad (menor a mayor)</option> -->
       </select>
     </div>
 
 
-  
+
     <div class="table-responsive mt-3">
-      <a routerLink="../SubirAsesosria" class="btn btn-primary mb-3"><i class="fa-solid fa-book"></i> Agregar asesoria <i class="fa-solid fa-plus"></i></a>
+      <a routerLink="../SubirAsesosria" class="btn btn-primary mb-3"><i class="fa-solid fa-book"></i> Agregar asesoria
+        <i class="fa-solid fa-plus"></i></a>
 
       <table class="table table-striped">
         <!-- encabezados de la tabla -->
         <thead>
           <tr>
             <th>ID</th>
+            <th>Categoria</th>
+            <th>Ruta img</th>
             <th>Nombre</th>
-            <th>Descripcion</th>       
+            <th>Descripcion</th>
             <th>Precio</th>
             <th>Estado</th>
-            <th>Ver</th>
             <th>Acciones</th>
 
           </tr>
@@ -35,6 +38,9 @@
         <tbody>
           <tr *ngFor="let i of getCoursesForCurrentPage()">
             <td>{{i.id}}</td>
+            <td>{{i.categoria.nombre}}</td>
+            <td> <a [href]="getImgUrl(i.img_filename)" target="_blank">Abrir IMG</a>
+            </td>
             <td>{{i.nombre }}</td>
             <td>{{i.desc}}</td>
             <td>$.{{i.precio}}</td>
@@ -42,53 +48,51 @@
 
             <td>
               <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="verAlumnosRegistrados(i.id);">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  (click)="verAlumnosRegistrados(i.id);">
                   <i class="fas fa-fw fa-eye"></i> Ver alumnos inscritos <i class="fa-solid fa-user-graduate"></i>
                 </button>
               </div>
-             
+
             </td>
             <td>
               <div>
-                <button type="button" class="btn btn-danger" (click)="confirmarAlert(i.id);">
+                <button type="button" class="btn btn-danger btn-sm" (click)="confirmarAlert(i.id);">
                   <i class="fas fa-fw fa-trash"></i> Eliminar asesoria
                 </button>
               </div>
-              
+
             </td>
         </tbody>
       </table>
     </div>
-  
+
     <!-- Controles de paginación  -->
-    
+
   </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Alumnos inscritos a este curso</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <ul *ngIf="students.registros.length > 0; else noAlumnos">
-          <!-- Utiliza *ngFor para recorrer los registros y mostrar los datos -->
-          <li *ngFor="let registro of students.registros">
-            {{ registro.user.mat }} | {{ registro.user.name }} {{ registro.user.lastname }}
-          </li>
-        </ul>
-        <!-- Mostrar este mensaje cuando el arreglo está vacío -->
-        <ng-template #noAlumnos>
-          <p>Aún no hay ningún alumno inscrito todavía.</p>
-        </ng-template>
-      </div>
-      <div class="modal-footer">
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Alumnos inscritos a este curso</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul *ngIf="students.registros.length > 0; else noAlumnos">
+            <!-- Utiliza *ngFor para recorrer los registros y mostrar los datos -->
+            <li *ngFor="let registro of students.registros">
+              {{ registro.user.mat }} | {{ registro.user.name }} {{ registro.user.lastname }}
+            </li>
+          </ul>
+          <!-- Mostrar este mensaje cuando el arreglo está vacío -->
+          <ng-template #noAlumnos>
+            <p>Aún no hay ningún alumno inscrito todavía.</p>
+          </ng-template>
+        </div>
+        <div class="modal-footer">
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-  
- 
