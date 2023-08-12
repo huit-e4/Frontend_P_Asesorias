@@ -3,6 +3,10 @@ import { catchError } from 'rxjs';
 import { Curso } from 'src/app/interfaces/curso';
 import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +19,7 @@ export class CursosEstudianteComponent implements OnInit{
   ngOnInit(): void {
     this.GetAsesorias();
   }
-  constructor(private studentS:StudentsService){
+  constructor(private studentS:StudentsService, private user:UserService,  private sanitizer: DomSanitizer, private rou: Router){
 
   }
 
@@ -61,6 +65,65 @@ export class CursosEstudianteComponent implements OnInit{
   //     }
   //   );
   // }
+
+  //Traigo la imagen
+  getImgUrl(img_filename: string): SafeResourceUrl {
+    const unsafeUrl = this.studentS.url + '/storage/imgscursos/' + img_filename;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+  }
+
+
+  //Borrar asesoria por id
+  borrarAsesoria(id: number) {
+    // Llamar a la función deleteAsesoriaById() del servicio para eliminar la asesoría por su ID
+    this.user.deleteAsesoriaPorEstudiante(id).subscribe(
+      () => {
+        console.log('Asesoría abandonada con éxito');
+        this.rou.navigate(['/homestudent']);
+        this.goodNot();
+      },
+      (error) => {
+        console.error('Error al abandonar la asesoría:', error);
+        this.badNot();
+      }
+    );
+  }
+
+
+  badNot() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'La acción no se ejecutó correctamente!'
+    })
+  }
+
+  confirmarAlert(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, do it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.borrarAsesoria(id); // Pasa el id como argumento a la función borrarAsesoria()
+      }
+    });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Asesoria abandonada exitosamente!!!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
 
 
 

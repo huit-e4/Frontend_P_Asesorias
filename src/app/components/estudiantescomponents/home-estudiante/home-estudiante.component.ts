@@ -3,6 +3,8 @@ import { Component, ElementRef } from '@angular/core';
 import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -14,7 +16,7 @@ export class HomeEstudianteComponent implements OnInit {
   ngOnInit(): void {
     this.GetCursos();
   }
-  constructor(private userS:UserService, private elementRef: ElementRef, private us: StudentsService){
+  constructor(private userS:UserService, private elementRef: ElementRef, private us: StudentsService, private sanitizer: DomSanitizer){
 
   }
   ngAfterViewInit() {
@@ -100,6 +102,11 @@ export class HomeEstudianteComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+  }
+
+  getImgUrl(img_filename: string): SafeResourceUrl {
+    const unsafeUrl = this.userS.url + '/storage/imgscursos/' + img_filename;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 
 }

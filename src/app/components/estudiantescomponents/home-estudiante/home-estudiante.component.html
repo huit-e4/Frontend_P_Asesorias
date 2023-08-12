@@ -17,7 +17,7 @@
   <div class="col-lg-6 col-xl-4 d-flex" *ngFor="let a of cursoArr">
     <div class="card card-default p-4">
       <a href="javascript:0" class="media text-secondary" (click)="verModal(a)">
-        <img src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-12.png" class="mr-3 img-fluid rounded" alt="Avatar Image">
+        <img [src]="getImgUrl(a.img_filename)" alt="Imagen" width="50" height="50" class="mr-3 img-fluid rounded" alt="Avatar Image">
         <div class="media-body">
           <h5 class="mt-0 mb-2 text-dark">{{a.nombre}}</h5>
           <!-- <h5 class="mt-0 mb-2 text-dark">{{a.id}}</h5> -->
@@ -61,7 +61,8 @@
             <div class="profile-content-left px-4">
               <div class="card text-center widget-profile px-0 border-0 ">
                 <div class="card-img mx-auto rounded-circle">
-                  <img src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-12.png" alt="user image" class="rounded-circle">
+                  <img [src]="getImgUrl(datosModal?.img_filename)" alt="Imagen" width="50" height="50" alt="user image" class="rounded-circle">
+
                 </div>
                 <!-- Update displayed data -->
                 <div class="card-body">

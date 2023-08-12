@@ -23,6 +23,7 @@ export class UserService {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false); // Propiedad de autenticación
   private asesoriaDeletedSubject: Subject<void> = new Subject<void>();
+  private asesoriaDeletedStudent: Subject<void> = new Subject<void>(); //Del estudiante
 
   url: string = 'http://localhost:8000';
 
@@ -506,6 +507,7 @@ export class UserService {
     }
   }
 
+  //Eliminar asesoria del experto
   deleteAsesoriaById(id: number): Observable<any> {
     // Obtener el token del local storage
     const token = localStorage.getItem('token');
@@ -534,6 +536,40 @@ export class UserService {
       // También podrías retornar throwError:
       // return throwError('Usuario no autenticado');
     }
+  }
+
+  //Eliminar asesoria por estudiante
+  deleteAsesoriaPorEstudiante(id: number): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      const url = `${this.url}/api/eliminarAsesoriaEstudiante/${id}`;
+
+      // Realizar la solicitud DELETE a la API
+      return this.http.delete(url, { headers }).pipe(
+        map((response: any) => {
+          // Notificar que se ha eliminado una asesoría
+          this.asesoriaDeletedStudent.next();
+          return response; // Devolver la respuesta de la API
+        })
+      );
+    } else {
+      // Retornar un observable vacío o throwError según tus necesidades
+      return new Observable();
+      // También podrías retornar throwError:
+      // return throwError('Usuario no autenticado');
+    }
+  }
+  getAsesoriaDeletedSObservable(): Observable<void> {
+    return this.asesoriaDeletedStudent.asObservable();
   }
 
   /**

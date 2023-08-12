@@ -23,10 +23,10 @@
         <!-- encabezados de la tabla -->
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Categoria</th>
-            <th>Ruta img</th>
+            <!-- <th>ID</th> -->
             <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Img</th>
             <th>Descripcion</th>
             <th>Precio</th>
             <th>Estado</th>
@@ -37,11 +37,11 @@
         <!-- filas de la tabla -->
         <tbody>
           <tr *ngFor="let i of getCoursesForCurrentPage()">
-            <td>{{i.id}}</td>
+            <!-- <td>{{i.id}}</td> -->
+            <td>{{i.nombre }}</td>
             <td>{{i.categoria.nombre}}</td>
             <td> <a [href]="getImgUrl(i.img_filename)" target="_blank">Abrir IMG</a>
             </td>
-            <td>{{i.nombre }}</td>
             <td>{{i.desc}}</td>
             <td>$.{{i.precio}}</td>
             <td>{{i.active ? 'Sí' : 'No' }}</td>

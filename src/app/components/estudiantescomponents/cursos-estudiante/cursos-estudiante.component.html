@@ -19,7 +19,7 @@
   <div class="col-lg-6 col-xl-4 d-flex" *ngFor="let a of asesoriasArr">
     <div class="card card-default p-4">
       <a href="javascript:0" class="media text-secondary" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(a)">
-          <img src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-12.png" class="mr-3 img-fluid rounded" alt="Avatar Image">
+          <img [src]="getImgUrl(a.infoasesoria?.img_filename)" alt="Imagen" width="50" height="50" class="mr-3 img-fluid rounded" alt="Avatar Image">
 
         <div class="media-body">
           <h5 class="mt-0 mb-2 text-dark">{{a.infoasesoria?.nombre}}</h5>
@@ -35,22 +35,17 @@
               <span>{{a.infoasesoria?.precio}}</span>
             </li>
 
-
-            <!-- <li class="d-flex mb-1">
-              <i class="mdi mdi-email mr-1"></i>
-              <span>{{a.email}}</span>
+            <li>
+              <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-contact"> <i class="fas fa-fw fa-eye"></i> Notificaciones</button>
             </li>
 
-            <li class="d-flex mb-1">
-              <i class="mdi mdi-phone mr-1"></i>
-              <span>+52 991 99 632</span>
-            </li> -->
+
           </ul>
         </div>
       </a>
-      <!-- <button type="button" class="btn btn-danger btn-sm" (click)="eliminarAdmin(a)">
-        <i class="bi bi-trash"></i> Eliminar
-      </button> -->
+      <button type="button" class="btn btn-danger btn-sm" (click)="confirmarAlert(a.id)">
+        <i class="fa-solid fa-shoe-prints"></i> Abandonar Curso
+      </button>
     </div>
   </div>
 
@@ -97,7 +92,7 @@
             <div class="profile-content-left px-4">
               <div class="card text-center widget-profile px-0 border-0 ">
                 <div class="card-img mx-auto rounded-circle">
-                  <img src="https://www.freeiconspng.com/thumbs/courses-icon/courses-icon-12.png" alt="user image" class="rounded-circle">
+                  <img [src]="getImgUrl(datosModal?.infoasesoria.img_filename)" alt="Imagen" width="50" height="50" alt="user image" class="rounded-circle">
                 </div>
 
                 <div class="card-body">
