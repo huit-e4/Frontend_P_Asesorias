@@ -16,6 +16,7 @@ import { AdminModule } from './components/admincomponents/admin.module';
 import { ExpertModule } from './components/expercomponents/expert.module';
 import { RouterLink } from '@angular/router';
 import { EstudianteModule } from './components/estudiantescomponents/estudiante.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { EstudianteModule } from './components/estudiantescomponents/estudiante.
     AdminModule,
     ExpertModule,
     RouterLink,
-    EstudianteModule
+    EstudianteModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

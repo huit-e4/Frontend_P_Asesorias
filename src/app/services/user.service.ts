@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Category } from '../interfaces/category';
 
 
 export interface UserProfile {
@@ -23,7 +24,10 @@ export class UserService {
 
   public isAuthenticated = new BehaviorSubject<boolean>(false); // Propiedad de autenticación
   private asesoriaDeletedSubject: Subject<void> = new Subject<void>();
+  private categoriaDeletedSubject: Subject<void> = new Subject<void>();
   private asesoriaDeletedStudent: Subject<void> = new Subject<void>(); //Del estudiante
+
+  private categoriesSubject: Subject<void> = new Subject<void>(); //Comportamiento de categorias al agregar
 
   url: string = 'http://localhost:8000';
 
@@ -568,9 +572,9 @@ export class UserService {
       // return throwError('Usuario no autenticado');
     }
   }
-  getAsesoriaDeletedSObservable(): Observable<void> {
-    return this.asesoriaDeletedStudent.asObservable();
-  }
+  // getAsesoriaDeletedSObservable(): Observable<void> {
+  //   return this.asesoriaDeletedStudent.asObservable();
+  // }
 
   /**
  * Retorna un observable que permite suscribirse a la notificación de asesorías eliminadas.
@@ -870,30 +874,98 @@ export class UserService {
       console.log('token', headers);
       // Realizar la solicitud a la API utilizando el token en las cabeceras
       return this.http.get(this.url + `/api/categorias`, { headers });
+
     } else {
       return new Observable();
     }
   }
 
+  // addCategory(formData: FormData): Observable<any> {
+  //   // Obtener el token del local storage
+  //   const token = localStorage.getItem('token');
+  //   console.log(token);
+  //   // Verificar si el usuario está autenticado
+  //   if (this.isAuth() && token) {
+  //     console.log('Entro al if');
+  //     // Configurar las cabeceras con el token de autenticación
+  //     const headers = new HttpHeaders({
+  //       'Authorization': `Bearer ${token}`
+  //     });
+  //     console.log('token', headers);
+  //     // Realizar la solicitud a la API utilizando el token en las cabeceras
+  //     return this.http.post(this.url + '/api/registrarcategoria', formData, { headers });
+  //   } else {
+  //     return new Observable();
+  //   }
+  // }
   addCategory(formData: FormData): Observable<any> {
     // Obtener el token del local storage
     const token = localStorage.getItem('token');
-    console.log(token);
+  
     // Verificar si el usuario está autenticado
     if (this.isAuth() && token) {
-      console.log('Entro al if');
       // Configurar las cabeceras con el token de autenticación
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-      console.log('token', headers);
+  
       // Realizar la solicitud a la API utilizando el token en las cabeceras
-      return this.http.post(this.url + '/api/registrarcategoria', formData, { headers });
+      return this.http.post(this.url + '/api/registrarcategoria', formData, { headers }).pipe(
+        map((response: any) => {
+          // Notificar que se ha agregado una nueva categoría
+          this.categoriesSubject.next();
+          return response; // Devolver la respuesta de la API
+        })
+      );
     } else {
+      // Retornar un observable vacío o throwError según tus necesidades
       return new Observable();
+      // También podrías retornar throwError:
+      // return throwError('Usuario no autenticado');
+    }
+  }
+  
+
+  // Obtener un observable para las categorías
+  getCategoriesObservable(): Observable<void> {
+    return this.categoriesSubject.asObservable();
+  }
+
+
+  //Eliminar categoria por el admin
+  eliminarCategoria(id: number): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      const url = `${this.url}/api/categoria/${id}`;
+
+      // Realizar la solicitud DELETE a la API
+      return this.http.delete(url, { headers }).pipe(
+        map((response: any) => {
+          // Notificar que se ha eliminado una asesoría
+          this.categoriaDeletedSubject.next();
+          return response; // Devolver la respuesta de la API
+        })
+      );
+    } else {
+      // Retornar un observable vacío o throwError según tus necesidades
+      return new Observable();
+      // También podrías retornar throwError:
+      // return throwError('Usuario no autenticado');
     }
   }
 
+  getCategoriaDeletedObservable(): Observable<void> {
+    return this.categoriaDeletedSubject.asObservable();
+  }
 
 }
 

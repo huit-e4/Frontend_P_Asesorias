@@ -26,6 +26,7 @@ import { AdminDesactivadosComponent } from './admin-desactivados/admin-desactiva
 import { StudentsDesactivadosComponent } from './students-desactivados/students-desactivados.component';
 import { InstructoresDesactivadosComponent } from './instructores-desactivados/instructores-desactivados.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 const routes: Routes = [
@@ -179,6 +180,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(routes)
   ],
   exports: [
