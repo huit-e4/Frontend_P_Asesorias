@@ -875,6 +875,25 @@ export class UserService {
     }
   }
 
+  addCategory(formData: FormData): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    console.log(token);
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      console.log('Entro al if');
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      console.log('token', headers);
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.post(this.url + '/api/registrarcategoria', formData, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
 
 }
 

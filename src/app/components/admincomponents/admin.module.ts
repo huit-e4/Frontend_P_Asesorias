@@ -25,6 +25,7 @@ import { DesactivadosComponent } from './desactivados/desactivados.component';
 import { AdminDesactivadosComponent } from './admin-desactivados/admin-desactivados.component';
 import { StudentsDesactivadosComponent } from './students-desactivados/students-desactivados.component';
 import { InstructoresDesactivadosComponent } from './instructores-desactivados/instructores-desactivados.component';
+import { AddcategoryComponent } from './addcategory/addcategory.component';
 
 
 const routes: Routes = [
@@ -115,6 +116,11 @@ const routes: Routes = [
         canActivate: [AdmingGuard]
       },
       {
+        path: 'categorias',
+        component: AddcategoryComponent,
+        canActivate: [AdmingGuard]
+      },
+      {
         path: 'desactivados',
         component: DesactivadosComponent,
         canActivate: [AdmingGuard]
@@ -166,7 +172,8 @@ const routes: Routes = [
     DesactivadosComponent,
     AdminDesactivadosComponent,
     StudentsDesactivadosComponent,
-    InstructoresDesactivadosComponent
+    InstructoresDesactivadosComponent,
+    AddcategoryComponent
   ],
   imports: [
     CommonModule,
