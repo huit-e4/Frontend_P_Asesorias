@@ -49,8 +49,8 @@
             </tr>
         </thead>
 
-        <tbody *ngFor="let cat of getFilteredCategories() | paginate: { itemsPerPage: 3, currentPage: p }">
-            <tr>
+        <tbody *ngIf="getFilteredCategories().length > 0; else noResults">
+            <tr *ngFor="let cat of getFilteredCategories() | paginate: { itemsPerPage: 3, currentPage: p }">
                 <td>{{cat.id}}</td>
                 <td>{{cat.nombre}}</td>
 
@@ -61,6 +61,14 @@
                 </td>
             </tr>
         </tbody>
+         <!-- Mensaje cuando no hay resultados -->
+         <ng-template #noResults>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">NO HAY REGISTROS</td>
+                </tr>
+            </tbody>
+        </ng-template>
 
     </table>
 </div>

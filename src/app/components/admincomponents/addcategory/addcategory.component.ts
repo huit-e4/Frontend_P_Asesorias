@@ -35,20 +35,21 @@ export class AddcategoryComponent implements OnInit{
 
   ngOnInit(): void {
     this.updateProgress();
-    // this.user.getAllCategorias().subscribe((data) => {
-    //   this.categories = data.categorias; //Para que ya no sea un objeto si no un arreglo
-    //   console.log('mi data', this.categories);
-    // });
     this.loadCategorias();
   }
-
   loadCategorias() {
-    this.user.getAllCategorias().subscribe((data) => {
-      this.categories = data.categorias;
-      console.log('mi data', this.categories);
-      this.getFilteredCategories();
-    });
+    this.user.getAllCategorias().subscribe(
+      (data) => {
+        this.categories = data.categorias;
+        console.log('mi data', this.categories);
+        this.getFilteredCategories();
+      },
+      (error) => {
+        console.error('Error al cargar categorías:', error);
+      }
+    );
   }
+  
 
   ngOnDestroy(): void {
     // Importante desuscribirse al destruir el componente
@@ -76,11 +77,15 @@ export class AddcategoryComponent implements OnInit{
     this.showForm = !this.showForm; // Mostrar u ocultar el formulario al hacer clic en el botón
   }
 
-   // Función para filtrar categorías en base al término de búsqueda
-   filterCategories() {
-    return this.categories.filter(cat =>
-      cat.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+//Hace el filtrado de categorias
+  filterCategories() {
+    if (this.categories && this.categories.length > 0) {
+      return this.categories.filter(cat =>
+        cat.nombre.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      return []; // No hay categorías, retorna un array vacío
+    }
   }
 
 //Filtrar las categorias
@@ -118,10 +123,7 @@ export class AddcategoryComponent implements OnInit{
       (response) => {
         // Procesar la respuesta del backend si es necesario
         console.log('Respuesta del backend:', response);
-        this.goodNot();
-        // this.rou.navigate(['/homeadmin/categorias']);
-        // this.loadCategorias();
-        
+        this.goodNot();        
       },
       (error) => {
         // Manejar el error si la solicitud falla

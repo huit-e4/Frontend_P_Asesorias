@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentgGuard } from 'src/app/guards/studentg.guard';
 import { HomeStudentComponent } from '../home-student/home-student.component';
 import { FiltrosComponent } from './filtros/filtros.component';
+import { ConfirmacionesComponent } from './confirmaciones/confirmaciones.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
         component: FiltrosComponent,
         canActivate: [StudentgGuard] 
       },
+      {
+        path: 'invitaciones', 
+        component: ConfirmacionesComponent,
+        canActivate: [StudentgGuard] 
+      },
 
       {
         path:'**',
@@ -51,7 +57,8 @@ const routes: Routes = [
     CursosEstudianteComponent,
     HomeEstudianteComponent,
     PerfilEstudianteComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    ConfirmacionesComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +70,9 @@ const routes: Routes = [
   exports: [
     CursosEstudianteComponent,
     HomeEstudianteComponent,
-    PerfilEstudianteComponent
+    PerfilEstudianteComponent,
+    ConfirmacionesComponent
+
   ]
 })
 export class EstudianteModule { }
