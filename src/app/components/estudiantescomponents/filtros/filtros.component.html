@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="asesoriaForm" (ngSubmit)="sendData()">
+            <h2>Buscador de categorias</h2>
+            <div class="mt-2">
+                <select class="form-select" aria-label="Default select example" formControlName="categoria_id">
+                    <option disabled value="">Seleccciona categoria*</option>
+                    <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.nombre }}</option>
+                </select>
+                <small *ngIf="validInput('categoria_id')" class="form-text text-danger">
+                    Debes seleccionar una categoria.
+                </small>
+            </div>
+            <br>
+            <button type="submit" [disabled]="asesoriaForm.invalid" class="btn btn-primary btn-block"><i class="fa-brands fa-searchengin"></i> Buscar</button>
+        </form>
+    </div>
+</div>
+<br>
+<div *ngIf="cats.length">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let asesoria of cats">
+
+
+            <div class="card" style="width: 25.5rem;">
+                <img [src]="getImgUrl(asesoria.img_filename)" class="card-img-top" alt="..." width="80" height="150">
+                <div class="card-body">
+                    <h6 class="card-title">{{ asesoria.nombre }}</h6>
+                    <p class="card-text">{{ asesoria.desc }}</p>
+                    <p class="card-text">Precio: {{ asesoria.precio }}</p>
+
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+<div *ngIf="!cats.length">
+    <p>No hay asesorias disponibles.</p>
+</div>

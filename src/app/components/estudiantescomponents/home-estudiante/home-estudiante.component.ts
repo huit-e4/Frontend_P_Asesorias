@@ -4,6 +4,7 @@ import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ export class HomeEstudianteComponent implements OnInit {
   ngOnInit(): void {
     this.GetCursos();
   }
-  constructor(private userS:UserService, private elementRef: ElementRef, private us: StudentsService, private sanitizer: DomSanitizer){
+  constructor(private userS:UserService, private elementRef: ElementRef, private us: StudentsService, private sanitizer: DomSanitizer, private rou: Router){
 
   }
   ngAfterViewInit() {
@@ -60,6 +61,7 @@ export class HomeEstudianteComponent implements OnInit {
     this.us.registrarCurso(id).subscribe(
       () => {
         console.log('Registro exitoso');
+        this.rou.navigate(['/homestudent/cursos-estudiante']);
         this.goodNot();
       },
       (error) => {

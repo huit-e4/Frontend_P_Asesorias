@@ -48,8 +48,8 @@
 
             <td>
               <div>
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                  (click)="verAlumnosRegistrados(i.id);">
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" (click)="verAlumnosRegistrados(i.id);">
                   <i class="fas fa-fw fa-eye"></i> Ver alumnos inscritos <i class="fa-solid fa-user-graduate"></i>
                 </button>
               </div>
@@ -72,7 +72,9 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -82,10 +84,34 @@
         <div class="modal-body">
           <ul *ngIf="students.registros.length > 0; else noAlumnos">
             <!-- Utiliza *ngFor para recorrer los registros y mostrar los datos -->
-            <li *ngFor="let registro of students.registros">
-              {{ registro.user.mat }} | {{ registro.user.name }} {{ registro.user.lastname }}
-            </li>
+            <div class="table-responsive">
+              <table id="admins" class="table table-striped table-hover table-bordered shadow-lg mt-4"
+                style="width:100%">
+                <thead class="bg-primary text-white">
+                  <tr>
+                    <th scope="col">Matricula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+
+                <tbody *ngFor="let registro of students.registros">
+                  <tr>
+                    <td>{{registro.user.mat}}</td>
+                    <td>{{registro.user.name}} {{registro.user.lastname}}</td>
+
+                    <td>
+                      <button class="btn btn-outline-success" type="submit"><i class="fas fa-fw fa-pen"></i>
+                        Agregar reunión</button>
+
+                    </td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
           </ul>
+
           <!-- Mostrar este mensaje cuando el arreglo está vacío -->
           <ng-template #noAlumnos>
             <p>Aún no hay ningún alumno inscrito todavía.</p>

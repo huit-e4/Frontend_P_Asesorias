@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { StudentgGuard } from 'src/app/guards/studentg.guard';
 import { HomeStudentComponent } from '../home-student/home-student.component';
+import { FiltrosComponent } from './filtros/filtros.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
         component: PerfilEstudianteComponent,
         canActivate: [StudentgGuard] 
       },
+      {
+        path: 'filtros', 
+        component: FiltrosComponent,
+        canActivate: [StudentgGuard] 
+      },
 
       {
         path:'**',
@@ -44,7 +50,8 @@ const routes: Routes = [
   declarations: [
     CursosEstudianteComponent,
     HomeEstudianteComponent,
-    PerfilEstudianteComponent
+    PerfilEstudianteComponent,
+    FiltrosComponent
   ],
   imports: [
     CommonModule,
