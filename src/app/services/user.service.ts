@@ -969,5 +969,49 @@ export class UserService {
     return this.categoriaDeletedSubject.asObservable();
   }
 
+
+  //Traer el id del registro del estudiante
+  getRegistroEstudiantePorId(idregistro: number): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+  
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+  
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.get(this.url + `/api/verRegistroEstudiante/${idregistro}`, { headers });
+  
+    } else {
+      return new Observable();
+    }
+  }
+
+  //Registrar cita por el experto
+  registrarCitaPorExperto(id: number, formData: FormData): Observable<any> {
+    // Obtener el token del local storage
+    const token = localStorage.getItem('token');
+    
+    // Verificar si el usuario está autenticado
+    if (this.isAuth() && token) {
+      // Configurar las cabeceras con el token de autenticación
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      // Construir la URL con el valor real de 'id'
+      const url = `${this.url}/api/registrarcita/${id}`;
+
+      // Realizar la solicitud a la API utilizando el token en las cabeceras
+      return this.http.post(url, formData, { headers });
+    } else {
+      return new Observable();
+    }
+}
+
+
 }
 

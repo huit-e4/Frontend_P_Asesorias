@@ -211,5 +211,12 @@ export class VerAsesoriasComponent implements OnInit{
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
   }
 
+  agendarReunion(id: number){
+    console.log('TESING', id);
+    this.router.navigateByUrl(`/homeexpert/crearreunion/${id}`); 
+
+    
+  }
+
 
 }

@@ -13,6 +13,7 @@ import { ExpertosComponent } from './expertos/expertos.component';
 import { InfocvComponent } from './infocv/infocv.component';
 import { TablaDeExpertComponent } from '../admincomponents/tabla-de-expert/tabla-de-expert.component';
 import { ReunionesComponent } from './reuniones/reuniones.component';
+import { CrearreunionComponent } from './crearreunion/crearreunion.component';
 const routes: Routes = [
   {
     path: 'homeexpert',
@@ -48,6 +49,11 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
+        path: 'crearreunion/:id',
+        component: CrearreunionComponent,
+        canActivate: [ExpertgGuard]
+      },
+      {
         path: 'Asesoria',
         component: VerAsesoriasComponent,
         canActivate: [ExpertgGuard]
@@ -80,7 +86,8 @@ const routes: Routes = [
     SubirAsesoriaComponent,
     ExpertosComponent,
     InfocvComponent,
-    ReunionesComponent
+    ReunionesComponent,
+    CrearreunionComponent
   ],
   imports: [
     CommonModule,
