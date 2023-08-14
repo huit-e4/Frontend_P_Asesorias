@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
+import { StudentsService } from 'src/app/services/students.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filtros',
@@ -11,7 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class FiltrosComponent implements OnInit {
   categories: any[] = []; // Aquí almacenarás las categorías
   cats: any[] = []; //Me guarda las asesorias segun su id
-  constructor(private user: UserService, private theForm: FormBuilder, private sanitizer: DomSanitizer) { }
+  constructor(private user: UserService, private theForm: FormBuilder, private sanitizer: DomSanitizer, private us: StudentsService, private rou: Router) { }
 
   ngOnInit(): void {
     this.user.getAllCategorias().subscribe((data) => {
@@ -66,6 +69,64 @@ export class FiltrosComponent implements OnInit {
   getImgUrl(img_filename: string): SafeResourceUrl {
     const unsafeUrl = this.user.url + '/storage/imgscursos/' + img_filename;
     return this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+  }
+
+  
+  //Unirse al curso
+  unirmeAlCurso(id: number) {
+    this.us.registrarCurso(id).subscribe(
+      () => {
+        console.log('Registro exitoso');
+        this.rou.navigate(['/homestudent/cursos-estudiante']);
+        this.goodNot();
+      },
+      (error) => {
+        console.error('Error al intentar registrarse:', error);
+        this.badNot();
+      }
+    );
+  }
+
+
+  badNot() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Solo te puedes unir una vez al curso papu!'
+    })
+  }
+
+  confirmarAlert(id: number) {
+    Swal.fire({
+      title: '¿Estás seguro de unirte al curso?',
+      text: "No puedes revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, quiero!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.unirmeAlCurso(id); // Pasa el id como argumento a la función borrarAsesoria()
+      }
+    });
+  }
+
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Alta de curso exitosa!!!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  
+  datosModal:any=null;
+  verModal(Userdata:any){
+    console.log(Userdata);
+    this.datosModal=Userdata;
   }
 
 }

@@ -1,0 +1,30 @@
+.custom-button {
+    margin-right: 10px; /* Puedes ajustar el valor según el espacio deseado */
+  }
+  
+
+  .card-container {
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+
+
+
+  .card-default {
+    margin-bottom: 1.5rem;  
+    .card-header {
+      padding-left: 1.88rem;
+      padding-right: 1.88rem;
+      padding-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      background-color: white;
+      border-bottom: none;     
+     @media(min-with:1400px) {
+        padding-left: 3.125rem;
+        padding-right: 3.125rem;
+      }}}

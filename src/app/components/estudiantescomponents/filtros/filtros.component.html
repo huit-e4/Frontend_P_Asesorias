@@ -18,16 +18,23 @@
 </div>
 <br>
 <div *ngIf="cats.length">
-    <div class="row">
-        <div class="col-md-4" *ngFor="let asesoria of cats">
-
-
-            <div class="card" style="width: 25.5rem;">
+    <div class="row mt-4">
+        <div class="col-lg-6 col-xl-4 d-flex" *ngFor="let asesoria of cats">
+            <div class="card card-default p-4" style="width: 25.5rem;">
                 <img [src]="getImgUrl(asesoria.img_filename)" class="card-img-top" alt="..." width="80" height="150">
                 <div class="card-body">
                     <h6 class="card-title">{{ asesoria.nombre }}</h6>
                     <p class="card-text">{{ asesoria.desc }}</p>
                     <p class="card-text">Precio: {{ asesoria.precio }}</p>
+                    <p class="card-text">Categoria: {{ asesoria.categoria_id }}</p>
+                    <button type="button" class="btn btn-outline-primary btn-sm custom-button" data-bs-toggle="modal" data-bs-target="#modal-contact" (click)="verModal(asesoria)">
+                        <i class="fas fa-fw fa-eye"></i> Ver detalles
+                      </button>
+                                            
+                      <button type="button" class="btn btn-outline-success btn-sm custom-button" (click)="confirmarAlert(asesoria.id);">
+                        <i class="fas fa-fw fa-plus"></i> Inscribirme
+                      </button>
+                      
 
                 </div>
             </div>
@@ -38,3 +45,50 @@
 <div *ngIf="!cats.length">
     <p>No hay asesorias disponibles.</p>
 </div>
+
+
+<!-- modal de contacto -->
+<div class="modal fade" id="modal-contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal content remains unchanged except for the data display -->
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <!-- ... (rest of modal content) ... -->
+        <div class="modal-body pt-0">
+          <div class="row no-gutters">
+            <div class="col-md-6">
+              <div class="profile-content-left px-4">
+                <div class="card text-center widget-profile px-0 border-0 ">
+                  <div class="card-img mx-auto rounded-circle">
+                    <img [src]="getImgUrl(datosModal?.img_filename)" alt="Imagen" width="50" height="50" alt="user image" class="rounded-circle">
+  
+                  </div>
+                  <!-- Update displayed data -->
+                  <div class="card-body">
+                    <h4 class="py-2 text-dark">{{datosModal?.nombre}}</h4>
+                    <div class="mt-5"><span></span></div>
+                    <p class="text-dark font-weight-medium pt-4 mb-2">Instructor</p>
+                    <p>{{datosModal?.user.name + " " + datosModal?.user.lastname}}</p>
+                  </div>
+                </div>
+                <!-- ... (rest of content) ... -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="contact-info px-4">
+                <h4 class="text-dark mb-1">Detalles del curso</h4>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Descripción</p>
+                <p>{{datosModal?.desc}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Precio</p>
+                <p>{{"$"+datosModal?.precio}}</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Estado</p>
+                <p>Activo</p>
+                <p class="text-dark font-weight-medium pt-4 mb-2">Fecha de registro</p>
+                <p>{{datosModal?.created_at | date}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
