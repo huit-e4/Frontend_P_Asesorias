@@ -48,7 +48,7 @@ export class HomeEstudianteComponent implements OnInit {
       }
     );
   }
-
+ 
   datosModal:any=null;
   verModal(Userdata:any){
     console.log(Userdata);
