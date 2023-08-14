@@ -213,7 +213,7 @@ export class VerAsesoriasComponent implements OnInit{
 
   agendarReunion(id: number){
     console.log('TESING', id);
-    this.router.navigateByUrl(`/homeexpert/reuniones/${id}`); 
+    this.router.navigateByUrl(`/homeexpert/crearreunion/${id}`); 
 
     
   }
