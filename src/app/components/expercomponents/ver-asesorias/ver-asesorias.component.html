@@ -101,7 +101,7 @@
                     <td>{{registro.user.name}} {{registro.user.lastname}}</td>
 
                     <td>
-                      <button class="btn btn-outline-success" type="submit"><i class="fas fa-fw fa-pen"></i>
+                      <button class="btn btn-outline-success" (click)="agendarReunion(registro.id)" data-bs-dismiss="modal"><i class="fas fa-fw fa-pen"></i>
                         Agregar reunión</button>
 
                     </td>

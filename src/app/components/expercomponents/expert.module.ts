@@ -43,7 +43,7 @@ const routes: Routes = [
         canActivate: [ExpertgGuard]
       },
       {
-        path: 'reuniones',
+        path: 'reuniones/:id',
         component: ReunionesComponent,
         canActivate: [ExpertgGuard]
       },
