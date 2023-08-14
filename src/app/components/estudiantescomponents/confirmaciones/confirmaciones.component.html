@@ -24,7 +24,7 @@
               <th>Tema</th>
               <th>Url meet</th>       
               <th>Estado</th>
-              <th>Fecha</th>
+              <th>Fecha y hora</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -36,7 +36,7 @@
               <td>{{i.urlmeet}}</td>
               <td *ngIf="i.confirmacion==1" >Confirmado</td>
               <td *ngIf="i.confirmacion==0" >Por confirmar</td>
-              <td>{{i.fecha | date}} </td>
+              <td>{{i.fecha }} </td>
               <td><div><button *ngIf="i.confirmacion==0" type="button" class="btn btn-primary btn-sm mx-1" data-bs-target="#modalInformacion" (click)="ConfirmarCita(i.id)"><i class="bi "></i>Confirmar cita</button>
                 <button *ngIf="i.confirmacion==1" type="button" disabled class="btn btn-secondary btn-sm mx-1" data-bs-target="#modalInformacion" (click)="ConfirmarCita(i.id)"><i class="bi "></i>Confirmado</button></div></td>
               <!-- <button type="button" class="btn btn-success btn-sm mx-1" (click)="AprobarCv(i.id)"><i class="bi bi-check-lg" ></i>Aprobar</button><button type="button" class="btn btn-danger btn-sm mx-1" (click)="RechazarCv(i.id)"><i class="bi bi-x-lg"></i>Rechazar </button> -->

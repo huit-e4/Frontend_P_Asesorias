@@ -25,7 +25,7 @@
               <th>Url meet</th>       
               <th>Estado</th>
               <!-- <th>Estudiante ID</th> -->
-              <th>Fecha</th>
+              <th>Fecha y hora</th>
               
             </tr>
           </thead>
@@ -38,7 +38,7 @@
               <td *ngIf="i.confirmacion==1">Confirmado</td>
               <td *ngIf="i.confirmacion==0">Por confirmar</td>
               <!-- <td>{{i.registro.user_id}}</td> -->
-              <td>{{i.fecha | date}} </td>
+              <td>{{i.fecha }} </td>
               <!-- <td><div ><button type="button" class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#modalInformacion" (click)="verSolicitud(i)"><i class="bi bi-eye me-1"></i>Ver más</button></div></td> -->
               <!-- <button type="button" class="btn btn-success btn-sm mx-1" (click)="AprobarCv(i.id)"><i class="bi bi-check-lg" ></i>Aprobar</button><button type="button" class="btn btn-danger btn-sm mx-1" (click)="RechazarCv(i.id)"><i class="bi bi-x-lg"></i>Rechazar </button> -->
             </tr>
