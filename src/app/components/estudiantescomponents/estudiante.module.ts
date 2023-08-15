@@ -9,6 +9,7 @@ import { StudentgGuard } from 'src/app/guards/studentg.guard';
 import { HomeStudentComponent } from '../home-student/home-student.component';
 import { FiltrosComponent } from './filtros/filtros.component';
 import { ConfirmacionesComponent } from './confirmaciones/confirmaciones.component';
+import { AsesoriaComponent } from './asesoria/asesoria.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
         component: ConfirmacionesComponent,
         canActivate: [StudentgGuard] 
       },
+      {
+        path: 'contenido', 
+        component: AsesoriaComponent,
+        //canActivate: [StudentgGuard] 
+      },
 
       {
         path:'**',
@@ -58,7 +64,8 @@ const routes: Routes = [
     HomeEstudianteComponent,
     PerfilEstudianteComponent,
     FiltrosComponent,
-    ConfirmacionesComponent
+    ConfirmacionesComponent,
+    AsesoriaComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +78,9 @@ const routes: Routes = [
     CursosEstudianteComponent,
     HomeEstudianteComponent,
     PerfilEstudianteComponent,
-    ConfirmacionesComponent
+    ConfirmacionesComponent,
+    AsesoriaComponent
+    
 
   ]
 })

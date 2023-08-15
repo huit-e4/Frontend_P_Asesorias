@@ -380,3 +380,6 @@ body { background-color: black !important; }
   margin-right: 8px;
 }
 
+.custom-button {
+  margin-right: 10px; /* Puedes ajustar el valor según el espacio deseado */
+}

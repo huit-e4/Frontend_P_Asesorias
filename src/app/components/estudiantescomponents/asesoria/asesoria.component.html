@@ -7,23 +7,20 @@
       <div class="course-details" *ngFor="let a of asesoriasArr">
         <h2>{{a.infoasesoria?.nombre}}</h2>
         <p>Descripcion: {{a.infoasesoria?.desc}}</p>
-        <!--button class="btn btn-primary">Enviar mensaje</button>-->
         <form>
           <p class="clasificacion">
-           
-            <input id="radio1" type="radio" name="estrellas" value="5"><!--
-            --><label for="radio1">★</label><!--
-            --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-            --><label for="radio2">★</label><!--
-            --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-            --><label for="radio3">★</label><!--
-            --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-            --><label for="radio4">★</label><!--
-            --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-            --><label for="radio5">★</label>
+            <input id="radio1" type="radio" name="estrellas" value="5">
+            <label for="radio1" class="star-label">★</label>
+            <input id="radio2" type="radio" name="estrellas" value="4">
+            <label for="radio2" class="star-label">★</label>
+            <input id="radio3" type="radio" name="estrellas" value="3">
+            <label for="radio3" class="star-label">★</label>
+            <input id="radio4" type="radio" name="estrellas" value="2">
+            <label for="radio4" class="star-label">★</label>
+            <input id="radio5" type="radio" name="estrellas" value="1">
+            <label for="radio5" class="star-label">★</label>
           </p>
         </form>
-        
       </div>
     </div>
   </div>
