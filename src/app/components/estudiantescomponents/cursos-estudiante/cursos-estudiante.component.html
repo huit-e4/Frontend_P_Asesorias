@@ -43,8 +43,12 @@
           </ul>
         </div>
       </a>
-      <button type="button" class="btn btn-danger btn-sm" (click)="confirmarAlert(a.id)">
+      <button type="button" class="btn btn-outline-danger btn-sm custom-button" (click)="confirmarAlert(a.id)">
         <i class="fa-solid fa-shoe-prints"></i> Abandonar Curso
+      </button>
+                            
+      <button type="button" class="btn btn-outline-success btn-sm custom-button" routerLink="../contenido" >
+        <i class="fas fa-fw fa-plus"></i> Entrar al curso
       </button>
     </div>
   </div>
